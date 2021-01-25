@@ -1,8 +1,8 @@
 To install Datalore on-premise, first install and configure Hub, which provides a single point of entry for user management. The procedures below describe both stages of the process.
 
 # 1. Install Hub
-If you have already installed Hub, just skip this part and go to the __Configuration of Hub__ section.
-You can see more details about the Hub installation process [here](https://hub.docker.com/r/jetbrains/hub).
+If you have already installed Hub, skip this part and go to the __Configuration of Hub__ section.
+You can find more details about the Hub installation process [here](https://hub.docker.com/r/jetbrains/hub).
 1. Run <!-- capitalized?-->Hub via command:
 ```
     kubectl apply -k <directory containing hub/hub-k8s.yaml>
