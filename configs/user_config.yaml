@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datalore-on-premise-env
+data:
+  FRONTEND_URL: "http://localhost:8080"
+
+  HUB_BASE_URL: "changeme"
+  HUB_DATALORE_SERVICE_ID: "changeme"
+  HUB_DATALORE_SERVICE_SECRET: "changeme"
+  HUB_PERM_TOKEN: "changeme"
+
+  DEFAULT_INSTANCE_TYPE_ID: "k8s-datalore-agent"
+  PASSWORD_SECRET: "changeme"
+
+  MAIL_ENABLED: "false"   # if set to true, fill the fields below
+  MAIL_SENDER_EMAIL: ""
+  MAIL_SENDER_NAME: ""
+  MAIL_SENDER_USERNAME: ""
+  MAIL_SENDER_PASSWORD: ""
+  MAIL_SMTP_SERVER: ""
+  MAIL_SMTP_PORT: ""

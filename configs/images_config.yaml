@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: datalore-on-premise
+spec:
+  template:
+    spec:
+      containers:
+        - name: datalore
+          image: jetbrains/datalore-server:v0.1.0
+        - name: mysql
+          image: jetbrains/datalore-mysql:0.1.4

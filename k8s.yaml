@@ -1,0 +1,111 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: datalore-on-premise
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: datalore-on-premise
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: datalore-on-premise
+roleRef:
+  kind: Role
+  name: datalore-on-premise
+  apiGroup: ""
+subjects:
+  - kind: ServiceAccount
+    name: datalore-on-premise
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: datalore-on-premise
+spec:
+  serviceName: datalore-on-premise
+  selector:
+    matchLabels:
+      app: datalore-on-premise
+  template:
+    metadata:
+      labels:
+        app: datalore-on-premise
+    spec:
+      serviceAccountName: datalore-on-premise
+      securityContext:
+        fsGroup: 5000
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: datalore
+          ports:
+            - containerPort: 8080
+              name: http
+            - containerPort: 10201
+              name: debug
+            - containerPort: 5050
+              name: agents-manager
+            - containerPort: 5060
+              name: computation
+          resources:
+            requests:
+              memory: "4096Mi"
+            limits:
+              memory: "4096Mi"
+          envFrom:
+            - configMapRef:
+                name: datalore-on-premise-env
+            - configMapRef:
+                name: datalore-on-premise-db-env
+          volumeMounts:
+            - mountPath: /etc/datalore/agents-config
+              name: agents-config
+            - mountPath: /etc/datalore/logback-config
+              name: logback-config
+            - mountPath: /home/storage
+              name: storage
+        - name: mysql
+          ports:
+            - containerPort: 3306
+          envFrom:
+            - configMapRef:
+                name: datalore-on-premise-db-env
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-data
+      volumes:
+        - name: agents-config
+          configMap:
+            name: datalore-on-premise-agents-config
+        - name: logback-config
+          configMap:
+            name: datalore-on-premise-logback-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: datalore-on-premise
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: 5050
+      targetPort: agents-manager
+      protocol: TCP
+      name: agents-manager
+    - port: 5060
+      targetPort: computation
+      protocol: TCP
+      name: computation
+  selector:
+    app: datalore-on-premise

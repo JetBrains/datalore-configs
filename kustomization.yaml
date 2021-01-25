@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+configMapGenerator:
+  - name: datalore-on-premise-agents-config
+    files:
+      - configs/agents_config.yaml
+  - name: datalore-on-premise-logback-config
+    files:
+      - configs/logback.xml
+generatorOptions:
+  disableNameSuffixHash: true
+
+resources:
+  - configs/user_config.yaml
+  - configs/db_config.yaml
+  - k8s.yaml
+
+patchesStrategicMerge:
+  - configs/images_config.yaml
+  - configs/volumes_config.yaml

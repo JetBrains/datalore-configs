@@ -1,0 +1,43 @@
+k8s:
+  instances:
+    - id: k8s-datalore-agent
+      label: "K8s Local"
+      description: "Local K8s instance"
+      minAllowed: 1
+      maxAllowed: 1
+      yaml:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: k8s-agent
+          labels:
+            podType: dataloreKubernetesAgent
+        spec:
+          imagePullSecrets:
+            - name: regcred
+          containers:
+            - name: agent
+              image: jetbrains/datalore-agent:v0.1.0
+              securityContext:
+                privileged: true
+              env:
+                - name: MAX_HEAP_SIZE
+                  value: 512m
+                - name: DATA_ROOT
+                  value: /mnt/disk
+                - name: AGENT_RUN_TYPE
+                  value: DOCKER
+              volumeMounts:
+                - mountPath: /etc/datalore/logback-config
+                  name: logback-config
+              resources:
+                limits:
+                  cpu: "1"
+                  memory: "2048Mi"
+                requests:
+                  cpu: "200m"
+                  memory: "2048Mi"
+          volumes:
+            - name: logback-config
+              configMap:
+                name: datalore-on-premise-logback-config
