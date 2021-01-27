@@ -6,9 +6,9 @@ NB: it is assumed that shell commands are executed in repository root directory 
 If you have already installed Hub, skip this part and go to the __Configuration of Hub__ section.
 You can find more details about the Hub installation process [here](https://hub.docker.com/r/jetbrains/hub).
 1. Run <!-- capitalized?-->Hub via command:
-```
+    ```
     kubectl apply -k ./hub/
-```
+    ```
 2. (Here and elsewhere, we assume that you run the docker container on a local machine and choose port 8082 for port forwarding).
    Check the container output using the following command:
    ```
