@@ -1,11 +1,13 @@
 To install Datalore on-premise, first install and configure Hub, which provides a single point of entry for user management. The procedures below describe both stages of the process.
 
+NB: it is assumed that shell commands are executed in repository root directory (one containing `README.md`).
+
 # 1. Install Hub
 If you have already installed Hub, skip this part and go to the __Configuration of Hub__ section.
 You can find more details about the Hub installation process [here](https://hub.docker.com/r/jetbrains/hub).
 1. Run <!-- capitalized?-->Hub via command:
 ```
-    kubectl apply -k <directory containing hub/hub-k8s.yaml>
+    kubectl apply -k ./hub/
 ```
 2. (Here and elsewhere, we assume that you run the docker container on a local machine and choose port 8082 for port forwarding).
    Check the container output using the following command:
@@ -69,7 +71,7 @@ To run Datalore, you need Kubernetes (we have checked version `1.17.6`, but othe
 ## 2.1 Configuration
 To simplify the configuration process, the Kubernetes config is split into small chunks and assembled with 
 the Kustomize tool (`-k` flag of `kubectl`).
-Edit several files in the `configs` directory to configure your Datalore installation:
+Edit several files in the `datalore/configs` directory to configure your Datalore installation:
 ### 2.1.1 `user_config.yaml`
 Editing this file is __mandatory__ to get everything working. The file has the following fields:
 #### 2.1.1.1 Required parameters:
@@ -134,6 +136,6 @@ Create a secret to pull images from a private repository:
 `kubectl create secret docker-registry regcred --docker-username=datalorecustomer --docker-password=<datalore token>`
 # 3. Run Datalore
 ## Start
-`kubectl apply -k <directory containing base/k8s.yaml>`
+`kubectl apply -k ./datalore/`
 ## Stop
-`kubectl delete -k <directory containing base/k8s.yaml>`
+`kubectl delete -k ./datalore/`
