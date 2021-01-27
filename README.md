@@ -5,6 +5,8 @@ NB: it is assumed that shell commands are executed in repository root directory 
 # 1. Install Hub
 If you have already installed Hub, skip this part and go to the __Configuration of Hub__ section.
 You can find more details about the Hub installation process [here](https://hub.docker.com/r/jetbrains/hub).
+1. Configure Hub persistent volumes: replace `emptyDir` values in `volumes` section of `./hub/statefulSet.yaml` file
+   to volumes available in your kubernetes cluster.
 1. Run <!-- capitalized?-->Hub via command:
     ```
     kubectl apply -k ./hub/
