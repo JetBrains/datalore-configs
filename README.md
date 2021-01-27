@@ -13,7 +13,7 @@ You can find more details about the Hub installation process [here](https://hub.
     kubectl logs service/hub
    ```
    It should contain a line like this:
-   `JetBrains Hub 2020.1`. Configuration Wizard will listen inside the container on {0.0.0.0:8080}/
+   `JetBrains Hub 2020.1. Configuration Wizard will listen inside the container on {0.0.0.0:8080}/
    after start and can be accessed by this URL:
   [http://<put-your-docker-HOST-name-here>:<put-host-port-mapped-to-container-port-8080-here>/?wizard_token=pPXTShp4NXceXqGYzeAq]`.
    Copy the token to the clipboard.
