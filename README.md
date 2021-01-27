@@ -9,7 +9,7 @@ You can find more details about the Hub installation process [here](https://hub.
     ```
     kubectl apply -k ./hub/
     ```
-2. (Here and elsewhere, we assume that you run the docker container on a local machine and choose port 8082 for port forwarding).
+1. (Here and elsewhere, we assume that you run the docker container on a local machine and choose port 8082 for port forwarding).
    Check the container output using the following command:
    ```
     kubectl logs service/hub
@@ -19,50 +19,50 @@ You can find more details about the Hub installation process [here](https://hub.
    after start and can be accessed by this URL:
   [http://<put-your-docker-HOST-name-here>:<put-host-port-mapped-to-container-port-8080-here>/?wizard_token=pPXTShp4NXceXqGYzeAq]`.
    Copy the token to the clipboard.
-3. Go to `http://localhost:8082/` and insert the token from step __3__ into the __Token__ field. Click the __Log in__ button.
-4. Click the __Set Up__ link.
-5. In __Base URL__, specify the URL that you will use to access Hub (here, it is `http://localhost:8082/`). Don't change the __Application Listen Port__ setting.
-6. Configure the admin account (set the admin password).
-7. Finish the configuration process and wait for the Hub startup.
+1. Go to `http://localhost:8082/` and insert the token from step __3__ into the __Token__ field. Click the __Log in__ button.
+1. Click the __Set Up__ link.
+1. In __Base URL__, specify the URL that you will use to access Hub (here, it is `http://localhost:8082/`). Don't change the __Application Listen Port__ setting.
+1. Configure the admin account (set the admin password).
+1. Finish the configuration process and wait for the Hub startup.
 ## 1.1 Configure Hub
 Log into Hub via admin account.
 ### 1.1.1 Configure Datalore service
 1. Go to Services (`http://localhost:8082/hub/services`) and click the __New service__ button. Use the name _datalore_ and your
    Datalore installation URL as __Home URL__.
-2. Insert the Datalore installation URL into the __Base URLs__ field.
-3. Insert line `/api/hub/openid/login` into the __Redirect URIs__ field.
-4. Click the __Change...__ button near the __Secret__ label. Retain the generated secret somewhere – it will be used when configuring Datalore
+1. Insert the Datalore installation URL into the __Base URLs__ field.
+1. Insert line `/api/hub/openid/login` into the __Redirect URIs__ field.
+1. Click the __Change...__ button near the __Secret__ label. Retain the generated secret somewhere – it will be used when configuring Datalore
    (`$HUB_DATALORE_SERVICE_SECRET` property). Click the __Change secret__ button.
-5. Click the __Trust__ button in the upper-right corner.
-6. Copy the `ID` field value – it is used when configuring Datalore (`$HUB_DATALORE_SERVICE_ID` property).
-7. Click the __Save__ button.
+1. Click the __Trust__ button in the upper-right corner.
+1. Copy the `ID` field value – it is used when configuring Datalore (`$HUB_DATALORE_SERVICE_ID` property).
+1. Click the __Save__ button.
 ### 1.1.2 Create Hub token
 1. Go to Users (`http://localhost:8082/hub/users`).
-2. Click your admin user's name.
-3. Go to the `Authentication` tab.
-4. Click the __New token...__ button.
-5. Add Hub and Datalore into __Scope__. You can use any __Name__. Click the __Create__ button.
-6. Remember the token. It will be used when configuring Datalore (`$HUB_PERM_TOKEN` property).
+1. Click your admin user's name.
+1. Go to the `Authentication` tab.
+1. Click the __New token...__ button.
+1. Add Hub and Datalore into __Scope__. You can use any __Name__. Click the __Create__ button.
+1. Remember the token. It will be used when configuring Datalore (`$HUB_PERM_TOKEN` property).
 ### 1.1.3 Force email verification
 Datalore uses user emails from Hub, so it is recommended to force email verification in Hub.
 Users with unverified emails will not be able to use Datalore.
 #### 1.1.3.1 Configure SMTP server
 1. Go to SMTP (`http://localhost:8082/hub/smtp-settings`).
-2. Click the __Configure SMTP server...__ button.
-3. Configure your SMTP server parameters.
-4. Click the __Enable notifications__ button.
-5. Click the __Save__ button.
-5. (Optional) To make sure your configuration is working, click the __Send Test message__ button.
+1. Click the __Configure SMTP server...__ button.
+1. Configure your SMTP server parameters.
+1. Click the __Enable notifications__ button.
+1. Click the __Save__ button.
+1. (Optional) To make sure your configuration is working, click the __Send Test message__ button.
 #### 1.1.3.2 Enable email verification
 1. Go to Auth Modules (`http://localhost:8082/hub/authmodules`).
-2. Open the __Common settings__ page.
-3. Enable the __Email verification__ option.
-4. Click the __Save__ button.
+1. Open the __Common settings__ page.
+1. Enable the __Email verification__ option.
+1. Click the __Save__ button.
 ### 1.1.4 (Optional) Ban guest user
 Skip this step if you need a guest user.
 1. Go to Users (`http://localhost:8082/hub/users`).
-2. Select a guest user.
-3. Click the __Ban__ button.
+1. Select a guest user.
+1. Click the __Ban__ button.
 ### 1.1.5 (Optional) Enable auth modules
 Go to Auth Modules (`http://localhost:8082/hub/authmodules`). Here, you can add/remove different auth modules
 (e.g. Google auth, GitHub auth, LDAP, etc.).
