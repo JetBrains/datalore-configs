@@ -26,6 +26,7 @@ You can find more details about the Hub installation process [here](https://hub.
 1. Go to `http://localhost:8082/` and insert the token from step __3__ into the __Token__ field. Click the __Log in__ button.
 1. Click the __Set Up__ link.
 1. In __Base URL__, specify the URL that you will use to access Hub (here, it is `http://localhost:8082/`). Don't change the __Application Listen Port__ setting.
+1. Press `Next` button.
 1. Configure the admin account (set the admin password).
 1. Finish the configuration process and wait for the Hub startup.
 ## 1.1 Configure Hub
