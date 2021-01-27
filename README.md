@@ -13,22 +13,25 @@ You can find more details about the Hub installation process [here](https://hub.
     ```
     kubectl apply -k ./hub/
     ```
-1. It is assumed later that you can access Hub at `http://localhost:8082`. For it to work you may need to forward the port running the following command: `kubectl port-forward service/hub 8082`.
+1. It is assumed later that you can access Hub at `http://localhost:8082`. For it to work you may need to forward the port running the following command:
+   ```
+   kubectl port-forward --address 0.0.0.0 service/hub 8082.
+   ```
 1. Check the container output using the following command:
    ```
     kubectl logs service/hub
    ```
    It should contain a line like this:
-   `JetBrains Hub 2020.1. Configuration Wizard will listen inside the container on {0.0.0.0:8080}/
+   `JetBrains Hub 2020.1 Configuration Wizard will listen inside the container on {0.0.0.0:8080}/
    after start and can be accessed by this URL:
   [http://<put-your-docker-HOST-name-here>:<put-host-port-mapped-to-container-port-8080-here>/?wizard_token=pPXTShp4NXceXqGYzeAq]`.
-   Copy the token to the clipboard.
-1. Go to `http://localhost:8082/` and insert the token from step __3__ into the __Token__ field. Click the __Log in__ button.
+   Copy the `wizard_token` to the clipboard.
+1. Go to `http://localhost:8082/` and insert the token from previous step into the __Token__ field. Click the __Log in__ button.
 1. Click the __Set Up__ link.
 1. In __Base URL__, specify the URL that you will use to access Hub (here, it is `http://localhost:8082/`). Don't change the __Application Listen Port__ setting.
 1. Press `Next` button.
 1. Configure the admin account (set the admin password).
-1. Finish the configuration process and wait for the Hub startup.
+1. Press `Finish` button and wait for the Hub startup.
 ## 1.1 Configure Hub
 Log into Hub via admin account.
 ### 1.1.1 Configure Datalore service
@@ -89,7 +92,8 @@ Editing this file is __mandatory__ to get everything working. The file has the f
 #### 2.1.1.1 Required parameters:
 - `FRONTEND_URL` – URL by which Datalore can be accessed. It is used to generate links.  
   __Note:__ Make sure the URL does not contain a trailing slash.
-- `HUB_BASE_URL` – root URL of your Hub installation (for this and the following, see the __Install Hub__ section). It should end with `/hub` (e.g. `https://your.domain/hub/`).
+- `HUB_BASE_URL` – root URL of your Hub installation (for this and the following, see the __Install Hub__ section).  
+  __Note:__ It should end with `/hub` (e.g. `https://your.domain/hub/`).
 - `HUB_DATALORE_SERVICE_ID` – ID of the Datalore service in Hub (see __Configure Datalore service__ section).
 - `HUB_DATALORE_SERVICE_SECRET` – token of the Datalore service in Hub (see the __Configure Datalore service__ section).
 - `HUB_PERM_TOKEN` – Token for accessing Datalore and Hub scopes (see the __Create Hub token__ section).
