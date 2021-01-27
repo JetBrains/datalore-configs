@@ -63,6 +63,13 @@ Users with unverified emails will not be able to use Datalore.
 1. Open the __Common settings__ page.
 1. Enable the __Email verification__ option.
 1. Click the __Save__ button.
+#### 1.1.3.3 Set and verify email for admin user
+1. Go to Users (`http://localhost:8082/hub/users`).
+1. Click your admin user's name.
+1. Set email in the `Email` field.
+1. Click `Save` button.
+1. Click `Send verification email` link.
+1. Find verification email in your inbox and click `Verify email address` button.
 ### 1.1.4 (Optional) Ban guest user
 Skip this step if you need a guest user.
 1. Go to Users (`http://localhost:8082/hub/users`).
