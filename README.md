@@ -13,8 +13,7 @@ You can find more details about the Hub installation process [here](https://hub.
     ```
     kubectl apply -k ./hub/
     ```
-1. It is assumed later that you can access Hub at `http://localhost:8082`. As the hub is running on `8080` port inside the container,
-   you need to forward the port running the following command: `kubectl port-forward service/hub 8082:8080`.
+1. It is assumed later that you can access Hub at `http://localhost:8082`. For it to work you may need to forward the port running the following command: `kubectl port-forward service/hub 8082`.
 1. Check the container output using the following command:
    ```
     kubectl logs service/hub
