@@ -7,6 +7,8 @@ If you have already installed Hub, skip this part and go to the __Configuration 
 You can find more details about the Hub installation process [here](https://hub.docker.com/r/jetbrains/hub).
 1. Configure Hub persistent volumes: replace `emptyDir` values in `volumes` section of `./hub/statefulSet.yaml` file
    to volumes available in your kubernetes cluster.
+
+   NB: If you leave the default configuration, you will __lose ALL DATA__ after the next Hub restart.
 1. Run <!-- capitalized?-->Hub via command:
     ```
     kubectl apply -k ./hub/
