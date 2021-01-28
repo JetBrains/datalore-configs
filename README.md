@@ -81,6 +81,14 @@ Skip this step if you need a guest user.
 ### 1.1.5 (Optional) Enable auth modules
 Go to Auth Modules (`http://localhost:8082/hub/authmodules`). Here, you can add/remove different auth modules
 (e.g. Google auth, GitHub auth, LDAP, etc.).
+## 1.2 Configure Hub external access
+Next, to configure Datalore (Section 2), you need a URL (referred to as `HUB_BASE_URL` later) to access Hub from Datalore. Consider the following:
+ - This URL must be accessible from both the cluster pods and the browser (by the end users of your Datalore installation).
+ - The URL must point to the /hub path of your Hub installation, i.e. http://127.0.0.1:8080/hub inside the container where Hub is launched (by default, it's pod `hub-0`).
+ - How you set up your cluster to serve such URL depends on the specifics of your cluster configuration.
+
+Note: If you're planning on using the `datalore.your.domain` domain name to access Datalore, it is recommended to use `http(s)://datalore.your.domain/hub` as `HUB_BASE_URL`.
+
 # 2. Install Datalore
 To run Datalore, you need Kubernetes (we have checked version `1.17.6`, but other versions should also work).
 ## 2.1 Configuration
@@ -92,8 +100,7 @@ Editing this file is __mandatory__ to get everything working. The file has the f
 #### 2.1.1.1 Required parameters:
 - `FRONTEND_URL` – URL by which Datalore can be accessed. It is used to generate links.  
   __Note:__ Make sure the URL does not contain a trailing slash.
-- `HUB_BASE_URL` – root URL of your Hub installation (for this and the following, see the __Install Hub__ section).  
-  __Note:__ It should end with `/hub` (e.g. `https://your.domain/hub/`).
+- `HUB_BASE_URL` – root URL of your Hub installation (`HUB_BASE_URL` from the __Install Hub__ section).
 - `HUB_DATALORE_SERVICE_ID` – ID of the Datalore service in Hub (see __Configure Datalore service__ section).
 - `HUB_DATALORE_SERVICE_SECRET` – token of the Datalore service in Hub (see the __Configure Datalore service__ section).
 - `HUB_PERM_TOKEN` – Token for accessing Datalore and Hub scopes (see the __Create Hub token__ section).
