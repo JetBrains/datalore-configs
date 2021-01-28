@@ -28,7 +28,11 @@ You can find more details about the Hub installation process [here](https://hub.
    Copy the `wizard_token` to the clipboard.
 1. Go to `http://localhost:8082/` and insert the token from previous step into the __Token__ field. Click the __Log in__ button.
 1. Click the __Set Up__ link.
-1. In __Base URL__, specify the URL that you will use to access Hub (here, it is `http://localhost:8082/`). Don't change the __Application Listen Port__ setting.
+1. Next, you need a URL (referred to as `HUB_ROOT_URL` later) to access Hub from Datalore. Consider the following:
+   - This URL must be accessible from both the cluster pods and the browser (by the end users of your Datalore installation).
+   - The URL must point to the `/` path of your Hub installation, i.e. `http://127.0.0.1:8080/` inside the container where Hub is launched (by default, it's pod `hub-0`).
+   - How you set up your cluster to serve such a URL depends on the specifics of your cluster configuration.
+1. In __Base URL__, specify `HUB_ROOT_URL`.
 1. Click `Next` button.
 1. Configure the admin account (set the admin password).
 1. Click `Finish` button and wait for the Hub startup.
@@ -40,7 +44,11 @@ Log into Hub via admin account.
 1. Copy the `ID` field value – it is used when configuring Datalore (`$HUB_DATALORE_SERVICE_ID` property).
 1. Click the __Change...__ button near the __Secret__ label. Retain the generated secret somewhere – it will be used when configuring Datalore
    (`$HUB_DATALORE_SERVICE_SECRET` property). Click the __Change secret__ button.
-1. Insert the Datalore installation URL into the __Base URLs__ field.
+1. Here, you need another URL (referred to as `DATALORE_ROOT_URL` later) to access Datalore from a browser. Consider the following:
+    - This URL must be accessible from the browser (by the end users of your Datalore installation).
+    - The URL must point to the `/` path of your Datalore installation, i.e. `http://127.0.0.1:8080/` inside the container where Datalore will be launched (by default, it's pod `datalore-on-premise-0`).
+    - How you set up your cluster to serve such a URL depends on the specifics of your cluster configuration.
+1. Insert `DATALORE_ROOT_URL` into the __Base URLs__ field.
 1. Insert line `/api/hub/openid/login` into the __Redirect URIs__ field.
 1. Click the __Trust__ button in the upper-right corner.
 1. Click the __Save__ button.
@@ -81,13 +89,6 @@ Skip this step if you need a guest user.
 ### 1.1.5 (Optional) Enable auth modules
 Go to Auth Modules (`http://localhost:8082/hub/authmodules`). Here, you can add/remove different auth modules
 (e.g. Google auth, GitHub auth, LDAP, etc.).
-## 1.2 Configure Hub external access
-Next, to configure Datalore (Section 2), you need a URL (referred to as `HUB_BASE_URL` later) to access Hub from Datalore. Consider the following:
- - This URL must be accessible from both the cluster pods and the browser (by the end users of your Datalore installation).
- - The URL must point to the /hub path of your Hub installation, i.e. http://127.0.0.1:8080/hub inside the container where Hub is launched (by default, it's pod `hub-0`).
- - How you set up your cluster to serve such URL depends on the specifics of your cluster configuration.
-
-Note: If you're planning on using the `datalore.your.domain` domain name to access Datalore, it is recommended to use `http(s)://datalore.your.domain/hub` as `HUB_BASE_URL`.
 
 # 2. Install Datalore
 To run Datalore, you need Kubernetes (we have checked version `1.17.6`, but other versions should also work).
@@ -98,9 +99,9 @@ Edit several files in the `datalore/configs` directory to configure your Datalor
 ### 2.1.1 `user_config.yaml`
 Editing this file is __mandatory__ to get everything working. The file has the following fields:
 #### 2.1.1.1 Required parameters:
-- `FRONTEND_URL` – URL by which Datalore can be accessed. It is used to generate links.  
+- `FRONTEND_URL` – URL by which Datalore can be accessed (`DATALORE_ROOT_URL`). It is used to generate links.  
   __Note:__ Make sure the URL does not contain a trailing slash.
-- `HUB_BASE_URL` – root URL of your Hub installation (`HUB_BASE_URL` from the __Install Hub__ section).
+- `HUB_BASE_URL` – base URL of your Hub installation (`${HUB_ROOT_URL}/hub` from the __Install Hub__ section, i.e. `https://hub.your.domain/hub`).
 - `HUB_DATALORE_SERVICE_ID` – ID of the Datalore service in Hub (see __Configure Datalore service__ section).
 - `HUB_DATALORE_SERVICE_SECRET` – token of the Datalore service in Hub (see the __Configure Datalore service__ section).
 - `HUB_PERM_TOKEN` – Token for accessing Datalore and Hub scopes (see the __Create Hub token__ section).
