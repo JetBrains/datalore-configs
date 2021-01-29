@@ -65,8 +65,8 @@ Users with unverified emails will not be able to use Datalore.
 1. Go to SMTP (`${HUB_ROOT_URL}/hub/smtp-settings`).
 1. Click the __Configure SMTP server...__ button.
 1. Configure your SMTP server parameters.
-1. Click the __Enable notifications__ button.
 1. Click the __Save__ button.
+1. Click the __Enable notifications__ button.
 1. (Optional) To make sure your configuration is working, click the __Send Test message__ button.
 #### 1.1.3.2 Enable email verification
 1. Go to Auth Modules (`${HUB_ROOT_URL}/hub/authmodules`).
