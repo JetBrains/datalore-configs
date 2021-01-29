@@ -37,9 +37,9 @@ You can find more details about the Hub installation process [here](https://hub.
 1. Configure the admin account (set the admin password).
 1. Click `Finish` button and wait for the Hub startup.
 ## 1.1 Configure Hub
-Log into Hub via admin account.
+Go to `HUB_ROOT_URL` and log into Hub via admin account.
 ### 1.1.1 Configure Datalore service
-1. Go to Services (`http://localhost:8082/hub/services`) and click the __New service__ button. Use the name _datalore_ and your
+1. Go to Services (`${HUB_ROOT_URL}/hub/services`) and click the __New service__ button. Use the name _datalore_ and your
    Datalore installation URL as __Home URL__.
 1. Copy the `ID` field value – it is used when configuring Datalore (`$HUB_DATALORE_SERVICE_ID` property).
 1. Click the __Change...__ button near the __Secret__ label. Retain the generated secret somewhere – it will be used when configuring Datalore
@@ -53,7 +53,7 @@ Log into Hub via admin account.
 1. Click the __Trust__ button in the upper-right corner.
 1. Click the __Save__ button.
 ### 1.1.2 Create Hub token
-1. Go to Users (`http://localhost:8082/hub/users`).
+1. Go to Users (`${HUB_ROOT_URL}/hub/users`).
 1. Click your admin user's name.
 1. Go to the `Authentication` tab.
 1. Click the __New token...__ button.
@@ -63,19 +63,19 @@ Log into Hub via admin account.
 Datalore uses user emails from Hub, so it is recommended to force email verification in Hub.
 Users with unverified emails will not be able to use Datalore.
 #### 1.1.3.1 Configure SMTP server
-1. Go to SMTP (`http://localhost:8082/hub/smtp-settings`).
+1. Go to SMTP (`${HUB_ROOT_URL}/hub/smtp-settings`).
 1. Click the __Configure SMTP server...__ button.
 1. Configure your SMTP server parameters.
 1. Click the __Enable notifications__ button.
 1. Click the __Save__ button.
 1. (Optional) To make sure your configuration is working, click the __Send Test message__ button.
 #### 1.1.3.2 Enable email verification
-1. Go to Auth Modules (`http://localhost:8082/hub/authmodules`).
+1. Go to Auth Modules (`${HUB_ROOT_URL}/hub/authmodules`).
 1. Open the __Common settings__ page.
 1. Enable the __Email verification__ option.
 1. Click the __Save__ button.
 #### 1.1.3.3 Set and verify email for admin user
-1. Go to Users (`http://localhost:8082/hub/users`).
+1. Go to Users (`${HUB_ROOT_URL}/hub/users`).
 1. Click your admin user's name.
 1. Set email in the `Email` field.
 1. Click `Save` button.
@@ -83,11 +83,11 @@ Users with unverified emails will not be able to use Datalore.
 1. Find verification email in your inbox and click `Verify email address` button.
 ### 1.1.4 (Optional) Ban guest user
 Skip this step if you need a guest user.
-1. Go to Users (`http://localhost:8082/hub/users`).
+1. Go to Users (`${HUB_ROOT_URL}/hub/users`).
 1. Select a guest user.
 1. Click the __Ban__ button.
 ### 1.1.5 (Optional) Enable auth modules
-Go to Auth Modules (`http://localhost:8082/hub/authmodules`). Here, you can add/remove different auth modules
+Go to Auth Modules (`${HUB_ROOT_URL}/hub/authmodules`). Here, you can add/remove different auth modules
 (e.g. Google auth, GitHub auth, LDAP, etc.).
 
 # 2. Install Datalore
