@@ -19,7 +19,7 @@ You can find more details about the Hub installation process [here](https://hub.
    ```
 1. Check the container output using the following command:
    ```
-    kubectl logs service/hub
+   kubectl logs service/hub
    ```
    It should contain a line like this:
    `JetBrains Hub 2020.1 Configuration Wizard will listen inside the container on {0.0.0.0:8080}/
