@@ -39,15 +39,15 @@ You can find more details about the Hub installation process [here](https://hub.
 ## 1.1 Configure Hub
 Go to `HUB_ROOT_URL` and log into Hub via admin account.
 ### 1.1.1 Configure Datalore service
-1. Go to Services (`${HUB_ROOT_URL}/hub/services`) and click the __New service__ button. Use the name _datalore_ and your
-   Datalore installation URL as __Home URL__.
-1. Copy the `ID` field value – it is used when configuring Datalore (`$HUB_DATALORE_SERVICE_ID` property).
-1. Click the __Change...__ button near the __Secret__ label. Retain the generated secret somewhere – it will be used when configuring Datalore
-   (`$HUB_DATALORE_SERVICE_SECRET` property). Click the __Change secret__ button.
 1. Here, you need another URL (referred to as `DATALORE_ROOT_URL` later) to access Datalore from a browser. Consider the following:
     - This URL must be accessible from the browser (by the end users of your Datalore installation).
     - The URL must point to the `/` path of your Datalore installation, i.e. `http://127.0.0.1:8080/` inside the container where Datalore will be launched (by default, it's pod `datalore-on-premise-0`).
     - How you set up your cluster to serve such a URL depends on the specifics of your cluster configuration.
+1. Go to Services (`${HUB_ROOT_URL}/hub/services`) and click the __New service__ button. Use the name _datalore_ and your
+   `DATALORE_ROOT_URL` as __Home URL__.
+1. Copy the `ID` field value – it is used when configuring Datalore (`$HUB_DATALORE_SERVICE_ID` property).
+1. Click the __Change...__ button near the __Secret__ label. Retain the generated secret somewhere – it will be used when configuring Datalore
+   (`$HUB_DATALORE_SERVICE_SECRET` property). Click the __Change secret__ button.
 1. Insert `DATALORE_ROOT_URL` into the __Base URLs__ field.
 1. Insert line `/api/hub/openid/login` into the __Redirect URIs__ field.
 1. Click the __Trust__ button in the upper-right corner.
