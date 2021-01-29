@@ -32,7 +32,7 @@ You can find more details about the Hub installation process [here](https://hub.
    - This URL must be accessible from both the cluster pods and the browser (by the end users of your Datalore installation).
    - The URL must point to the `/` path of your Hub installation, i.e. `http://127.0.0.1:8080/` inside the container where Hub is launched (by default, it's pod `hub-0`).
    - How you set up your cluster to serve such a URL depends on the specifics of your cluster configuration.
-1. In __Base URL__, specify `HUB_ROOT_URL`.
+1. In __Base URL__, specify `HUB_ROOT_URL`. Don't change the __Application Listen Port__ setting.
 1. Click `Next` button.
 1. Configure the admin account (set the admin password).
 1. Click `Finish` button and wait for the Hub startup.
@@ -48,7 +48,7 @@ Log into Hub via admin account.
     - This URL must be accessible from the browser (by the end users of your Datalore installation).
     - The URL must point to the `/` path of your Datalore installation, i.e. `http://127.0.0.1:8080/` inside the container where Datalore will be launched (by default, it's pod `datalore-on-premise-0`).
     - How you set up your cluster to serve such a URL depends on the specifics of your cluster configuration.
-1. Insert `DATALORE_ROOT_URL` into the __Base URLs__ field.  Don't change the __Application Listen Port__ setting.
+1. Insert `DATALORE_ROOT_URL` into the __Base URLs__ field.
 1. Insert line `/api/hub/openid/login` into the __Redirect URIs__ field.
 1. Click the __Trust__ button in the upper-right corner.
 1. Click the __Save__ button.
