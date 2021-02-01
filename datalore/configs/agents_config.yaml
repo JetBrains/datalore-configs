@@ -13,6 +13,7 @@ k8s:
           labels:
             podType: dataloreKubernetesAgent
         spec:
+          enableServiceLinks: false
           imagePullSecrets:
             - name: regcred
           containers:
