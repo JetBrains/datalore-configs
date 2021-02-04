@@ -33,9 +33,9 @@ You can find more details about the Hub installation process [here](https://hub.
    - The URL must point to the `/` path of your Hub installation, i.e. `http://127.0.0.1:8080/` inside the container where Hub is launched (by default, it's pod `hub-0`).
    - How you set up your cluster to serve such a URL depends on the specifics of your cluster configuration.
 1. In __Base URL__, specify `HUB_ROOT_URL`. Don't change the __Application Listen Port__ setting.
-1. Click `Next` button.
+1. Click the `Next` button.
 1. Configure the admin account (set the admin password).
-1. Click `Finish` button and wait for the Hub startup.
+1. Click the `Finish` button and wait for the Hub startup.
 ## 1.1 Configure Hub
 Go to `HUB_ROOT_URL` and log into Hub via admin account.
 ### 1.1.1 Configure Datalore service
