@@ -10,5 +10,3 @@ spec:
       targetPort: 8080
   selector:
     io.kompose.service: hub
-status:
-  loadBalancer: {}
