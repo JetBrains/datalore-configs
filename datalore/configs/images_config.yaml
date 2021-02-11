@@ -9,4 +9,4 @@ spec:
         - name: datalore
           image: jetbrains/datalore-server:v0.1.2
         - name: mysql
-          image: jetbrains/datalore-mysql:0.1.4
+          image: jetbrains/datalore-mysql:0.1.5
