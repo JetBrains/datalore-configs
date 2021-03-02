@@ -8,6 +8,9 @@ configMapGenerator:
   - name: datalore-on-premise-logback-config
     files:
       - configs/logback.xml
+  - name: datalore-on-premise-plans-config
+    files:
+      - configs/plans_config.yaml
 generatorOptions:
   disableNameSuffixHash: true
 

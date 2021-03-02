@@ -69,6 +69,8 @@ spec:
               name: agents-config
             - mountPath: /etc/datalore/logback-config
               name: logback-config
+            - mountPath: /etc/datalore/plans-config
+              name: plans-config
             - mountPath: /home/storage
               name: storage
         - name: mysql
@@ -87,6 +89,9 @@ spec:
         - name: logback-config
           configMap:
             name: datalore-on-premise-logback-config
+        - name: plans-config
+          configMap:
+            name: datalore-on-premise-plans-config
 ---
 apiVersion: v1
 kind: Service

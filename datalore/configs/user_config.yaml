@@ -12,6 +12,7 @@ data:
 
   DEFAULT_INSTANCE_TYPE_ID: "k8s-datalore-agent"
   PASSWORD_SECRET: "changeme"
+  ENABLE_PLANS: "false"
 
   MAIL_ENABLED: "false"   # if set to true, fill the fields below
   MAIL_SENDER_EMAIL: ""
