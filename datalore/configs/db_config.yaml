@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: datalore-on-premise-db-env
 data:
-  MYSQL_ROOT_PASSWORD: "changeme"
+  ROOT_PASSWORD: "changeme"
