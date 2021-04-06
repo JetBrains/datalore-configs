@@ -100,7 +100,8 @@ Editing this file is __mandatory__ to get everything working. The file has the f
 #### 2.1.1.1 Required parameters:
 - `FRONTEND_URL` – URL by which Datalore can be accessed (`DATALORE_ROOT_URL`). It is used to generate links.  
   __Note:__ Make sure the URL does not contain a trailing slash.
-- `HUB_BASE_URL` – base URL of your Hub installation (`${HUB_ROOT_URL}/hub` from the __Install Hub__ section, i.e. `https://hub.your.domain/hub`).
+- `HUB_PUBLIC_BASE_URL` – base public (should be accessible via browser) URL of your Hub installation (`${HUB_ROOT_URL}/hub` from the __Install Hub__ section, i.e. `https://hub.your.domain/hub`).
+- `HUB_INTERNAL_BASE_URL` – base internal (should be accessible from datalore pod) URL of your Hub installation (in most cases could be equal to `${HUB_PUBLIC_BASE_URL}`).
 - `HUB_DATALORE_SERVICE_ID` – ID of the Datalore service in Hub (see __Configure Datalore service__ section).
 - `HUB_DATALORE_SERVICE_SECRET` – token of the Datalore service in Hub (see the __Configure Datalore service__ section).
 - `HUB_PERM_TOKEN` – Token for accessing Datalore and Hub scopes (see the __Create Hub token__ section).

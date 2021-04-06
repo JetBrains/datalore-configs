@@ -5,7 +5,8 @@ metadata:
 data:
   FRONTEND_URL: "http://localhost:8080"
 
-  HUB_BASE_URL: "changeme"
+  HUB_PUBLIC_BASE_URL: "changeme"
+  HUB_INTERNAL_BASE_URL: "changeme"
   HUB_DATALORE_SERVICE_ID: "changeme"
   HUB_DATALORE_SERVICE_SECRET: "changeme"
   HUB_PERM_TOKEN: "changeme"
