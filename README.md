@@ -123,7 +123,7 @@ This config file is used to configure PostgreSQL connection from Datalore. There
 ### 2.1.3 `volumes_config.yaml`
 This config file is used to mount volumes for persisting Datalore's data between restarts. If you leave the default configuration, you will __lose ALL DATA__ after the next Datalore restart. The config has two Kubernetes volumes described:
 - `storage` – this volume contains workbook data, such as attached files.
-- `postgres-data` – this volume contains PostgreSQL database data.
+- `postgresql-data` – this volume contains PostgreSQL database data.
 ### 2.1.4 `agents_config.yaml`
 This config file is used to define agent types (such as Basic and Large machines in the cloud version of Datalore).
 It has the following schema:
