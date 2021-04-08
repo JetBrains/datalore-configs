@@ -70,8 +70,6 @@ spec:
                 configMapKeyRef:
                   name: datalore-on-premise-db-env
                   key: ROOT_PASSWORD
-            - name: PGDATA
-              value: /var/lib/postgresql/data/db-data
           envFrom:
             - configMapRef:
                 name: datalore-on-premise-env
@@ -99,6 +97,8 @@ spec:
             - configMapRef:
                 name: datalore-shared
           env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/db-data
             - name: POSTGRES_PASSWORD
               valueFrom:
                 configMapKeyRef:
