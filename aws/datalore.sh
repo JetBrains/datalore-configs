@@ -281,6 +281,7 @@ start_datalore() {
     -v ${DATALORE_CONFIGS_DIR}/agents_config.yaml:/etc/datalore/agents-config/agents_config.yaml \
     -v ${DATALORE_CONFIGS_DIR}/logback.xml:/etc/datalore/logback-config/logback.xml \
     -v ${DATALORE_CONFIGS_DIR}/plans_config.yaml:/etc/datalore/plans-config/plans_config.yaml \
+    -v ${DATALORE_CONFIGS_DIR}/envs:/etc/datalore/environment_info \
     -v /home/storage:/home/storage \
     --env-file ${DATALORE_CONFIGS_DIR}/datalore.env \
     -p 5050:5050 \
