@@ -1,0 +1,21 @@
+channels: # should correspond with all .condarc files in repo & install.sh
+  - jetbrains
+  - fastai
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+
+  # libraries needed by evaluator
+  - pyyaml=5.4.1
+  - protobuf=3.15.6
+  - python-logstash=0.4.6
+  - wrapt=1.12.1
+  - ipykernel=5.4.2
+  - jupyter_client=6.1.12
+
+  # https://github.com/ipython/ipython/issues/12740
+  - jedi=0.17.2
+
+  - pip=20.3.3
