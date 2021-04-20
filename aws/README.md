@@ -5,7 +5,7 @@ To install Datalore on-premise in AWS, you will need some tools installed on you
 1. [terraform](https://www.terraform.io)
 2. [AWS CLI](https://aws.amazon.com/cli/)
 
-You also will need to download this repository to your computer.
+You also will need to download this repository to your computer and [confugire AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html).
 
 # 2. Deploying AWS infrastructure
 
@@ -26,7 +26,7 @@ You also will need to download this repository to your computer.
 
 # 3. Configuring datalore
 
-1. SSH to the machine with ip `init_script` from previous step. Use user `ubuntu` and private part of your AWS `ssh_keypair`.
+1. SSH to the machine with ip `datalore_ip` from previous step. Use user `ubuntu` and private part of your AWS `ssh_keypair`.
    ```shell
    ssh -i <path_to_my_key> ubuntu@<datalore_ip>
    ```
