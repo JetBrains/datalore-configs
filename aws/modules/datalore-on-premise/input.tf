@@ -1,8 +1,10 @@
 variable "aws_region" {}
 variable "datalore_az" {}
 variable "ssh_keypair" {}
-variable "name_prefix" {}
 
+variable "name_prefix" {
+  default = "datalore-on-premise"
+}
 variable "datalore_instance_type" {
   default = "t3a.medium"
 }
