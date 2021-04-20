@@ -11,6 +11,9 @@ configMapGenerator:
   - name: datalore-on-premise-plans-config
     files:
       - configs/plans_config.yaml
+  - name: datalore-on-premise-envs
+    files:
+      - configs/envs
 generatorOptions:
   disableNameSuffixHash: true
 

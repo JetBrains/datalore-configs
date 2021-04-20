@@ -80,6 +80,8 @@ spec:
           volumeMounts:
             - mountPath: /etc/datalore/agents-config
               name: agents-config
+            - mountPath: /etc/datalore/environment_info
+              name: envs
             - mountPath: /etc/datalore/logback-config
               name: logback-config
             - mountPath: /etc/datalore/plans-config
@@ -127,6 +129,9 @@ spec:
         - name: plans-config
           configMap:
             name: datalore-on-premise-plans-config
+        - name: envs
+          configMap:
+            name: datalore-on-premise-envs
 ---
 apiVersion: v1
 kind: Service

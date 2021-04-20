@@ -1,0 +1,41 @@
+#
+# Minimum set of libs required by kernels and for basic data-science tasks
+# Created to provide minimum conda environment for Kubernetes agents
+#
+channels: # should correspond with all .condarc files in repo & install.sh
+  - jetbrains
+  - jetbrains-dev
+  - fastai
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+
+  # libraries needed by evaluator
+  - pyyaml=5.4.1
+  - protobuf=3.15.6
+  - python-logstash=0.4.6
+  - wrapt=1.12.1
+  - ipykernel=5.4.2
+  - jupyter_client=6.1.12
+
+  # https://github.com/ipython/ipython/issues/12740
+  - jedi=0.17.2
+
+  # Data Science libraries
+  - matplotlib=3.3.4
+  - numpy=1.19.5
+  - pandas=1.2.3
+  - pandas-datareader=0.8.1
+  - plotly=4.14.3
+  - scikit-image=0.18.1
+  - scikit-learn=0.24.1
+  - scipy=1.6.1
+  - seaborn=0.11.1
+
+  # Support for kotlin kernel
+  - kotlin-jupyter-kernel=0.9.0.14
+
+  - pip=21.0.1
+  - boto3=1.17.7
