@@ -10,7 +10,9 @@ You also will need to download this repository to your computer and [confugire A
 # 2. Deploying AWS infrastructure
 
 1. Go to the aws/terraform directory in this repository
-2. Change parameters in `terraform.tfvars` file if needed. It is important to set the name of your aws keypair in `ssh_keypair`.
+2. Change parameters in `terraform.tfvars` file if needed. 
+   It is important to set the name of your aws keypair in `ssh_keypair`.
+   Also don't forget to change `name_prefix`, due to AWS limitation it should be unique accross all AWS region.
 
 3. Execute
     ```shell
