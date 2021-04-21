@@ -16,6 +16,9 @@ output "agents_subnet_id" {
 output "agents_security_group_id" {
   value = module.datalore-on-premise.agents_security_group_id
 }
+output "registry_url" {
+  value = module.datalore-on-premise.registry_url
+}
 output "init_script" {
   value = module.datalore-on-premise.init_script
 }
