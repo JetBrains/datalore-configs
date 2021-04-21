@@ -290,6 +290,11 @@ start_datalore() {
     "${DATALORE_IMAGE}"
 }
 
+stop_datalore() {
+  info "Stopping datalore"
+  sudo docker stop datalore 2>/dev/null || true
+}
+
 init_postgres() {
   info "Creating database"
 
@@ -415,8 +420,8 @@ start() {
 }
 
 stop() {
-  info "Stopping datalore"
-  sudo docker stop datalore 2>/dev/null || true
+  stop_datalore
+
   info "Stopping hub"
   sudo docker stop hub 2>/dev/null || true
 }
@@ -469,6 +474,10 @@ while test $# -gt 0; do
     start_datalore
     exit
     ;;
+  stop-datalore)
+    stop_datalore
+    exit
+    ;;
   stop)
     stop
     exit
@@ -479,6 +488,10 @@ while test $# -gt 0; do
     ;;
   pull-images)
     pull_images
+    exit
+    ;;
+  download-agent-images)
+    download_agent_images
     exit
     ;;
   clean)
