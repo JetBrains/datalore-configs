@@ -40,7 +40,7 @@ You also need to download this repository to your computer and [configure AWS CL
    wget https://raw.githubusercontent.com/JetBrains/datalore-configs/develop/aws/datalore.sh
    chmod +x datalore.sh
    ```
-4. Execute the `init_script` command (eg `./datalore.sh <a_lot_of_params>>`) from step 2.4. This step may take some time.
+4. Execute the `init_script` command from step 2.4 (eg `./datalore.sh <a_lot_of_params>`). This step may take some time.
    It installs Hub and prepares the default Datalore configs in the `/home/ubuntu/datalore` folder.
 
 6. Execute:
