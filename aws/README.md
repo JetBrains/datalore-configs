@@ -23,7 +23,7 @@ You also need to download this repository to your computer and [configure AWS CL
    ```
    This command will print the following important information:
     * `datalore_ip` is the ip address of the machine where Datalore will be installed. This ip will be used for accessing Datalore.
-    * `init_script` is the script which you will need to execute on the machine which the terraform script made for you.
+    * `init_script` is the script which you will need to execute on the machine which the `terraform` script made for you.
 
 # 3. Configuring Datalore
 
