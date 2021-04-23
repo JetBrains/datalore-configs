@@ -1,3 +1,9 @@
+resource "aws_eip" "datalore" {
+  vpc      = true
+  instance = aws_instance.datalore.id
+  count    = var.use_elastic_ip ? 1 : 0
+}
+
 data "aws_availability_zones" "available" {
   state = "available"
 }

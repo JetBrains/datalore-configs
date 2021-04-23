@@ -23,9 +23,8 @@ resource "aws_instance" "datalore" {
   { ecr = "${aws_ecr_repository.computation-agent.registry_id}.dkr.ecr.${var.aws_region}.amazonaws.com" })
   iam_instance_profile = aws_iam_instance_profile.datalore.name
 
-  vpc_security_group_ids = [
-    aws_security_group.datalore.id, aws_security_group.datalore-http.id
-  ]
+  vpc_security_group_ids = concat(var.additional_sg_list,
+  [aws_security_group.datalore.id, aws_security_group.datalore-http.id])
 
   key_name = var.ssh_keypair
 
@@ -39,6 +38,6 @@ resource "aws_instance" "datalore" {
   }
 
   lifecycle {
-    ignore_changes = [ami, user_data, volume_tags]
+    ignore_changes = [ami, user_data, volume_tags, ebs_optimized]
   }
 }

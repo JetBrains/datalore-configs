@@ -2,6 +2,13 @@ variable "aws_region" {}
 variable "datalore_az" {}
 variable "ssh_keypair" {}
 
+variable "additional_sg_list" {
+  default = []
+}
+
+variable "use_elastic_ip" {
+  default = false
+}
 variable "name_prefix" {
   default = "datalore-on-premise"
 }
