@@ -1,3 +1,12 @@
+output "vpc_id" {
+  value = aws_vpc.on-premise.id
+}
+output "datalore_instance" {
+  value = aws_instance.datalore
+}
+output "agents_cidr" {
+  value = var.agents_cidr
+}
 output "datalore_ip" {
   value = aws_instance.datalore.public_ip
 }
