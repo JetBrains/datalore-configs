@@ -19,11 +19,13 @@ resource "aws_instance" "datalore" {
   instance_type               = var.datalore_instance_type
   subnet_id                   = aws_subnet.datalore.id
   associate_public_ip_address = true
-  user_data                   = templatefile("${path.module}/user_data.sh",
-    { ecr = "${aws_ecr_repository.computation-agent.registry_id}.dkr.ecr.${var.aws_region}.amazonaws.com" })
-  iam_instance_profile        = aws_iam_instance_profile.datalore.name
+  user_data = templatefile("${path.module}/user_data.sh",
+  { ecr = "${aws_ecr_repository.computation-agent.registry_id}.dkr.ecr.${var.aws_region}.amazonaws.com" })
+  iam_instance_profile = aws_iam_instance_profile.datalore.name
 
-  vpc_security_group_ids = [aws_security_group.datalore.id]
+  vpc_security_group_ids = [
+    aws_security_group.datalore.id, aws_security_group.datalore-http.id
+  ]
 
   key_name = var.ssh_keypair
 

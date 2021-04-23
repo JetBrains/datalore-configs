@@ -30,3 +30,6 @@ variable "db_cidrs" {
 variable "agents_cidr" {
   default = "10.0.16.0/20"
 }
+variable "external_cidr_blocks" {
+  default = ["0.0.0.0/0"]
+}

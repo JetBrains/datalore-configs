@@ -65,7 +65,7 @@ resource "aws_security_group" "datalore" {
     from_port   = 22
     to_port     = 22
     protocol    = "TCP"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.external_cidr_blocks
   }
 
   ingress {
@@ -82,22 +82,24 @@ resource "aws_security_group" "datalore" {
     cidr_blocks = [var.agents_cidr]
   }
 
+  tags = map(
+    "Name", "${var.name_prefix}-datalore"
+  )
+}
+
+resource "aws_security_group" "datalore-http" {
+  name   = "${var.name_prefix}-datalore-http"
+  vpc_id = aws_vpc.on-premise.id
+
   ingress {
     from_port   = 8080
     to_port     = 8082
     protocol    = "TCP"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 8082
-    to_port     = 8082
-    protocol    = "TCP"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.external_cidr_blocks
   }
 
   tags = map(
-    "Name", "${var.name_prefix}-datalore"
+    "Name", "${var.name_prefix}-datalore-http"
   )
 }
 
@@ -116,7 +118,7 @@ resource "aws_security_group" "agents" {
     from_port   = 22
     to_port     = 22
     protocol    = "TCP"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.external_cidr_blocks
   }
 
   tags = map(
