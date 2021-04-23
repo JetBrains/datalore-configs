@@ -2,8 +2,8 @@
 
 To install Datalore on-premise in AWS, you need the following tools installed on your machine:
 
-1. [terraform version 0.14.10](https://www.terraform.io)
-2. [AWS CLI](https://aws.amazon.com/cli/)
+* [terraform version 0.14.10](https://www.terraform.io)
+* [AWS CLI](https://aws.amazon.com/cli/)
 
 You also need to download this repository to your computer and [configure AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html).
 
