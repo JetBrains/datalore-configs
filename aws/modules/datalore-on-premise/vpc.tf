@@ -71,7 +71,7 @@ resource "aws_security_group" "datalore" {
     from_port   = 22
     to_port     = 22
     protocol    = "TCP"
-    cidr_blocks = var.external_cidr_blocks
+    cidr_blocks = var.ssh_cidr_blocks
   }
 
   ingress {
@@ -124,7 +124,7 @@ resource "aws_security_group" "agents" {
     from_port   = 22
     to_port     = 22
     protocol    = "TCP"
-    cidr_blocks = var.external_cidr_blocks
+    cidr_blocks = var.ssh_cidr_blocks
   }
 
   tags = map(

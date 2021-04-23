@@ -40,3 +40,6 @@ variable "agents_cidr" {
 variable "external_cidr_blocks" {
   default = ["0.0.0.0/0"]
 }
+variable "ssh_cidr_blocks" {
+  default = ["0.0.0.0/0"]
+}
