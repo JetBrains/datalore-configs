@@ -59,27 +59,66 @@ spec:
               memory: "4096Mi"
             limits:
               memory: "4096Mi"
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: datalore-on-premise-db-env
+                  key: ROOT_PASSWORD
+            - name: DB_PASSWORD_JETTY
+              valueFrom:
+                configMapKeyRef:
+                  name: datalore-on-premise-db-env
+                  key: ROOT_PASSWORD
           envFrom:
             - configMapRef:
                 name: datalore-on-premise-env
             - configMapRef:
                 name: datalore-on-premise-db-env
+            - configMapRef:
+                name: datalore-shared
           volumeMounts:
             - mountPath: /etc/datalore/agents-config
               name: agents-config
+            - mountPath: /etc/datalore/environment_info
+              name: envs
             - mountPath: /etc/datalore/logback-config
               name: logback-config
+            - mountPath: /etc/datalore/plans-config
+              name: plans-config
             - mountPath: /home/storage
               name: storage
-        - name: mysql
+        - name: postgres
+          securityContext:
+            runAsUser: 999
           ports:
-            - containerPort: 3306
+            - containerPort: 5432
           envFrom:
             - configMapRef:
                 name: datalore-on-premise-db-env
+            - configMapRef:
+                name: datalore-shared
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/db-data
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: datalore-on-premise-db-env
+                  key: ROOT_PASSWORD
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: datalore-on-premise-db-env
+                  key: ROOT_PASSWORD
+            - name: DB_PASSWORD_JETTY
+              valueFrom:
+                configMapKeyRef:
+                  name: datalore-on-premise-db-env
+                  key: ROOT_PASSWORD
           volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: mysql-data
+            - mountPath: /var/lib/postgresql/data
+              name: postgresql-data
       volumes:
         - name: agents-config
           configMap:
@@ -87,6 +126,12 @@ spec:
         - name: logback-config
           configMap:
             name: datalore-on-premise-logback-config
+        - name: plans-config
+          configMap:
+            name: datalore-on-premise-plans-config
+        - name: envs
+          configMap:
+            name: datalore-on-premise-envs
 ---
 apiVersion: v1
 kind: Service
@@ -109,3 +154,17 @@ spec:
       name: computation
   selector:
     app: datalore-on-premise
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datalore-shared
+data:
+  DB_PORT: "5432"
+  DB_USER: "admin"
+
+  DB_NAME_JETTY: "dataloreJetty"
+  DB_USER_JETTY: "jetty"
+
+  DB_NAME_CORE: "datalore"
+  DB_NAME_INFRA: "dataloreInfra"

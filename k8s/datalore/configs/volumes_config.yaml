@@ -8,5 +8,5 @@ spec:
       volumes:
         - name: storage
           emptyDir: { }
-        - name: mysql-data
+        - name: postgresql-data
           emptyDir: { }

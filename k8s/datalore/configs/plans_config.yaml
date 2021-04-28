@@ -1,0 +1,7 @@
+- planId: "Default"
+  default: true
+  instanceDurationQuotaMap:
+    k8s-datalore-agent: "PT100H"
+  diskUsageLimit: "10.00 GB"
+  numRunningInstancesLimit: 3
+  parallelInstancesQuota: "PT120H"

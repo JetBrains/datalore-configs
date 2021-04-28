@@ -100,7 +100,8 @@ Editing this file is __mandatory__ to get everything working. The file has the f
 #### 2.1.1.1 Required parameters:
 - `FRONTEND_URL` – URL by which Datalore can be accessed (`DATALORE_ROOT_URL`). It is used to generate links.  
   __Note:__ Make sure the URL does not contain a trailing slash.
-- `HUB_BASE_URL` – base URL of your Hub installation (`${HUB_ROOT_URL}/hub` from the __Install Hub__ section, i.e. `https://hub.your.domain/hub`).
+- `HUB_PUBLIC_BASE_URL` – base public (should be accessible via browser) URL of your Hub installation (`${HUB_ROOT_URL}/hub` from the __Install Hub__ section, i.e. `https://hub.your.domain/hub`).
+- `HUB_INTERNAL_BASE_URL` – base internal (should be accessible from datalore pod) URL of your Hub installation (in most cases could be equal to `${HUB_PUBLIC_BASE_URL}`).
 - `HUB_DATALORE_SERVICE_ID` – ID of the Datalore service in Hub (see __Configure Datalore service__ section).
 - `HUB_DATALORE_SERVICE_SECRET` – token of the Datalore service in Hub (see the __Configure Datalore service__ section).
 - `HUB_PERM_TOKEN` – Token for accessing Datalore and Hub scopes (see the __Create Hub token__ section).
@@ -118,12 +119,12 @@ Editing this file is __mandatory__ to get everything working. The file has the f
   - `MAIL_SMTP_SERVER` – SMTP server host.
   - `MAIL_SMTP_PORT` – SMTP server port.
 ### 2.1.2 `db_config.yaml`
-This config file is used to configure MySQL connection from Datalore. There is one field to override:
-- `MYSQL_ROOT_PASSWORD` – root user's password. The database can be accessed on port `3306` with the username `root` and this password.
+This config file is used to configure PostgreSQL connection from Datalore. There is one field to override:
+- `ROOT_PASSWORD` – root user's password. The database can be accessed on port `5432` with the username `postgres` and this password.
 ### 2.1.3 `volumes_config.yaml`
 This config file is used to mount volumes for persisting Datalore's data between restarts. If you leave the default configuration, you will __lose ALL DATA__ after the next Datalore restart. The config has two Kubernetes volumes described:
 - `storage` – this volume contains workbook data, such as attached files.
-- `mysql-data` – this volume contains MySQL database data.
+- `postgresql-data` – this volume contains PostgreSQL database data.
 ### 2.1.4 `agents_config.yaml`
 This config file is used to define agent types (such as Basic and Large machines in the cloud version of Datalore).
 It has the following schema:
@@ -149,7 +150,7 @@ Besides changing the descriptive fields (all except `yaml`), you may want to cus
   package from `apt` to be available in your notebooks, or set up a custom Python environment by pre-installing the required libraries).
 - `spec -> containers -> resources` – you can tune the resources required by the agent's pod to match your needs and capabilities.
 ### 2.1.5 `images_config.yaml`
-This config file is used to define Datalore and MySQL container images. Most likely, you will need to change this only to update your installation
+This config file is used to define Datalore and PostgreSQL container images. Most likely, you will need to change this only to update your installation
 with <!--'never' presumably a typo--> newer versions of on-premises images.
 ### 2.1.6 `logback.xml`
 This is the Logback configuration file that will be used to collect logs from Datalore and agents. We have provided the default one, which just prints them to `stdout`, but you can configure it any way you like.  
