@@ -31,13 +31,14 @@ You also need to download this repository to your computer and [configure AWS CL
    ```shell
    ssh -i <path_to_my_key> ubuntu@<datalore_ip>
    ```
-2. Log into the Hub repository with the credentials that you received:
+2. Log into the Hub repository:
    ```shell
-   sudo docker login registry.jetbrains.team -u <your_user>
+   sudo docker login -u datalorecustomer
    ```
+   At the password prompt, enter the personal access token.
 3. Download the `datalore.sh` script:
    ```shell
-   wget https://raw.githubusercontent.com/JetBrains/datalore-configs/develop/aws/datalore.sh
+   wget https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/datalore.sh
    chmod +x datalore.sh
    ```
 4. Execute the `init_script` command from step 2.4 (eg `./datalore.sh <a_lot_of_params>`). This step may take some time.

@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 set -e
 
+DATALORE_VERSION="${DATALORE_VERSION:-v0.2.0}"
+ENVIRONMENTS_VERSION="${ENVIRONMENTS_VERSION:-0.0.1}"
+
 ENVIRONMENT_CONFIGS=(\
-  https://raw.githubusercontent.com/JetBrains/datalore-configs/develop/aws/configs/envs/environment_minimal.yml \
-  https://raw.githubusercontent.com/JetBrains/datalore-configs/develop/aws/configs/envs/requirements_default.txt \
-  https://raw.githubusercontent.com/JetBrains/datalore-configs/develop/aws/configs/envs/requirements_minimal.txt \
+  https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/environment_minimal.yml \
+  https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/requirements_default.txt \
+  https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/requirements_minimal.txt \
 )
-PLANS_CONFIG_URL="${PLANS_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/develop/aws/configs/plans_config.yaml}"
-LOGBACK_CONFIG_URL="${LOGBACK_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/develop/aws/configs/logback.xml}"
-DATALORE_IMAGE="${DATALORE_IMAGE:-registry.jetbrains.team/p/dl/datalore-on-prem-dev/on-premise:latest}"
+PLANS_CONFIG_URL="${PLANS_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/plans_config.yaml}"
+LOGBACK_CONFIG_URL="${LOGBACK_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/logback.xml}"
+DATALORE_IMAGE="${DATALORE_IMAGE:-jetbrains/datalore-server}:${DATALORE_VERSION}"
 HUB_IMAGE="${HUB_IMAGE:-jetbrains/hub:2020.1.12693}"
 PUBLIC_ENV_STORAGE="${PUBLIC_ENV_STORAGE:-https://datalore-public-environments.s3-eu-west-1.amazonaws.com}"
-ENVIRONMENTS_VERSION="${ENVIRONMENTS_VERSION:-0.0.1}"
-AGENTS_IMAGES_REGISTRY=${AGENTS_IMAGES_REGISTRY:-registry.jetbrains.team/p/dl/datalore-on-prem-dev}
+AGENTS_IMAGES_REGISTRY=${AGENTS_IMAGES_REGISTRY:-jetbrains/datalore-agent}
 AGENT_DOCKER_IMAGES_TAG="on-prem"
 
 LOG_PREFIX="\033[1;95m[datalore.sh]\033[0m "
@@ -84,13 +86,13 @@ download_agent_images() {
 
   info "Copying docker images"
 
-  sudo docker pull "${AGENTS_IMAGES_REGISTRY}/computation-agent"
-  sudo docker pull "${AGENTS_IMAGES_REGISTRY}/computation-evaluator"
-  sudo docker pull "${AGENTS_IMAGES_REGISTRY}/computation-evaluator-gpu"
+  sudo docker pull "${AGENTS_IMAGES_REGISTRY}:aws-agent-${DATALORE_VERSION}"
+  sudo docker pull "${AGENTS_IMAGES_REGISTRY}:evaluator-${DATALORE_VERSION}"
+  sudo docker pull "${AGENTS_IMAGES_REGISTRY}:evaluator-gpu-${DATALORE_VERSION}"
 
-  sudo docker tag "${AGENTS_IMAGES_REGISTRY}/computation-agent" "${DOCKER_REGISTRY_ADDRESS}/computation-agent:${AGENT_DOCKER_IMAGES_TAG}"
-  sudo docker tag "${AGENTS_IMAGES_REGISTRY}/computation-evaluator" "${DOCKER_REGISTRY_ADDRESS}/computation-evaluator:${AGENT_DOCKER_IMAGES_TAG}"
-  sudo docker tag "${AGENTS_IMAGES_REGISTRY}/computation-evaluator-gpu" "${DOCKER_REGISTRY_ADDRESS}/computation-evaluator-gpu:${AGENT_DOCKER_IMAGES_TAG}"
+  sudo docker tag "${AGENTS_IMAGES_REGISTRY}:aws-agent-${DATALORE_VERSION}" "${DOCKER_REGISTRY_ADDRESS}/computation-agent:${AGENT_DOCKER_IMAGES_TAG}"
+  sudo docker tag "${AGENTS_IMAGES_REGISTRY}:evaluator-${DATALORE_VERSION}" "${DOCKER_REGISTRY_ADDRESS}/computation-evaluator:${AGENT_DOCKER_IMAGES_TAG}"
+  sudo docker tag "${AGENTS_IMAGES_REGISTRY}:evaluator-gpu-${DATALORE_VERSION}" "${DOCKER_REGISTRY_ADDRESS}/computation-evaluator-gpu:${AGENT_DOCKER_IMAGES_TAG}"
 
   sudo docker push "${DOCKER_REGISTRY_ADDRESS}/computation-agent:${AGENT_DOCKER_IMAGES_TAG}"
   sudo docker push "${DOCKER_REGISTRY_ADDRESS}/computation-evaluator:${AGENT_DOCKER_IMAGES_TAG}"

@@ -7,6 +7,6 @@ spec:
     spec:
       containers:
         - name: datalore
-          image: jetbrains/datalore-server:v0.1.2
+          image: jetbrains/datalore-server:v0.2.0
         - name: postgres
-          image: jetbrains/datalore-mysql:0.1.5
+          image: registry.internal.datalore.io/datalore/postgres:latest
