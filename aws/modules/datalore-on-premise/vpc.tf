@@ -3,6 +3,14 @@ resource "aws_eip" "datalore" {
   instance = aws_instance.datalore.id
   count    = var.use_elastic_ip ? 1 : 0
 }
+resource "aws_eip" "nat" {
+  vpc        = true
+  depends_on = [aws_internet_gateway.default]
+
+  tags = {
+    Name = "${var.name_prefix}-nat"
+  }
+}
 
 data "aws_availability_zones" "available" {
   state = "available"
@@ -47,13 +55,41 @@ resource "aws_subnet" "datalore" {
 }
 
 resource "aws_subnet" "agents" {
-  cidr_block        = var.agents_cidr
-  vpc_id            = aws_vpc.on-premise.id
-  availability_zone = var.datalore_az
+  cidr_block              = var.agents_cidr
+  vpc_id                  = aws_vpc.on-premise.id
+  availability_zone       = var.datalore_az
+  map_public_ip_on_launch = false
 
   tags = map(
     "Name", "${var.name_prefix}-agents"
   )
+}
+
+resource "aws_route_table" "agents" {
+  vpc_id = aws_vpc.on-premise.id
+  tags = {
+    Name = "${var.name_prefix}-agents"
+  }
+}
+
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.datalore.id
+  depends_on    = [aws_internet_gateway.default]
+  tags = {
+    Name = "${var.name_prefix}-nat"
+  }
+}
+
+resource "aws_route" "agents" {
+  route_table_id         = aws_route_table.agents.id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = aws_nat_gateway.nat.id
+}
+
+resource "aws_route_table_association" "agents" {
+  subnet_id      = aws_subnet.agents.id
+  route_table_id = aws_route_table.agents.id
 }
 
 resource "aws_security_group" "datalore" {
@@ -124,7 +160,7 @@ resource "aws_security_group" "agents" {
     from_port   = 22
     to_port     = 22
     protocol    = "TCP"
-    cidr_blocks = var.ssh_cidr_blocks
+    cidr_blocks = [var.datalore_cidr]
   }
 
   tags = map(
