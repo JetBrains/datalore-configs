@@ -9,4 +9,4 @@ spec:
         - name: datalore
           image: jetbrains/datalore-server:v0.2.0
         - name: postgres
-          image: registry.internal.datalore.io/datalore/postgres:latest
+          image: jetbrains/datalore-postgres:v0.2.0
