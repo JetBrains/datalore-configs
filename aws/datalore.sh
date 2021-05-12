@@ -2,7 +2,7 @@
 set -e
 
 DATALORE_VERSION="${DATALORE_VERSION:-v0.2.0}"
-ENVIRONMENTS_VERSION="${ENVIRONMENTS_VERSION:-0.0.1}"
+ENVIRONMENT_VERSION="${ENVIRONMENT_VERSION:-0-64}"
 
 ENVIRONMENT_CONFIGS=(\
   https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/environment_minimal.yml \
@@ -72,9 +72,7 @@ download_envs() {
   fi
   info "Copying s3 environments"
 
-  copy_to_s3 "python_${ENVIRONMENTS_VERSION}.tar" "python_dev.tar"
-  copy_to_s3 "anaconda_${ENVIRONMENTS_VERSION}.tar" "anaconda_dev.tar"
-  copy_to_s3 "python_analysis_tool_${ENVIRONMENTS_VERSION}.tar" "python_analysis_tool.tar"
+  copy_to_s3 "environment${ENVIRONMENT_VERSION}.tar" "environment.tar"
 
   info "S3 environments have been copied"
 }
