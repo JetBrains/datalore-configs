@@ -1,0 +1,8 @@
+- planId: "Default"
+  default: true
+  instanceDurationQuotaMap:
+    basic: "PT100H"
+    large: "PT10H"
+  diskUsageLimit: "10.00 GB"
+  numRunningInstancesLimit: 3
+  parallelInstancesQuota: "PT120H"
