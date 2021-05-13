@@ -12,6 +12,8 @@ spec:
       labels:
         io.kompose.service: hub
     spec:
+      securityContext:
+        fsGroup: 13001
       containers:
         - image: jetbrains/hub:2020.1.12693
           name: hub
