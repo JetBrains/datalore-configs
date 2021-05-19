@@ -35,7 +35,7 @@ dependencies:
   - seaborn=0.11.1
 
   # Support for kotlin kernel
-  - kotlin-jupyter-kernel=0.9.0.14
+  - kotlin-jupyter-kernel=0.10.0.17
 
   - pip=21.0.1
   - boto3=1.17.7
