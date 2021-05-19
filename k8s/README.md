@@ -110,7 +110,7 @@ Editing this file is __mandatory__ to get everything working. The file has the f
 - `PASSWORD_SECRET` – additional hash salt used to encrypt user passwords and prevent rainbow table attacks in case of a database leak. 
   Can be any string.
 #### 2.1.1.2 Optional parameters:
-  `MAIL_ENABLED` – set it to `"true"` in order to enable Datalore to send emails (welcome emails, sharing invitations, etc.). 
+ -  `MAIL_ENABLED` – set it to `"true"` in order to enable Datalore to send emails (welcome emails, sharing invitations, etc.). 
   When set to `"true"`, requires the following parameters:
   - `MAIL_SENDER_EMAIL` – sender's email.
   - `MAIL_SENDER_NAME` – sender's name.
