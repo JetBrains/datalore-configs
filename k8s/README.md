@@ -131,7 +131,7 @@ It has the following schema:
 ```yaml
 k8s:
   instances:
-    - id: <Inique instance ID>
+    - id: <Unique instance ID>
       label: <Instance name>
       description: <Short description of what the instance is>
       minAllowed: <Minimum number of instances to be preserved in the pool>
