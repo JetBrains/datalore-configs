@@ -2,7 +2,7 @@
 set -e
 
 DATALORE_VERSION="${DATALORE_VERSION:-v0.2.1}"
-ENVIRONMENT_VERSION="${ENVIRONMENT_VERSION:-0-64}"
+ENVIRONMENT_VERSION="${ENVIRONMENT_VERSION:-0-65}"
 
 ENVIRONMENT_CONFIGS=(\
   https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/environment_minimal.yml \
