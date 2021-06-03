@@ -10,6 +10,7 @@ resource "aws_eip" "nat" {
   tags = {
     Name = "${var.name_prefix}-nat"
   }
+  count = var.use_nat_gateway ? 1 : 0
 }
 
 data "aws_availability_zones" "available" {
@@ -73,7 +74,7 @@ resource "aws_route_table" "agents" {
 }
 
 resource "aws_nat_gateway" "nat" {
-  allocation_id = aws_eip.nat.id
+  allocation_id = aws_eip.nat[count.index].id
   subnet_id     = aws_subnet.datalore.id
   depends_on    = [aws_internet_gateway.default]
   tags = {
