@@ -13,7 +13,7 @@ variable "name_prefix" {
   default = "datalore-on-premise"
 }
 variable "datalore_instance_type" {
-  default = "t3a.medium"
+  default = "t2.medium"
 }
 variable "db_instance_class" {
   default = "db.t3.xlarge"

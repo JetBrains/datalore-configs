@@ -226,13 +226,13 @@ aws:
     associatePublicIpAddress: false
   instances:
     - id: basic
-      awsTag: t3a.medium
+      awsTag: t2.medium
       creditSpecification: standard
       label: \"Basic machine\"
       description: \"Use for simple data analysis and machine learning tasks.\"
       features:
         - \"4 GB RAM\"
-        - \"AWS name: t3a.medium\"
+        - \"AWS name: t2.medium\"
       ram: 4
       isGpu: false
       spot: true
