@@ -223,7 +223,7 @@ aws:
     availabilityZoneId: ${AVAILABILITY_ZONE_ID}
     keyPairName: ${KEYPAIR_NAME}
     anacondaSource: /mnt/local/anaconda3
-    associatePublicIpAddress: false
+    associatePublicIpAddress: true
   instances:
     - id: basic
       awsTag: t2.medium

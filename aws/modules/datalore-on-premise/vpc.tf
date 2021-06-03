@@ -79,12 +79,21 @@ resource "aws_nat_gateway" "nat" {
   tags = {
     Name = "${var.name_prefix}-nat"
   }
+  count = var.use_nat_gateway ? 1 : 0
 }
 
 resource "aws_route" "agents" {
   route_table_id         = aws_route_table.agents.id
+  destination_cidr_block = var.nat_gateway_routes[count.index]
+  nat_gateway_id         = aws_nat_gateway.nat[0].id
+  count                  = length(var.nat_gateway_routes)
+}
+
+resource "aws_route" "default_agents" {
+  route_table_id         = aws_route_table.agents.id
   destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id         = aws_nat_gateway.nat.id
+  gateway_id             = aws_internet_gateway.default.id
+  count                  = var.default_agents_route ? 1 : 0
 }
 
 resource "aws_route_table_association" "agents" {

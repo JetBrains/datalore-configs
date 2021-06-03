@@ -43,3 +43,17 @@ variable "external_cidr_blocks" {
 variable "ssh_cidr_blocks" {
   default = ["0.0.0.0/0"]
 }
+
+variable "use_nat_gateway" {
+  default = false
+  type    = bool
+}
+
+variable "nat_gateway_routes" {
+  default = []
+  type    = list(string)
+}
+variable "default_agents_route" {
+  default = true
+  type    = bool
+}
