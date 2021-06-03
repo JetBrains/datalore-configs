@@ -207,6 +207,12 @@ DEFAULT_BASE_ENV_NAME=default
 DEFAULT_PACKAGE_MANAGER=pip
 "
 
+  if [[ ! -z ${ADMIN_API_AUTH_TOKEN} ]]; then
+    echo >>${DATALORE_CONFIGS_DIR}/datalore.env "
+ADMIN_API_AUTH_TOKEN=${ADMIN_API_AUTH_TOKEN}
+"
+  fi
+
   echo >${DATALORE_CONFIGS_DIR}/agents_config.yaml "
 aws:
   instanceManager:
@@ -446,6 +452,7 @@ Available commands:
 \t\t --security-group-id value\t Id of security group for agents.
 \t\t --availability-zone-id value\t AWS availability zone id.
 \t\t --aws-region value\t AWS region.
+\t\t --admin-token\t API token for admin API. NB: use it only for initiating first admin! (More in README#Setting up admin user)
 \t start-hub\t Start hub.
 \t start-datalore\t Start datalore.
 \t start\t Start datalore and hub.
@@ -553,6 +560,10 @@ while test $# -gt 0; do
     ;;
   --db-password)
     DB_PASSWORD=$1
+    shift
+    ;;
+  --admin-token)
+    ADMIN_API_AUTH_TOKEN=$1
     shift
     ;;
   *)
