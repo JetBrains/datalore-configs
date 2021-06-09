@@ -13,7 +13,7 @@ variable "name_prefix" {
   default = "datalore-on-premise"
 }
 variable "datalore_instance_type" {
-  default = "t3a.medium"
+  default = "t2.medium"
 }
 variable "db_instance_class" {
   default = "db.t3.xlarge"
@@ -42,4 +42,18 @@ variable "external_cidr_blocks" {
 }
 variable "ssh_cidr_blocks" {
   default = ["0.0.0.0/0"]
+}
+
+variable "use_nat_gateway" {
+  default = false
+  type    = bool
+}
+
+variable "nat_gateway_routes" {
+  default = []
+  type    = list(string)
+}
+variable "default_agents_route" {
+  default = true
+  type    = bool
 }

@@ -88,3 +88,45 @@ sudo docker logs datalore
 ```shell
 sudo docker logs hub
 ```
+
+# 6. Setting up admin user
+
+To use admin panel feature you need a user with admin rights. To create the first admin use you can use admin API token. For that you need
+to start Datalore this way:
+```shell
+./datalore.sh --admin-token <ADMIN_API_TOKEN> start
+```
+
+Then you can make the POST request to `http://<datalore_ip>:8080/api/admin/user/role?email=<EMAIL_OF_ADMIN_USER>&role=<NEW_USER_ROLE>` with header
+`Authorization: <ADMIN_API_TOKEN>` to change user role. User role can be one of:
+- `REGULAR` — regular user. Can be used to demote user from the admin role.
+- `ADMIN` — admin user with the access to the admin panel.
+- `SUPER_ADMIN` — admin user, who can also change other users' roles via the admin panel.
+
+**Note:** using `--admin-token` for any other API **is not recommended**, so we strongly encourage restarting Datalore without `--admin-token` after
+promoting the first user and using the admin panel afterwards for any management tasks. 
+
+# 7. Adding license
+
+To use Datalore you need to activate your license (provided in `license.key`). Without it, you will not be able to start computations and create more
+than one user. License can be provided for your Datalore installation in the following ways.
+
+## 7.1. Via admin panel (recommended)
+
+Set up your admin user (see 6.) and open `http://<datalore_ip>:8080/admin/license`. There you can add your `license.key` in *Add new license* field.
+After submitting and verification license will be immediately activated (no restart needed). Licenses are persisted in the database, so they will work
+even after restart. 
+
+## 7.2. Via admin API
+
+Instead of using admin panel you can use admin REST API to add a license. Make the POST request to `http://<datalore_ip>:8080/api/admin/license` 
+with header `Authorization: <ADMIN_API_TOKEN>` (token from 6.) and put your `license.key` in the request's body.
+
+**Note:** this requires passing `--admin-token` parameter to `datalore.sh`, which **is not recommended**.
+
+## 7.3. Via file
+
+You can also provide your licenses as files to your Datalore installation. To do that you will need to define environment variable
+`LICENSE_PATHS` with the comma-separated paths to the files **inside the Datalore container**. 
+
+**Note:** this way you will not be able to update your license or add extra users without restarting Datalore.
