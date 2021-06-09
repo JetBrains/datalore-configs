@@ -18,4 +18,4 @@ dependencies:
   # https://github.com/ipython/ipython/issues/12740
   - jedi=0.17.2
 
-  - pip=20.3.3
+  - pip=21.1
