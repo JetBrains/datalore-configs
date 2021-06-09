@@ -18,7 +18,7 @@ services:
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
   datalore:
-    image: jetbrains/datalore-server:v0.2.0
+    image: jetbrains/datalore-server:v0.2.2
     entrypoint: ["/bin/bash", "/datalore-entrypoint.sh"]
     ports:
       - 8080:8080
