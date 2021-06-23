@@ -123,10 +123,3 @@ Instead of using admin panel you can use admin REST API to add a license. Make t
 with header `Authorization: <ADMIN_API_TOKEN>` (token from 6.) and put your `license.key` in the request's body.
 
 **Note:** this requires passing `--admin-token` parameter to `datalore.sh`, which **is not recommended**.
-
-## 7.3. Via file
-
-You can also provide your licenses as files to your Datalore installation. To do that you will need to define environment variable
-`LICENSE_PATHS` with the comma-separated paths to the files **inside the Datalore container**. 
-
-**Note:** this way you will not be able to update your license or add extra users without restarting Datalore.
