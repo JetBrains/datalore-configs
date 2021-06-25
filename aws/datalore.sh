@@ -5,12 +5,12 @@ DATALORE_VERSION="${DATALORE_VERSION:-v0.2.2}"
 ENVIRONMENT_VERSION="${ENVIRONMENT_VERSION:-0-67}"
 
 ENVIRONMENT_CONFIGS=(\
-  https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/environment_minimal.yml \
-  https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/requirements_default.txt \
-  https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/requirements_minimal.txt \
+  https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/envs/environment_minimal.yml \
+  https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/envs/requirements_default.txt \
+  https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/envs/requirements_minimal.txt \
 )
-PLANS_CONFIG_URL="${PLANS_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/plans_config.yaml}"
-LOGBACK_CONFIG_URL="${LOGBACK_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/logback.xml}"
+PLANS_CONFIG_URL="${PLANS_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/plans_config.yaml}"
+LOGBACK_CONFIG_URL="${LOGBACK_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/logback.xml}"
 DATALORE_IMAGE="${DATALORE_IMAGE:-jetbrains/datalore-server}:${DATALORE_VERSION}"
 HUB_IMAGE="${HUB_IMAGE:-jetbrains/hub:2020.1.12693}"
 PUBLIC_ENV_STORAGE="${PUBLIC_ENV_STORAGE:-https://datalore-public-environments.s3-eu-west-1.amazonaws.com}"
