@@ -72,7 +72,7 @@ download_envs() {
   fi
   info "Copying s3 environments"
 
-  copy_to_s3 "environment-${ENVIRONMENT_VERSION}.tar" "environment.tar"
+  copy_to_s3 "environment-${ENVIRONMENT_VERSION}-cpuonly.tar" "environment.tar"
 
   info "S3 environments have been copied"
 }
