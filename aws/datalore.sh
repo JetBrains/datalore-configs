@@ -245,6 +245,7 @@ aws:
       numGPUs: 0
       gpuMemoryText: \"\"
       isEphemeralStorage: true
+      environmentArchive: environment.tar
 
     - id: large
       awsTag: r5.large
@@ -264,6 +265,7 @@ aws:
       numGPUs: 0
       gpuMemoryText: \"\"
       isEphemeralStorage: true
+      environmentArchive: environment.tar
 "
 
   wget -q "${PLANS_CONFIG_URL}" -P "${DATALORE_CONFIGS_DIR}"
