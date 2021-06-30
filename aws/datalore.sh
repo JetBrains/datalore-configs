@@ -175,6 +175,7 @@ prepare_datalore_configs() {
 
   info "Hub token has been created"
 
+  ADMIN_API_AUTH_TOKEN=$(LC_ALL=C tr -dc '[:alnum:]' </dev/urandom | head -c20)
   echo >${DATALORE_CONFIGS_DIR}/datalore.env "
 FRONTEND_URL=${DATALORE_BASE_URL}
 DATALORE_INTERNAL_HOST=${INTERNAL_IP_ADDRESS}
@@ -205,13 +206,9 @@ AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_SECRET}
 
 DEFAULT_BASE_ENV_NAME=default
 DEFAULT_PACKAGE_MANAGER=pip
+ADMIN_API_AUTH_TOKEN=$(ADMIN_API_AUTH_TOKEN)
 "
-
-  if [[ ! -z ${ADMIN_API_AUTH_TOKEN} ]]; then
-    echo >>${DATALORE_CONFIGS_DIR}/datalore.env "
-ADMIN_API_AUTH_TOKEN=${ADMIN_API_AUTH_TOKEN}
-"
-  fi
+  info "ADMIN_API_AUTH_TOKEN=${ADMIN_API_AUTH_TOKEN}"
 
   echo >${DATALORE_CONFIGS_DIR}/agents_config.yaml "
 aws:
@@ -560,10 +557,6 @@ while test $# -gt 0; do
     ;;
   --db-password)
     DB_PASSWORD=$1
-    shift
-    ;;
-  --admin-token)
-    ADMIN_API_AUTH_TOKEN=$1
     shift
     ;;
   *)
