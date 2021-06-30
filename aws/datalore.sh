@@ -208,7 +208,6 @@ DEFAULT_BASE_ENV_NAME=default
 DEFAULT_PACKAGE_MANAGER=pip
 ADMIN_API_AUTH_TOKEN=${ADMIN_API_AUTH_TOKEN}
 "
-  info "ADMIN_API_AUTH_TOKEN=${ADMIN_API_AUTH_TOKEN}"
 
   echo >${DATALORE_CONFIGS_DIR}/agents_config.yaml "
 aws:
@@ -275,6 +274,7 @@ aws:
     wget -P "${DATALORE_CONFIGS_DIR}/envs" "$config"
   done
 
+  info "ADMIN_API_AUTH_TOKEN=${ADMIN_API_AUTH_TOKEN}"
   info "Default datalore configs have been created in ${DATALORE_CONFIGS_DIR}"
 }
 
