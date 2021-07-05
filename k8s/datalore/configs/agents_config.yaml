@@ -18,7 +18,7 @@ k8s:
             - name: regcred
           containers:
             - name: agent
-              image: jetbrains/datalore-agent:v0.2.2
+              image: jetbrains/datalore-agent:v0.3.0
               securityContext:
                 privileged: true
               env:

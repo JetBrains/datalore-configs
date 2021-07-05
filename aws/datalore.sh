@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
-DATALORE_VERSION="${DATALORE_VERSION:-v0.2.2}"
-ENVIRONMENT_VERSION="${ENVIRONMENT_VERSION:-0-65}"
+DATALORE_VERSION="${DATALORE_VERSION:-v0.3.0}"
+ENVIRONMENT_VERSION="${ENVIRONMENT_VERSION:-0-67}"
 
 ENVIRONMENT_CONFIGS=(\
-  https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/environment_minimal.yml \
-  https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/requirements_default.txt \
-  https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/envs/requirements_minimal.txt \
+  https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/envs/environment_minimal.yml \
+  https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/envs/requirements_default.txt \
+  https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/envs/requirements_minimal.txt \
 )
-PLANS_CONFIG_URL="${PLANS_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/plans_config.yaml}"
-LOGBACK_CONFIG_URL="${LOGBACK_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/main/aws/configs/logback.xml}"
+PLANS_CONFIG_URL="${PLANS_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/plans_config.yaml}"
+LOGBACK_CONFIG_URL="${LOGBACK_CONFIG_URL:-https://raw.githubusercontent.com/JetBrains/datalore-configs/on-premises-0.3.0/aws/configs/logback.xml}"
 DATALORE_IMAGE="${DATALORE_IMAGE:-jetbrains/datalore-server}:${DATALORE_VERSION}"
 HUB_IMAGE="${HUB_IMAGE:-jetbrains/hub:2020.1.12693}"
 PUBLIC_ENV_STORAGE="${PUBLIC_ENV_STORAGE:-https://datalore-public-environments.s3-eu-west-1.amazonaws.com}"
@@ -72,7 +72,7 @@ download_envs() {
   fi
   info "Copying s3 environments"
 
-  copy_to_s3 "environment${ENVIRONMENT_VERSION}.tar" "environment.tar"
+  copy_to_s3 "environment-${ENVIRONMENT_VERSION}-cpuonly.tar" "environment.tar"
 
   info "S3 environments have been copied"
 }
@@ -175,6 +175,7 @@ prepare_datalore_configs() {
 
   info "Hub token has been created"
 
+  ADMIN_API_AUTH_TOKEN=$(LC_ALL=C tr -dc '[:alnum:]' </dev/urandom | head -c20)
   echo >${DATALORE_CONFIGS_DIR}/datalore.env "
 FRONTEND_URL=${DATALORE_BASE_URL}
 DATALORE_INTERNAL_HOST=${INTERNAL_IP_ADDRESS}
@@ -205,13 +206,8 @@ AWS_SECRET_ACCESS_KEY=${AWS_ACCESS_SECRET}
 
 DEFAULT_BASE_ENV_NAME=default
 DEFAULT_PACKAGE_MANAGER=pip
-"
-
-  if [[ ! -z ${ADMIN_API_AUTH_TOKEN} ]]; then
-    echo >>${DATALORE_CONFIGS_DIR}/datalore.env "
 ADMIN_API_AUTH_TOKEN=${ADMIN_API_AUTH_TOKEN}
 "
-  fi
 
   echo >${DATALORE_CONFIGS_DIR}/agents_config.yaml "
 aws:
@@ -249,6 +245,7 @@ aws:
       numGPUs: 0
       gpuMemoryText: \"\"
       isEphemeralStorage: true
+      environmentArchive: environment.tar
 
     - id: large
       awsTag: r5.large
@@ -268,6 +265,7 @@ aws:
       numGPUs: 0
       gpuMemoryText: \"\"
       isEphemeralStorage: true
+      environmentArchive: environment.tar
 "
 
   wget -q "${PLANS_CONFIG_URL}" -P "${DATALORE_CONFIGS_DIR}"
@@ -278,6 +276,7 @@ aws:
     wget -P "${DATALORE_CONFIGS_DIR}/envs" "$config"
   done
 
+  info "ADMIN_API_AUTH_TOKEN=${ADMIN_API_AUTH_TOKEN}"
   info "Default datalore configs have been created in ${DATALORE_CONFIGS_DIR}"
 }
 
@@ -560,10 +559,6 @@ while test $# -gt 0; do
     ;;
   --db-password)
     DB_PASSWORD=$1
-    shift
-    ;;
-  --admin-token)
-    ADMIN_API_AUTH_TOKEN=$1
     shift
     ;;
   *)

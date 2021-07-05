@@ -26,7 +26,7 @@ output "agents_security_group_id" {
   value = aws_security_group.agents.id
 }
 output "nat_ip" {
-  value = aws_eip.nat[0].public_ip
+  value = var.use_nat_gateway ? aws_eip.nat[0].public_ip : null
 }
 output "registry_url" {
   value = "${aws_ecr_repository.computation-agent.registry_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${var.name_prefix}"

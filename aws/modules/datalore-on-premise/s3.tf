@@ -1,7 +1,7 @@
 resource "random_string" "s3_prefix" {
   length           = 16
   special          = true
-  override_special = "_-"
+  override_special = "-"
   upper            = false
 }
 
