@@ -105,15 +105,7 @@ resource "aws_iam_policy" "agent_ecr" {
         "ecr:BatchGetImage"
       ],
       "Effect": "Allow",
-      "Resource": "${aws_ecr_repository.evaluator.arn}"
-    },
-    {
-      "Action": [
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:BatchGetImage"
-      ],
-      "Effect": "Allow",
-      "Resource": "${aws_ecr_repository.evaluator-gpu.arn}"
+      "Resource": "${aws_ecr_repository.computation-agent-gpu.arn}"
     }
   ]
 }
@@ -220,20 +212,7 @@ resource "aws_iam_policy" "datalore_ecr" {
         "ecr:CompleteLayerUpload"
       ],
       "Effect": "Allow",
-      "Resource": "${aws_ecr_repository.evaluator.arn}"
-    },
-    {
-      "Action": [
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:BatchGetImage",
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:PutImage",
-        "ecr:InitiateLayerUpload",
-        "ecr:UploadLayerPart",
-        "ecr:CompleteLayerUpload"
-      ],
-      "Effect": "Allow",
-      "Resource": "${aws_ecr_repository.evaluator-gpu.arn}"
+      "Resource": "${aws_ecr_repository.computation-agent-gpu.arn}"
     }
   ]
 }
