@@ -3,6 +3,9 @@ resource "random_string" "s3_prefix" {
   special          = true
   override_special = "-"
   upper            = false
+  lifecycle {
+    ignore_changes = [override_special]
+  }
 }
 
 resource "aws_s3_bucket" "blob-storage" {
