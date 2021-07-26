@@ -1,5 +1,9 @@
 resource "aws_iam_user" "datalore" {
   name = var.name_prefix
+
+  tags = {
+    CreatedBy = "Terraform",
+  }
 }
 
 resource "aws_iam_access_key" "datalore" {
