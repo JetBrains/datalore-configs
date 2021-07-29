@@ -15,6 +15,10 @@ resource "aws_s3_bucket" "blob-storage" {
   versioning {
     enabled = false
   }
+
+  tags = {
+    CreatedBy = "Terraform",
+  }
 }
 resource "aws_s3_bucket" "envs" {
   bucket        = "${var.name_prefix}-${random_string.s3_prefix.result}-envs"
@@ -23,6 +27,10 @@ resource "aws_s3_bucket" "envs" {
   versioning {
     enabled = false
   }
+
+  tags = {
+    CreatedBy = "Terraform",
+  }
 }
 resource "aws_s3_bucket" "publishing" {
   bucket        = "${var.name_prefix}-${random_string.s3_prefix.result}-publishing"
@@ -30,6 +38,10 @@ resource "aws_s3_bucket" "publishing" {
 
   versioning {
     enabled = false
+  }
+
+  tags = {
+    CreatedBy = "Terraform",
   }
 }
 
