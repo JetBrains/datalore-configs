@@ -18,9 +18,7 @@ k8s:
             - name: regcred
           containers:
             - name: agent
-              image: jetbrains/datalore-agent:v0.3.0
-              securityContext:
-                privileged: true
+              image: jetbrains/datalore-agent:v0.3.0-no-fuse
               env:
                 - name: MAX_HEAP_SIZE
                   value: 512m
