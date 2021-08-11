@@ -54,6 +54,11 @@ spec:
               name: agents-manager
             - containerPort: 5060
               name: computation
+          livenessProbe:
+            initialDelaySeconds: 120
+            httpGet:
+              path: /health
+              port: http
           resources:
             requests:
               memory: "4096Mi"
