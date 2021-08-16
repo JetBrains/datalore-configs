@@ -10,6 +10,7 @@ data:
   HUB_DATALORE_SERVICE_ID: "changeme"
   HUB_DATALORE_SERVICE_SECRET: "changeme"
   HUB_PERM_TOKEN: "changeme"
+  HUB_FORCE_EMAIL_VERIFICATION: "false"
 
   DEFAULT_INSTANCE_TYPE_ID: "k8s-datalore-agent"
   PASSWORD_SECRET: "changeme"
