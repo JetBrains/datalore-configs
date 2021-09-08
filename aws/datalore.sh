@@ -218,8 +218,8 @@ aws:
     regionName: ${AWS_REGION}
     dockerRegistryAddress: ${DOCKER_REGISTRY_ADDRESS}
     s3EnvironmentsAddress: ${S3_ENVIRONMENTS_ADDRESS}
-    cpuAmi: ami-0669fe7edb74297be
-    gpuAmi: ami-051f0cc2350133b73
+    cpuAmi: ami-0f6e35663abb90cb2
+    gpuAmi: ami-06b6462a7439045e2
     availabilityZoneId: ${AVAILABILITY_ZONE_ID}
     keyPairName: ${KEYPAIR_NAME}
     anacondaSource: /mnt/local/anaconda3
