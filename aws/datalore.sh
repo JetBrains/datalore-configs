@@ -2,7 +2,7 @@
 set -e
 
 DATALORE_VERSION="${DATALORE_VERSION:-v0.3.0}"
-ENVIRONMENT_VERSION="${ENVIRONMENT_VERSION:-0-71}"
+ENVIRONMENT_VERSION="${ENVIRONMENT_VERSION:-build-3}"
 DATALORE_CONFIGS_BRANCH="${DATALORE_CONFIGS_BRANCH:-on-premises-0.3.0}"
 
 ENVIRONMENT_CONFIGS=(\
@@ -67,13 +67,27 @@ copy_to_s3() {
   rm "${tmp_file}"
 }
 
+upload_envs() {
+  if ! [[ -v S3_ENVIRONMENTS_ADDRESS ]]; then
+    fatal "--s3-environments-address is missing"
+  fi
+  if ! [[ -v LOCAL_S3_ARCHIVE ]]; then
+    fatal "--local-s3-archive is missing"
+  fi
+  info "Uploading environment to s3"
+
+  aws s3 cp "${LOCAL_S3_ARCHIVE}" "s3://${S3_ENVIRONMENTS_ADDRESS}/environment.tar"
+
+  info "S3 environments have been uploaded"
+}
+
 download_envs() {
   if ! [[ -v S3_ENVIRONMENTS_ADDRESS ]]; then
     fatal "--s3-environments-address is missing"
   fi
   info "Copying s3 environments"
 
-  copy_to_s3 "environment-${ENVIRONMENT_VERSION}-cpuonly.tar" "environment.tar"
+  copy_to_s3 "environment-${ENVIRONMENT_VERSION}-cpu.tar" "environment.tar"
 
   info "S3 environments have been copied"
 }
@@ -499,6 +513,10 @@ while test $# -gt 0; do
     download_agent_images
     exit
     ;;
+  upload-envs)
+    upload_envs
+    exit
+    ;;
   clean)
     clean
     exit
@@ -533,6 +551,10 @@ while test $# -gt 0; do
     ;;
   --docker-registry-address)
     DOCKER_REGISTRY_ADDRESS=$1
+    shift
+    ;;
+  --local-s3-archive)
+    LOCAL_S3_ARCHIVE=$1
     shift
     ;;
   --s3-environments-address)
