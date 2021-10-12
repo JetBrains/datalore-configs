@@ -55,7 +55,7 @@ spec:
             - containerPort: 5060
               name: computation
           livenessProbe:
-            initialDelaySeconds: 120
+            initialDelaySeconds: 600
             httpGet:
               path: /health
               port: http
