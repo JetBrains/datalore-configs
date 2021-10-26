@@ -15,6 +15,10 @@ configMapGenerator:
     files:
       - configs/envs/environment_minimal.yml
       - configs/envs/requirements_minimal.txt
+  - name: datalore-on-premise-databases-configs
+    files:
+      - configs/connection_checker.yaml
+      - configs/introspection.yaml
 generatorOptions:
   disableNameSuffixHash: true
 
