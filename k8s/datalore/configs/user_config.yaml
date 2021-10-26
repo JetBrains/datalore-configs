@@ -4,6 +4,7 @@ metadata:
   name: datalore-on-premise-env
 data:
   FRONTEND_URL: "http://localhost:8080"
+  DATABASES_BASE_URL: "http://datalore-on-premise:8080"
 
   HUB_PUBLIC_BASE_URL: "changeme"
   HUB_INTERNAL_BASE_URL: "changeme"
