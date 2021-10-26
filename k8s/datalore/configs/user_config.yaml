@@ -13,7 +13,6 @@ data:
   HUB_FORCE_EMAIL_VERIFICATION: "false"
 
   DEFAULT_INSTANCE_TYPE_ID: "k8s-datalore-agent"
-  PASSWORD_SECRET: "changeme"
   ENABLE_PLANS: "false"
   DEFAULT_PACKAGE_MANAGER: "conda"
   DEFAULT_BASE_ENV_NAME: "minimal"

@@ -73,11 +73,6 @@ spec:
                 configMapKeyRef:
                   name: datalore-on-premise-db-env
                   key: ROOT_PASSWORD
-            - name: DB_PASSWORD_JETTY
-              valueFrom:
-                configMapKeyRef:
-                  name: datalore-on-premise-db-env
-                  key: ROOT_PASSWORD
           envFrom:
             - configMapRef:
                 name: datalore-on-premise-env
@@ -115,11 +110,6 @@ spec:
                   name: datalore-on-premise-db-env
                   key: ROOT_PASSWORD
             - name: DB_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: datalore-on-premise-db-env
-                  key: ROOT_PASSWORD
-            - name: DB_PASSWORD_JETTY
               valueFrom:
                 configMapKeyRef:
                   name: datalore-on-premise-db-env
