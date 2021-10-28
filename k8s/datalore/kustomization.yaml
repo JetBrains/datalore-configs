@@ -1,6 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+secretGenerator:
+  - name: datalore-on-premise-db
+    env: configs/db_secret_env.txt
+  - name: datalore-user-config
+    files:
+      - configs/user_secret_env.sh
 configMapGenerator:
   - name: datalore-on-premise-agents-config
     files:
@@ -23,8 +29,6 @@ generatorOptions:
   disableNameSuffixHash: true
 
 resources:
-  - configs/user_config.yaml
-  - configs/db_config.yaml
   - k8s.yaml
 
 patchesStrategicMerge:

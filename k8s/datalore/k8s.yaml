@@ -70,14 +70,10 @@ spec:
           env:
             - name: DB_PASSWORD
               valueFrom:
-                configMapKeyRef:
-                  name: datalore-on-premise-db-env
+                secretKeyRef:
+                  name: datalore-on-premise-db
                   key: ROOT_PASSWORD
           envFrom:
-            - configMapRef:
-                name: datalore-on-premise-env
-            - configMapRef:
-                name: datalore-on-premise-db-env
             - configMapRef:
                 name: datalore-shared
           volumeMounts:
@@ -93,6 +89,9 @@ spec:
               name: plans-config
             - mountPath: /home/storage
               name: storage
+            - mountPath: /etc/datalore/env.sh
+              name: secret-env
+              subPath: user_secret_env.sh
         - name: postgres
           securityContext:
             runAsUser: 999
@@ -100,21 +99,19 @@ spec:
             - containerPort: 5432
           envFrom:
             - configMapRef:
-                name: datalore-on-premise-db-env
-            - configMapRef:
                 name: datalore-shared
           env:
             - name: PGDATA
               value: /var/lib/postgresql/data/db-data
             - name: POSTGRES_PASSWORD
               valueFrom:
-                configMapKeyRef:
-                  name: datalore-on-premise-db-env
+                secretKeyRef:
+                  name: datalore-on-premise-db
                   key: ROOT_PASSWORD
             - name: DB_PASSWORD
               valueFrom:
-                configMapKeyRef:
-                  name: datalore-on-premise-db-env
+                secretKeyRef:
+                  name: datalore-on-premise-db
                   key: ROOT_PASSWORD
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
@@ -135,6 +132,9 @@ spec:
         - name: databases-configs
           configMap:
             name: datalore-on-premise-databases-configs
+        - name: secret-env
+          secret:
+            secretName: datalore-user-config
 ---
 apiVersion: v1
 kind: Service
