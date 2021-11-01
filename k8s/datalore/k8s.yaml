@@ -51,6 +51,8 @@ spec:
           ports:
             - containerPort: 8080
               name: http
+            - containerPort: 8081
+              name: http-internal
             - containerPort: 10201
               name: debug
             - containerPort: 5050
@@ -147,6 +149,10 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+    - port: 8081
+      targetPort: http-internal
+      protocol: TCP
+      name:  http-internal
     - port: 5050
       targetPort: agents-manager
       protocol: TCP
