@@ -12,7 +12,7 @@ export HUB_FORCE_EMAIL_VERIFICATION=false
 
 export DEFAULT_INSTANCE_TYPE_ID=k8s-datalore-agent
 export ENABLE_PLANS=false
-export DEFAULT_PACKAGE_MANAGER=conda
+export DEFAULT_PACKAGE_MANAGER=pip
 export DEFAULT_BASE_ENV_NAME=minimal
 
 export MAIL_ENABLED=false # if set to true, fill the fields below
