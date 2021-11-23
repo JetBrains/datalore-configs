@@ -1,10 +1,6 @@
 export FRONTEND_URL="http://localhost:8080"
-export DATABASES_BASE_URL="http://datalore-on-premise:8081"
-export SQL_SERVER_HOST="datalore-on-premise"
-export SQL_SERVER_PORT="8081"
 
 export HUB_PUBLIC_BASE_URL=changeme
-export HUB_INTERNAL_BASE_URL=changeme
 export HUB_DATALORE_SERVICE_ID=changeme
 export HUB_DATALORE_SERVICE_SECRET=changeme
 export HUB_PERM_TOKEN=changeme
