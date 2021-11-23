@@ -16,4 +16,4 @@ spec:
       restartPolicy: Never
       containers:
         - name: introspection
-          image: jetbrains/datalore-database-connection-checker:latest
+          image: jetbrains/datalore-connection-checker:2021.3-eap
