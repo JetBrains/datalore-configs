@@ -44,8 +44,6 @@ spec:
       serviceAccountName: datalore-on-premise
       securityContext:
         fsGroup: 5000
-      imagePullSecrets:
-        - name: regcred
       containers:
         - name: datalore
           ports:
