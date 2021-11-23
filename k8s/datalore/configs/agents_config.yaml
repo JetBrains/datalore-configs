@@ -14,8 +14,6 @@ k8s:
             podType: dataloreKubernetesAgent
         spec:
           enableServiceLinks: false
-          imagePullSecrets:
-            - name: regcred
           containers:
             - name: agent
               image: jetbrains/datalore-agent:v0.3.0
