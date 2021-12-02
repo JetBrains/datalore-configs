@@ -23,7 +23,7 @@ data:
         spec:
           restartPolicy: Never
           containers:
-            - name: introspection
+            - name: connection-check
               image: jetbrains/datalore-connection-checker:{{ .Chart.AppVersion }}
   introspection.yaml: |-
     apiVersion: batch/v1
