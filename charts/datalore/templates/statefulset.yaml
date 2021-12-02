@@ -1,0 +1,141 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "datalore.fullname" . }}
+  labels:
+    {{- include "datalore.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  serviceName: {{ include "datalore.fullname" . }}
+  selector:
+    matchLabels:
+      {{- include "datalore.selectorLabels" . | nindent 6 }}
+  {{- with .Values.volumeClaimTemplates }}
+  volumeClaimTemplates:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "datalore.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "datalore.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.securityContext | nindent 8 }}
+      containers:
+        - name: datalore
+          securityContext:
+            {{- toYaml .Values.dataloreSecurityContext | nindent 12 }}
+          image: "{{ .Values.serverImage.repository }}:{{ .Values.serverImage.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.serverImage.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: http-internal
+              containerPort: 8081
+            - name: agents-manager
+              containerPort: 5050
+            - name: computation
+              containerPort: 5060
+          livenessProbe:
+            initialDelaySeconds: 120
+            httpGet:
+              path: /health
+              port: http
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "datalore.fullname" . }}-db
+                  key: ROOT_PASSWORD
+          envFrom:
+            - configMapRef:
+                name: {{ include "datalore.fullname" . }}-shared
+          volumeMounts:
+            - mountPath: /etc/datalore/agents-config
+              name: agents-config
+            - mountPath: /etc/datalore/environment_info
+              name: envs
+            - mountPath: /etc/datalore/databases
+              name: databases-configs
+            - mountPath: /etc/datalore/logback-config
+              name: logback-config
+            - mountPath: /etc/datalore/plans-config
+              name: plans-config
+            - mountPath: /home/storage
+              name: storage
+            - mountPath: /etc/datalore/env.sh
+              name: secret-env
+              subPath: user_secret_env.sh
+          resources:
+            {{- toYaml .Values.dataloreResources | nindent 12 }}
+        - name: postgres
+          securityContext:
+            {{- toYaml .Values.postgresSecurityContext | nindent 12 }}
+          image: "{{ .Values.postgresImage.repository }}:{{ .Values.postgresImage.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.postgresImage.pullPolicy }}
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: {{ include "datalore.fullname" . }}-shared
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/db-data
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "datalore.fullname" . }}-db
+                  key: ROOT_PASSWORD
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "datalore.fullname" . }}-db
+                  key: ROOT_PASSWORD
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresql-data
+          resources:
+            {{- toYaml .Values.postgresResources | nindent 12 }}
+      volumes:
+        - name: agents-config
+          configMap:
+            name: {{ include "datalore.fullname" . }}-agents-config
+        - name: logback-config
+          configMap:
+            name: {{ include "datalore.fullname" . }}-logback-config
+        - name: plans-config
+          configMap:
+            name: {{ include "datalore.fullname" . }}-plans-config
+        - name: envs
+          configMap:
+            name: {{ include "datalore.fullname" . }}-envs-config
+        - name: databases-configs
+          configMap:
+            name: {{ include "datalore.fullname" . }}-databases-config
+        - name: secret-env
+          secret:
+            secretName: {{ include "datalore.fullname" . }}-user-env
+        {{- if .Values.volumes }}
+        {{- toYaml .Values.volumes | nindent 8 }}
+        {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

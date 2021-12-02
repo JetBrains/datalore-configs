@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "datalore.fullname" . }}-agents-config
+  labels:
+    {{- include "datalore.labels" . | nindent 4 }}
+data:
+  agents_config.yaml: |-
+{{- if .Values.agentsConfig }}
+{{- toYaml .Values.agentsConfig | nindent 4 }}
+{{- else }}
+    k8s:
+      instances:
+        - id: k8s-datalore-agent
+          label: "K8s Local"
+          description: "Local K8s instance"
+          minAllowed: 1
+          maxAllowed: 1
+          yaml:
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: k8s-agent
+              labels:
+                podType: dataloreKubernetesAgent
+            spec:
+              enableServiceLinks: false
+              containers:
+                - name: agent
+                  image: jetbrains/datalore-agent:{{ .Chart.AppVersion }}
+                  securityContext:
+                    privileged: true
+                  env:
+                    - name: MAX_HEAP_SIZE
+                      value: 512m
+                    - name: DATA_ROOT
+                      value: /mnt/disk
+                    - name: AGENT_RUN_TYPE
+                      value: DOCKER
+                  volumeMounts:
+                    - mountPath: /etc/datalore/logback-config
+                      name: logback-config
+                  resources:
+                    limits:
+                      cpu: "1"
+                      memory: "2048Mi"
+                    requests:
+                      cpu: "200m"
+                      memory: "2048Mi"
+              volumes:
+                - name: logback-config
+                  configMap:
+                    name: {{ include "datalore.fullname" . }}-logback-config
+{{- end }}

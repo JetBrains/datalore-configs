@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "datalore.fullname" . }}
+  labels:
+    {{- include "datalore.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: 8081
+      targetPort: http-internal
+      protocol: TCP
+      name:  http-internal
+    - port: 5050
+      targetPort: agents-manager
+      protocol: TCP
+      name: agents-manager
+    - port: 5060
+      targetPort: computation
+      protocol: TCP
+      name: computation
+  selector:
+    {{- include "datalore.selectorLabels" . | nindent 4 }}
