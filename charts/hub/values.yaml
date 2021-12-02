@@ -1,0 +1,79 @@
+image:
+  repository: jetbrains/hub
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart version.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 13001
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8082
+
+ingress:
+  enabled: false
+  className: "nginx"
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+volumeMounts:
+  - mountPath: /opt/hub/data
+    name: hub-data
+  - mountPath: /opt/hub/conf
+    name: hub-conf
+  - mountPath: /opt/hub/logs
+    name: hub-logs
+  - mountPath: /opt/hub/backups
+    name: hub-backups
+
+volumes: []
+#  - name: hub-data
+#    emptyDir: { }
+#  - name: hub-conf
+#    emptyDir: { }
+#  - name: hub-logs
+#    emptyDir: { }
+#  - name: hub-backups
+#    emptyDir: { }
+
+volumeClaimTemplates: []
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

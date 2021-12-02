@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "datalore.fullname" . }}-logback-config
+  labels:
+    {{- include "datalore.labels" . | nindent 4 }}
+data:
+  logback.xml: |-
+{{- if .Values.logbackConfig }}
+{{- .Values.logbackConfig | nindent 4 }}
+{{- else }}
+    <configuration debug="true">
+      <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+          <level>INFO</level>
+        </filter>
+        <encoder>
+          <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+      </appender>
+
+      <logger name="jetbrains.datalore" level="ALL"/>
+      <logger name="org.jgroups.protocols" level="WARN"/>
+      <logger name="MySQL" level="ERROR"/>
+
+      <root level="INFO">
+        <appender-ref ref="stdout"/>
+      </root>
+    </configuration>
+{{- end }}

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "datalore.fullname" . }}-shared
+  labels:
+    {{- include "datalore.labels" . | nindent 4 }}
+data:
+  DB_PORT: "5432"
+  DB_USER: "admin"
+
+  DB_NAME_JETTY: "dataloreJetty"
+  DB_USER_JETTY: "jetty"
+
+  DB_NAME_CORE: "datalore"
+  DB_NAME_INFRA: "dataloreInfra"

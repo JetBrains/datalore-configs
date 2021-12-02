@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "datalore.fullname" . }}-databases-config
+  labels:
+    {{- include "datalore.labels" . | nindent 4 }}
+data:
+  connection_checker.yaml: |-
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: connection-check
+      labels:
+        datalore-databases: connection-check
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 120
+      ttlSecondsAfterFinished: 600
+      template:
+        metadata:
+          labels:
+            datalore-databases: connection-check
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: introspection
+              image: jetbrains/datalore-connection-checker:{{ .Chart.AppVersion }}
+  introspection.yaml: |-
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: introspection
+      labels:
+        datalore-databases: introspection
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 1200
+      ttlSecondsAfterFinished: 6000
+      template:
+        metadata:
+          labels:
+            datalore-databases: introspection
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: introspection
+              image: jetbrains/datalore-introspection:{{ .Chart.AppVersion }}
