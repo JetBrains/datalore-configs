@@ -64,6 +64,7 @@ tolerations: []
 affinity: {}
 
 dbRootPassword: "changeme"
+internalDatabase: true
 
 agentsConfig: {}
 plansConfig: []
