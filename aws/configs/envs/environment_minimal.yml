@@ -16,4 +16,4 @@ dependencies:
   - jedi=0.17.2
   - pip=21.3.1
   - pip:
-      - lets-plot==2.2.0
+      - lets-plot==2.2.1
