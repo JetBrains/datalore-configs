@@ -16,4 +16,4 @@ spec:
       restartPolicy: Never
       containers:
         - name: introspection
-          image: jetbrains/datalore-introspection:2021.3
+          image: jetbrains/datalore-introspection:2021.3.1
