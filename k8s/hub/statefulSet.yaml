@@ -15,7 +15,7 @@ spec:
       securityContext:
         fsGroup: 13001
       containers:
-        - image: jetbrains/hub:2021.1.14108
+        - image: jetbrains/hub:2021.1.14194
           name: hub
           ports:
             - containerPort: 8080
