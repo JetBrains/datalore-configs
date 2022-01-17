@@ -17,3 +17,5 @@ spec:
       containers:
         - name: introspection
           image: jetbrains/datalore-introspection:2021.3.5
+          securityContext:
+            runAsUser: 5000

@@ -25,6 +25,8 @@ data:
           containers:
             - name: connection-check
               image: jetbrains/datalore-connection-checker:{{ .Chart.AppVersion }}
+              securityContext:
+                runAsUser: 5000
   introspection.yaml: |-
     apiVersion: batch/v1
     kind: Job
@@ -45,3 +47,5 @@ data:
           containers:
             - name: introspection
               image: jetbrains/datalore-introspection:{{ .Chart.AppVersion }}
+              securityContext:
+                runAsUser: 5000
