@@ -14,6 +14,9 @@ data:
         - id: k8s-datalore-agent
           label: "K8s Local"
           description: "Local K8s instance"
+          features:
+            - "1 CPU cores"
+            - "2 GB RAM"
           minAllowed: 1
           maxAllowed: 1
           yaml:
