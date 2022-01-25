@@ -86,7 +86,6 @@ dataloreEnv: |
   export SQL_SERVER_HOST="datalore"
   export DATALORE_INTERNAL_HOST="datalore"
 
-  export DEFAULT_INSTANCE_TYPE_ID=k8s-datalore-agent
   export ENABLE_PLANS=false
   export DEFAULT_PACKAGE_MANAGER=pip
   export DEFAULT_BASE_ENV_NAME=minimal
