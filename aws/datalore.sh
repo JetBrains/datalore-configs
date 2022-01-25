@@ -258,6 +258,7 @@ aws:
       gpuMemoryText: \"\"
       isEphemeralStorage: true
       environmentArchive: environment.tar
+      default: true
 
     - id: large
       awsTag: r5.large
