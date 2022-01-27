@@ -6,7 +6,6 @@ export HUB_DATALORE_SERVICE_SECRET=changeme
 export HUB_PERM_TOKEN=changeme
 export HUB_FORCE_EMAIL_VERIFICATION=false
 
-export DEFAULT_INSTANCE_TYPE_ID=k8s-datalore-agent
 export ENABLE_PLANS=false
 export DEFAULT_PACKAGE_MANAGER=pip
 export DEFAULT_BASE_ENV_NAME=minimal

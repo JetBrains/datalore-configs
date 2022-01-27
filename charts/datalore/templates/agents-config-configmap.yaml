@@ -23,6 +23,7 @@ data:
           cpuMemoryText: "2 GB"
           numGPUs: 0
           gpuMemoryText: ""
+          default: true
           yaml:
             apiVersion: v1
             kind: Pod

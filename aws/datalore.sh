@@ -206,7 +206,6 @@ HUB_DATALORE_SERVICE_SECRET=${HUB_SERVICE_SECRET}
 HUB_PERM_TOKEN=${HUB_TOKEN}
 HUB_FORCE_EMAIL_VERIFICATION=false
 
-DEFAULT_INSTANCE_TYPE_ID=basic
 PASSWORD_SECRET=CHANGEME
 ENABLE_PLANS=false
 
@@ -258,6 +257,7 @@ aws:
       gpuMemoryText: \"\"
       isEphemeralStorage: true
       environmentArchive: environment.tar
+      default: true
 
     - id: large
       awsTag: r5.large

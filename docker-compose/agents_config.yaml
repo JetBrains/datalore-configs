@@ -5,6 +5,7 @@ k8s:
       description: "Local K8s instance"
       minAllowed: 1
       maxAllowed: 1
+      default: true
       yaml:
         apiVersion: v1
         kind: Pod
