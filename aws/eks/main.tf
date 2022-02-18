@@ -33,6 +33,8 @@ module "eks" {
   eks_managed_node_groups = {
     default_node_group = {
       ami_type                   = "AL2_x86_64"
+      #ami_type                   = "BOTTLEROCKET_x86_64"
+      #platform                   = "bottlerocket"
       disk_size                  = 50
       instance_types             = local.instance_types
       iam_role_attach_cni_policy = true
