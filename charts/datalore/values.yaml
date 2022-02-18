@@ -26,7 +26,8 @@ dataloreSecurityContext:
 postgresSecurityContext:
   runAsUser: 999
 
-securityContext: {}
+securityContext:
+  fsGroup: 5000
 
 service:
   type: ClusterIP
