@@ -1,19 +1,20 @@
-variable "aws_region" {}
-variable "datalore_az" {}
+variable "name_prefix" {}
 variable "ssh_keypair" {}
 
-variable "additional_sg_list" {
-  default = []
+variable "datalore_az" {
+  default = null
 }
 
+variable "create_database" {
+  default = true
+  type = bool
+}
 variable "use_elastic_ip" {
   default = false
-}
-variable "name_prefix" {
-  default = "datalore-on-premise"
+  type    = bool
 }
 variable "datalore_instance_type" {
-  default = "t2.medium"
+  default = "t3a.medium"
 }
 variable "db_instance_class" {
   default = "db.t3.xlarge"
@@ -21,10 +22,9 @@ variable "db_instance_class" {
 variable "disk_size" {
   default = 30
 }
-variable "db_size" {
+variable "db_storage_size" {
   default = 30
 }
-
 variable "vpc_cidr" {
   default = "10.0.0.0/16"
 }

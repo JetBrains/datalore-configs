@@ -1,6 +1,5 @@
 module "datalore-on-premise" {
   source      = "../modules/datalore-on-premise"
-  datalore_az = var.datalore_az
+  name_prefix = "datalore-example-com"
   ssh_keypair = var.ssh_keypair
-  aws_region  = var.aws_region
 }

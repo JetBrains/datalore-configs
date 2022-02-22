@@ -1,3 +1,5 @@
+data "aws_region" "current" {}
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -20,11 +22,10 @@ resource "aws_instance" "datalore" {
   subnet_id                   = aws_subnet.datalore.id
   associate_public_ip_address = true
   user_data = templatefile("${path.module}/user_data.sh",
-  { ecr = "${aws_ecr_repository.computation-agent.registry_id}.dkr.ecr.${var.aws_region}.amazonaws.com" })
+  { ecr = "${aws_ecr_repository.computation-agent.registry_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com" })
   iam_instance_profile = aws_iam_instance_profile.datalore.name
 
-  vpc_security_group_ids = concat(var.additional_sg_list,
-  [aws_security_group.datalore.id, aws_security_group.datalore-http.id])
+  vpc_security_group_ids = [aws_security_group.datalore.id]
 
   key_name = var.ssh_keypair
 
@@ -34,7 +35,7 @@ resource "aws_instance" "datalore" {
 
   root_block_device {
     volume_size = var.disk_size
-    volume_type = "gp2"
+    volume_type = "gp3"
   }
 
   lifecycle {
