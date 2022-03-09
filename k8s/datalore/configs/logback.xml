@@ -8,6 +8,7 @@
     </encoder>
   </appender>
 
+  <logger name="audit" level="OFF"/>
   <logger name="jetbrains.datalore" level="ALL"/>
   <logger name="org.jgroups.protocols" level="WARN"/>
   <logger name="MySQL" level="ERROR"/>
