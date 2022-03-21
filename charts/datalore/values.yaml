@@ -36,6 +36,15 @@ service:
   type: ClusterIP
   port: 8080
 
+computationPort: 5060
+
+nodePorts:
+  enabled: false
+  httpPort: 30090
+  agentsManagerPort: 30091
+  computationPort: 30092
+  httpInternalPort: 30093
+
 ingress:
   enabled: false
   className: "nginx"

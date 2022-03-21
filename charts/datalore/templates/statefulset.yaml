@@ -44,7 +44,7 @@ spec:
             - name: agents-manager
               containerPort: 5050
             - name: computation
-              containerPort: 5060
+              containerPort: {{ .Values.computationPort }}
           livenessProbe:
             initialDelaySeconds: 120
             httpGet:
