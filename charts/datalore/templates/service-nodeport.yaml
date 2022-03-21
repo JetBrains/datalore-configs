@@ -1,0 +1,33 @@
+{{ if .Values.nodePorts.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "datalore.fullname" . }}-nodeport
+  labels:
+    {{- include "datalore.labels" . | nindent 4 }}
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+      nodePort: {{ .Values.nodePorts.httpPort }}
+    - port: 5050
+      targetPort: agents-manager
+      protocol: TCP
+      name: agents-manager
+      nodePort: {{ .Values.nodePorts.agentsManagerPort }}
+    - port: {{ .Values.computationPort }}
+      targetPort: computation
+      protocol: TCP
+      name: computation
+      nodePort: {{ .Values.nodePorts.computationPort }}
+    - port: 8081
+      targetPort: http-internal
+      protocol: TCP
+      name: http-internal
+      nodePort: {{ .Values.nodePorts.httpInternalPort }}
+  selector:
+    {{- include "datalore.selectorLabels" . | nindent 4 }}
+{{ end }}
