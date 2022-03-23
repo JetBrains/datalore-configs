@@ -1,6 +1,7 @@
 boto3==1.17.7
 ipykernel==5.5.3
 ipython_genutils==0.2.0
+ipywidgets==7.6.5
 jedi==0.17.2
 kotlin-jupyter-kernel==0.10.3.20
 lets-plot==2.2.1
