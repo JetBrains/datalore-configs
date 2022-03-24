@@ -38,7 +38,7 @@ data:
       - pip=21.3.1
       - boto3=1.17.7
       - pip:
-        - lets-plot==2.2.1
+        - lets-plot==2.3.0
   requirements_minimal.txt: |-
     boto3==1.17.7
     ipykernel==5.5.3
@@ -46,7 +46,7 @@ data:
     ipywidgets==7.6.5
     jedi==0.17.2
     kotlin-jupyter-kernel==0.10.3.20
-    lets-plot==2.2.1
+    lets-plot==2.3.0
     matplotlib==3.3.4
     numpy==1.19.5
     scikit-image==0.18.3

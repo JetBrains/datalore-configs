@@ -37,7 +37,7 @@ ipywidgets==7.6.3
 jedi==0.17.2
 kotlin-jupyter-kernel==0.10.3.20
 requests==2.26.0
-lets-plot==2.2.1
+lets-plot==2.3.0
 fiona==1.8.18
 geopandas==0.9.0
 pyproj==3.2.1
