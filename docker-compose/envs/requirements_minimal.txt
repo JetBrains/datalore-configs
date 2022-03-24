@@ -4,7 +4,7 @@ ipython_genutils==0.2.0
 ipywidgets==7.6.5
 jedi==0.17.2
 kotlin-jupyter-kernel==0.10.3.20
-lets-plot==2.2.1
+lets-plot==2.3.0
 matplotlib==3.3.4
 numpy==1.19.5
 scikit-image==0.18.3
