@@ -24,7 +24,7 @@ k8s:
           enableServiceLinks: false
           containers:
             - name: agent
-              image: jetbrains/datalore-agent:2022.1.1
+              image: jetbrains/datalore-agent:2022.1.2
               securityContext:
                 privileged: true
               env:
