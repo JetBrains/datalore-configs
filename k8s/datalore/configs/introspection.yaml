@@ -16,6 +16,6 @@ spec:
       restartPolicy: Never
       containers:
         - name: introspection
-          image: jetbrains/datalore-introspection:2022.1.3
+          image: jetbrains/datalore-introspection:2022.1.2
           securityContext:
             runAsUser: 5000
