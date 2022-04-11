@@ -7,6 +7,6 @@ spec:
     spec:
       containers:
         - name: datalore
-          image: jetbrains/datalore-server:2022.1.2
+          image: jetbrains/datalore-server:2022.1.3
         - name: postgres
-          image: jetbrains/datalore-postgres:2022.1.2
+          image: jetbrains/datalore-postgres:2022.1.3
