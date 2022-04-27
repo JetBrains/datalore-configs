@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  datalore:
+    image: jetbrains/datalore-server:2022.2
+    ports:
+      - "8080:8080"
+    expose: [ "8081", "5050", "4060" ]
+    networks:
+      - datalore-agents-network
+      - datalore-backend-network
+    volumes:
+      - "datalore-storage:/opt/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      DB_PASSWORD: "changeme"
+      DATABASES_DOCKER_NETWORK: "datalore-agents-network"
+      ADMIN_API_AUTH_TOKEN: "changeme"
+  postgresql:
+    image: jetbrains/datalore-postgres:2022.2
+    expose: [ "5432" ]
+    networks:
+      - datalore-backend-network
+    volumes:
+      - "postgresql-data:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_PASSWORD: "changeme"
+volumes:
+  postgresql-data: { }
+  datalore-storage: { }
+networks:
+  datalore-agents-network:
+    name: datalore-agents-network
+  datalore-backend-network:
+    name: datalore-backend-network
