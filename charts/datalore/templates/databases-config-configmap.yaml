@@ -6,6 +6,9 @@ metadata:
     {{- include "datalore.labels" . | nindent 4 }}
 data:
   connection_checker.yaml: |-
+{{- if .Values.connectionChecker }}
+{{- tpl (toYaml .Values.connectionChecker) . | nindent 4 }}
+{{- else }}
     apiVersion: batch/v1
     kind: Job
     metadata:
@@ -24,10 +27,14 @@ data:
           restartPolicy: Never
           containers:
             - name: connection-check
-              image: jetbrains/datalore-connection-checker:{{ .Chart.AppVersion }}
+              image: jetbrains/datalore-database-command:{{ .Chart.AppVersion }}
               securityContext:
                 runAsUser: 5000
+{{- end }}
   introspection.yaml: |-
+{{- if .Values.introspection }}
+{{- tpl (toYaml .Values.introspection) . | nindent 4 }}
+{{- else }}
     apiVersion: batch/v1
     kind: Job
     metadata:
@@ -46,6 +53,33 @@ data:
           restartPolicy: Never
           containers:
             - name: introspection
-              image: jetbrains/datalore-introspection:{{ .Chart.AppVersion }}
+              image: jetbrains/datalore-database-command:{{ .Chart.AppVersion }}
               securityContext:
                 runAsUser: 5000
+{{- end }}
+  namespaces_loader.yaml: |-
+{{- if .Values.namespacesLoader }}
+{{- tpl (toYaml .Values.namespacesLoader) . | nindent 4 }}
+{{- else }}
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: namespaces-loader
+      labels:
+        datalore-databases: namespaces-loader
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 120
+      ttlSecondsAfterFinished: 600
+      template:
+        metadata:
+          labels:
+            datalore-databases: namespaces-loader
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: connection-check
+              image: jetbrains/datalore-database-command:{{ .Chart.AppVersion }}
+              securityContext:
+                runAsUser: 5000
+{{- end }}

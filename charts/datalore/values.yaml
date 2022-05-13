@@ -36,7 +36,7 @@ service:
   type: ClusterIP
   port: 8080
 
-computationPort: 5060
+computationPort: 4060
 
 nodePorts:
   enabled: false
@@ -80,6 +80,9 @@ dbRootPassword: "changeme"
 internalDatabase: true
 
 agentsConfig: {}
+connectionChecker: {}
+introspection: {}
+namespacesLoader: {}
 plansConfig: []
 logbackConfig: ""
 customEnvs: {}

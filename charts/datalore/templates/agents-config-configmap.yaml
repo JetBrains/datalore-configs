@@ -5,9 +5,9 @@ metadata:
   labels:
     {{- include "datalore.labels" . | nindent 4 }}
 data:
-  agents_config.yaml: |-
+  agents-config.yaml: |-
 {{- if .Values.agentsConfig }}
-{{- toYaml .Values.agentsConfig | nindent 4 }}
+{{- tpl (toYaml .Values.agentsConfig) . | nindent 4 }}
 {{- else }}
     k8s:
       instances:
@@ -41,10 +41,6 @@ data:
                   env:
                     - name: MAX_HEAP_SIZE
                       value: 512m
-                    - name: DATA_ROOT
-                      value: /mnt/disk
-                    - name: AGENT_RUN_TYPE
-                      value: DOCKER
                   volumeMounts:
                     - mountPath: /etc/datalore/logback-config
                       name: logback-config

@@ -56,12 +56,16 @@ spec:
                 secretKeyRef:
                   name: {{ include "datalore.fullname" . }}-db
                   key: ROOT_PASSWORD
-          envFrom:
-            - configMapRef:
-                name: {{ include "datalore.fullname" . }}-shared
+            - name: DATABASES_CONNECTION_CHECKER_K8S_YAML
+              value: file:///etc/datalore/databases/connection_checker.yaml
+            - name: DATABASES_INTROSPECTION_K8S_YAML
+              value: file:///etc/datalore/databases/introspection.yaml
+            - name: DATABASES_NAMESPACES_LOADER_K8S_YAML
+              value: file:///etc/datalore/databases/namespaces_loader.yaml
           volumeMounts:
-            - mountPath: /etc/datalore/agents-config
+            - mountPath: /opt/datalore/configs/agents-config.yaml
               name: agents-config
+              subPath: agents-config.yaml
             - mountPath: /etc/datalore/environment_info
               name: envs
             - mountPath: /etc/datalore/databases
@@ -85,18 +89,10 @@ spec:
           imagePullPolicy: {{ .Values.postgresImage.pullPolicy }}
           ports:
             - containerPort: 5432
-          envFrom:
-            - configMapRef:
-                name: {{ include "datalore.fullname" . }}-shared
           env:
             - name: PGDATA
               value: /var/lib/postgresql/data/db-data
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "datalore.fullname" . }}-db
-                  key: ROOT_PASSWORD
-            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ include "datalore.fullname" . }}-db

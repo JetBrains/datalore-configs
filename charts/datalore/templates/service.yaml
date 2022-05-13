@@ -19,7 +19,7 @@ spec:
       targetPort: agents-manager
       protocol: TCP
       name: agents-manager
-    - port: 5060
+    - port: 4060
       targetPort: computation
       protocol: TCP
       name: computation
