@@ -79,6 +79,9 @@ affinity: {}
 dbRootPassword: "changeme"
 internalDatabase: true
 
+sqlServerHost: ""
+sqlServerPort: ""
+
 agentsConfig: {}
 connectionChecker: {}
 introspection: {}
@@ -96,7 +99,6 @@ dataloreEnv: |
   export HUB_FORCE_EMAIL_VERIFICATION=false
 
   export DATABASES_BASE_URL="http://datalore:8081"
-  export SQL_SERVER_HOST="datalore"
   export DATALORE_INTERNAL_HOST="datalore"
 
   export ENABLE_PLANS=false
