@@ -57,11 +57,11 @@ spec:
                   name: {{ include "datalore.fullname" . }}-db
                   key: ROOT_PASSWORD
             - name: DATABASES_CONNECTION_CHECKER_K8S_YAML
-              value: file:///etc/datalore/databases/connection_checker.yaml
+              value: file:///opt/datalore/configs/databases/connection_checker.yaml
             - name: DATABASES_INTROSPECTION_K8S_YAML
-              value: file:///etc/datalore/databases/introspection.yaml
+              value: file:///opt/datalore/configs/databases/introspection.yaml
             - name: DATABASES_NAMESPACES_LOADER_K8S_YAML
-              value: file:///etc/datalore/databases/namespaces_loader.yaml
+              value: file:///opt/datalore/configs/databases/namespaces_loader.yaml
             - name: SQL_SERVER_HOST
               value: {{ .Values.sqlServerHost | default "datalore" | quote }}
             - name: SQL_SERVER_PORT
@@ -70,19 +70,21 @@ spec:
             - mountPath: /opt/datalore/configs/agents-config.yaml
               name: agents-config
               subPath: agents-config.yaml
-            - mountPath: /etc/datalore/environment_info
+            - mountPath: /opt/datalore/configs/environment_info
               name: envs
-            - mountPath: /etc/datalore/databases
+            - mountPath: /opt/datalore/configs/databases
               name: databases-configs
-            - mountPath: /etc/datalore/logback-config
+            - mountPath: /opt/datalore/configs/logback.xml
               name: logback-config
-            - mountPath: /etc/datalore/plans-config
+              subPath: logback.xml
+            - mountPath: /opt/datalore/configs/plans_config.yaml
               name: plans-config
-            - mountPath: /opt/data
-              name: storage
-            - mountPath: /etc/datalore/env.sh
+              subPath: plans_config.yaml
+            - mountPath: /opt/datalore/configs/env.sh
               name: secret-env
               subPath: user_secret_env.sh
+            - mountPath: /opt/data
+              name: storage
           resources:
             {{- toYaml .Values.dataloreResources | nindent 12 }}
         {{- if .Values.internalDatabase }}
