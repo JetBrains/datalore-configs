@@ -74,7 +74,7 @@ spec:
               name: envs
             - mountPath: /opt/datalore/configs/databases
               name: databases-configs
-            - mountPath: /opt/datalore/configs/logback.xml
+            - mountPath: /opt/datalore/jetty/resources/logback.xml
               name: logback-config
               subPath: logback.xml
             - mountPath: /opt/datalore/configs/plans_config.yaml
