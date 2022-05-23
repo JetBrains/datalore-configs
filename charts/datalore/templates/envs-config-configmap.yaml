@@ -8,6 +8,7 @@ data:
 {{- if .Values.customEnvs }}
 {{- toYaml .Values.customEnvs | nindent 2 }}
 {{- else }}
+{{- if .Values.addDefaultCondaEnv }}
   environment_minimal.yml: |-
     #
     # Minimum set of libs required by kernels and for basic data-science tasks
@@ -39,6 +40,7 @@ data:
       - boto3=1.17.7
       - pip:
         - lets-plot==2.3.0
+{{- end }}
   requirements_minimal.txt: |-
     boto3==1.17.7
     ipykernel==5.5.3

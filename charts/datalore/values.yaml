@@ -78,6 +78,7 @@ affinity: {}
 
 dbRootPassword: "changeme"
 internalDatabase: true
+addDefaultCondaEnv: true
 
 sqlServerHost: ""
 sqlServerPort: ""
