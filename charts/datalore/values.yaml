@@ -76,7 +76,7 @@ tolerations: []
 
 affinity: {}
 
-dbRootPassword: "changeme"
+dbRootPassword: ""
 internalDatabase: true
 addDefaultCondaEnv: true
 
@@ -91,29 +91,4 @@ plansConfig: []
 logbackConfig: ""
 customEnvs: {}
 dataloreEnv: |
-  export FRONTEND_URL="http://chart-example.local"
-
-  export HUB_PUBLIC_BASE_URL="http://hub.chart-example.local/hub"
-  export HUB_DATALORE_SERVICE_ID="id"
-  export HUB_DATALORE_SERVICE_SECRET="secret"
-  export HUB_PERM_TOKEN="perm:token"
-  export HUB_FORCE_EMAIL_VERIFICATION=false
-
-  export DATABASES_BASE_URL="http://datalore:8081"
-  export DATALORE_INTERNAL_HOST="datalore"
-
-  export ENABLE_PLANS=false
-  export DEFAULT_PACKAGE_MANAGER=pip
-  export DEFAULT_BASE_ENV_NAME=minimal
-
-  export MAIL_ENABLED=false # if set to true, fill the fields below
-  export MAIL_SENDER_EMAIL=
-  export MAIL_SENDER_NAME=
-  export MAIL_SENDER_USERNAME=
-  export MAIL_SENDER_PASSWORD=
-  export MAIL_SMTP_SERVER=
-  export MAIL_SMTP_PORT=
-
-  export ADMIN_API_AUTH_TOKEN="changeme"
-
-
+  #dummy
