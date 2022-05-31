@@ -90,5 +90,4 @@ namespacesLoader: {}
 plansConfig: []
 logbackConfig: ""
 customEnvs: {}
-dataloreEnv: |
-  #dummy
+dataloreEnv: {}
