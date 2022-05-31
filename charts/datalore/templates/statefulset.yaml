@@ -74,8 +74,6 @@ spec:
             - mountPath: /opt/datalore/configs/agents-config.yaml
               name: agents-config
               subPath: agents-config.yaml
-            - mountPath: /opt/datalore/configs/environment_info
-              name: envs
             - mountPath: /opt/datalore/configs/databases
               name: databases-configs
             - mountPath: /opt/datalore/jetty/resources/logback.xml
@@ -86,6 +84,10 @@ spec:
               subPath: user_secret_env.sh
             - mountPath: /opt/data
               name: storage
+            {{- if .Values.customEnvs }}
+            - mountPath: /opt/datalore/configs/environment_info
+              name: envs
+            {{- end }}
             {{- if .Values.plansConfig }}
             - mountPath: /opt/datalore/configs/plans_config.yaml
               name: plans-config
@@ -122,12 +124,16 @@ spec:
         - name: logback-config
           configMap:
             name: {{ include "datalore.fullname" . }}-logback-config
-        - name: plans-config
-          configMap:
-            name: {{ include "datalore.fullname" . }}-plans-config
+        {{- if .Values.customEnvs }}
         - name: envs
           configMap:
             name: {{ include "datalore.fullname" . }}-envs-config
+        {{- end }}
+        {{- if .Values.plansConfig }}
+        - name: plans-config
+          configMap:
+            name: {{ include "datalore.fullname" . }}-plans-config
+        {{- end }}
         - name: databases-configs
           configMap:
             name: {{ include "datalore.fullname" . }}-databases-config
