@@ -62,6 +62,10 @@ spec:
               value: file:///opt/datalore/configs/databases/introspection.yaml
             - name: DATABASES_NAMESPACES_LOADER_K8S_YAML
               value: file:///opt/datalore/configs/databases/namespaces_loader.yaml
+            {{- if .Values.plansConfig }}
+            - name: DATALORE_PLANS_CONFIGURATION
+              value: file:///opt/datalore/configs/plans_config.yaml
+            {{- end }}
             - name: SQL_SERVER_HOST
               value: {{ .Values.sqlServerHost | default "datalore" | quote }}
             - name: SQL_SERVER_PORT
@@ -77,14 +81,16 @@ spec:
             - mountPath: /opt/datalore/jetty/resources/logback.xml
               name: logback-config
               subPath: logback.xml
-            - mountPath: /opt/datalore/configs/plans_config.yaml
-              name: plans-config
-              subPath: plans_config.yaml
             - mountPath: /opt/datalore/configs/env.sh
               name: secret-env
               subPath: user_secret_env.sh
             - mountPath: /opt/data
               name: storage
+            {{- if .Values.plansConfig }}
+            - mountPath: /opt/datalore/configs/plans_config.yaml
+              name: plans-config
+              subPath: plans_config.yaml
+            {{- end }}
           resources:
             {{- toYaml .Values.dataloreResources | nindent 12 }}
         {{- if .Values.internalDatabase }}
