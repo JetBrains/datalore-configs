@@ -1,3 +1,4 @@
+{{- if .Values.plansConfig }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,14 +7,5 @@ metadata:
     {{- include "datalore.labels" . | nindent 4 }}
 data:
   plans_config.yaml: |-
-{{- if .Values.plansConfig }}
 {{- toYaml .Values.plansConfig | nindent 4 }}
-{{- else }}
-    - planId: "Default"
-      default: true
-      instanceDurationQuotaMap:
-        k8s-datalore-agent: "PT100H"
-      diskUsageLimit: "10.00 GB"
-      numRunningInstancesLimit: 3
-      parallelInstancesQuota: "PT120H"
 {{- end }}
