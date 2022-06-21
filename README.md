@@ -2,4 +2,4 @@ This is the repository with configs required for installing [Datalore Enterprise
 
 
 You can find installation instruction here:
-* For [K8S](https://www.jetbrains.com/help/datalore/install-datalore-on-premise-using-kubernetes.html)
+* For [K8S](https://www.jetbrains.com/help/datalore/install-datalore-enterprise.html)
