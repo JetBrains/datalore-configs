@@ -70,6 +70,8 @@ spec:
               value: {{ .Values.sqlServerHost | default "datalore" | quote }}
             - name: SQL_SERVER_PORT
               value: {{ .Values.sqlServerPort | default "8081" | quote }}
+            - name: FS_SHARD_COUNT
+              value: "1"
           volumeMounts:
             - mountPath: /opt/datalore/configs/agents-config.yaml
               name: agents-config

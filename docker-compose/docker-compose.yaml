@@ -15,6 +15,7 @@ services:
       DB_PASSWORD: "changeme"
       DATABASES_DOCKER_NETWORK: "datalore-agents-network"
       ADMIN_API_AUTH_TOKEN: "changeme"
+      FS_SHARD_COUNT: "1"
   postgresql:
     image: jetbrains/datalore-postgres:2022.2
     expose: [ "5432" ]
