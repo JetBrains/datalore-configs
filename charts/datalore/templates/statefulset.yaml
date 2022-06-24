@@ -34,7 +34,7 @@ spec:
         - name: datalore
           securityContext:
             {{- toYaml .Values.dataloreSecurityContext | nindent 12 }}
-          image: "{{ .Values.serverImage.repository }}:{{ .Values.serverImage.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.serverImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.serverImage.pullPolicy }}
           ports:
             - name: http
@@ -99,7 +99,7 @@ spec:
         - name: postgres
           securityContext:
             {{- toYaml .Values.postgresSecurityContext | nindent 12 }}
-          image: "{{ .Values.postgresImage.repository }}:{{ .Values.postgresImage.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.postgresImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.postgresImage.pullPolicy }}
           ports:
             - containerPort: 5432

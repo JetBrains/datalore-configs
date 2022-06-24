@@ -27,7 +27,8 @@ data:
           restartPolicy: Never
           containers:
             - name: connection-check
-              image: jetbrains/datalore-database-command:{{ .Chart.AppVersion }}
+              image: {{ .Values.databaseCommandImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
+              imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
 {{- end }}
@@ -53,7 +54,8 @@ data:
           restartPolicy: Never
           containers:
             - name: introspection
-              image: jetbrains/datalore-database-command:{{ .Chart.AppVersion }}
+              image: {{ .Values.databaseCommandImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
+              imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
 {{- end }}
@@ -79,7 +81,8 @@ data:
           restartPolicy: Never
           containers:
             - name: connection-check
-              image: jetbrains/datalore-database-command:{{ .Chart.AppVersion }}
+              image: {{ .Values.databaseCommandImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
+              imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
 {{- end }}

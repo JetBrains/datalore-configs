@@ -35,7 +35,7 @@ data:
               enableServiceLinks: false
               containers:
                 - name: agent
-                  image: jetbrains/datalore-agent:{{ .Chart.AppVersion }}
+                  image: jetbrains/datalore-agent:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
                   securityContext:
                     privileged: true
                   env:
