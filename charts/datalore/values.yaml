@@ -1,13 +1,16 @@
 replicaCount: 1
 
+dataloreVersion: ""
+
 serverImage:
   repository: jetbrains/datalore-server
   pullPolicy: IfNotPresent
-  tag: ""
 postgresImage:
   repository: jetbrains/datalore-postgres
   pullPolicy: IfNotPresent
-  tag: ""
+databaseCommandImage:
+  repository: jetbrains/datalore-database-command
+  pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
