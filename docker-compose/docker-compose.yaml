@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   datalore:
-    image: jetbrains/datalore-server:2022.2
+    image: jetbrains/datalore-server:2022.2.2
     ports:
       - "8080:8080"
     expose: [ "8081", "5050", "4060" ]
@@ -16,7 +16,7 @@ services:
       DATABASES_DOCKER_NETWORK: "datalore-agents-network"
       ADMIN_API_AUTH_TOKEN: "changeme"
   postgresql:
-    image: jetbrains/datalore-postgres:2022.2
+    image: jetbrains/datalore-postgres:2022.2.2
     expose: [ "5432" ]
     networks:
       - datalore-backend-network
