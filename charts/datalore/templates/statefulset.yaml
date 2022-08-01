@@ -66,10 +66,10 @@ spec:
             - name: DATALORE_PLANS_CONFIGURATION
               value: file:///opt/datalore/configs/plans_config.yaml
             {{- end }}
-            - name: SQL_SERVER_HOST
-              value: {{ .Values.sqlServerHost | default "datalore" | quote }}
-            - name: SQL_SERVER_PORT
-              value: {{ .Values.sqlServerPort | default "8081" | quote }}
+            - name: SQL_CELLS_API_HOST
+              value: {{ .Values.sqlCellsApiHost | default "datalore" | quote }}
+            - name: SQL_CELLS_API_PORT
+              value: {{ .Values.sqlCellsApiPort | default "8081" | quote }}
           volumeMounts:
             - mountPath: /opt/datalore/configs/agents-config.yaml
               name: agents-config

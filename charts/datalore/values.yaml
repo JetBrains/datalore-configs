@@ -84,8 +84,8 @@ affinity: {}
 dbRootPassword: ""
 internalDatabase: true
 
-sqlServerHost: ""
-sqlServerPort: ""
+sqlCellsApiHost: ""
+sqlCellsApiPort: ""
 
 agentsConfig: {}
 connectionChecker: {}
