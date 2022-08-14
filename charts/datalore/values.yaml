@@ -14,6 +14,9 @@ databaseCommandImage:
 sqlSessionImage:
   repository: jetbrains/datalore-sql-session
   pullPolicy: IfNotPresent
+teamcityImage:
+  repository: jetbrains/datalore-teamcity
+  pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
@@ -34,6 +37,8 @@ dataloreSecurityContext:
   runAsUser: 5000
 postgresSecurityContext:
   runAsUser: 999
+teamcitySecurityContext:
+  runAsUser: 1000
 
 securityContext:
   fsGroup: 5000
@@ -101,6 +106,10 @@ internalDatabase: true
 
 sqlCellsApiHost: ""
 sqlCellsApiPort: ""
+
+teamcity:
+  enabled: false
+  token: ""
 
 agentsConfig: {}
 connectionChecker: {}
