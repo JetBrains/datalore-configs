@@ -86,7 +86,7 @@ data:
               securityContext:
                 runAsUser: 5000
 {{- end }}
-  sql-session.job.yaml: |+
+  sql_session.yaml: |+
 {{- if .Values.sqlSession }}
 {{- tpl (toYaml .Values.sqlSession) . | nindent 4 }}
 {{- else }}
