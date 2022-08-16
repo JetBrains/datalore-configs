@@ -11,6 +11,9 @@ postgresImage:
 databaseCommandImage:
   repository: jetbrains/datalore-database-command
   pullPolicy: IfNotPresent
+sqlSessionImage:
+  repository: jetbrains/datalore-sql-session
+  pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
@@ -91,6 +94,7 @@ agentsConfig: {}
 connectionChecker: {}
 introspection: {}
 namespacesLoader: {}
+sqlSession: {}
 plansConfig: []
 logbackConfig: ""
 customEnvs: {}

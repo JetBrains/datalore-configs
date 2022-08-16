@@ -86,3 +86,40 @@ data:
               securityContext:
                 runAsUser: 5000
 {{- end }}
+  sql-session.job.yaml: |+
+{{- if .Values.sqlSession }}
+{{- tpl (toYaml .Values.sqlSession) . | nindent 4 }}
+{{- else }}
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: sql-session-service
+    spec:
+      type: ClusterIP
+      ports:
+        - port: 8087
+          targetPort: 8087
+      selector:
+        app: sql-session
+    ---
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: sql-session
+      labels:
+        app: sql-session
+        datalore-databases: sql-session
+    spec:
+      backoffLimit: 1
+      ttlSecondsAfterFinished: 600
+      template:
+        metadata:
+          labels:
+            datalore-databases: sql-session
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: sql-session
+              image: {{ .Values.sqlSessionImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
+              imagePullPolicy: {{ .Values.sqlSessionImage.pullPolicy }}
+{{- end }}
