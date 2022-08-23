@@ -1,0 +1,25 @@
+services:
+  datalore:
+    ports:
+      - "5050:5050"
+      - "4060:4060"
+    environment:
+      TEAMCITY_PASSWORD: "changemeTeamcity"
+      TEAMCITY_USER: ""
+      TEAMCITY_SERVER_URL: "http://teamcity:8111"
+      COMPUTATION_HOST: "changeme"
+      AGENT_MANAGER_HOST: "changeme"
+  teamcity:
+    image: jetbrains/datalore-teamcity:2022.2.2
+    ports:
+      - "8111:8111"
+    expose: [ "8111" ]
+    networks:
+      - datalore-backend-network
+    volumes:
+      - "teamcity-storage:/data/volume"
+    environment:
+      DB_PASSWORD: "changeme"
+      TEAMCITY_PASSWORD: "changemeTeamcity"
+volumes:
+  teamcity-storage: { }
