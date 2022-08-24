@@ -84,7 +84,19 @@ tolerations: []
 
 affinity: {}
 
-dbRootPassword: ""
+databaseSecret:
+  # Specifies whether a secret should be created
+  create: false
+  # Annotations to add to the secret
+  annotations: {}
+  # The name of the secret to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+  # Set if create is true
+  password: ""
+  # Secret key name with a password for PostgreSQL
+  key: ROOT_PASSWORD
+
 internalDatabase: true
 
 sqlCellsApiHost: ""

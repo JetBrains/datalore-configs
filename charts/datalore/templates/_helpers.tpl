@@ -57,3 +57,10 @@ Create the name of the service account to use
 {{- define "datalore.serviceAccountName" -}}
 {{- default (include "datalore.fullname" .) .Values.serviceAccount.name }}
 {{- end }}
+
+{{/*
+Create the name of the database secret to use
+*/}}
+{{- define "datalore.databaseSecretName" -}}
+{{- default (include "datalore.fullname" .) .Values.databaseSecret.name }}
+{{- end }}

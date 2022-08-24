@@ -54,8 +54,8 @@ spec:
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "datalore.fullname" . }}-db
-                  key: ROOT_PASSWORD
+                  name: {{ include "datalore.databaseSecretName" . }}
+                  key: {{ quote .Values.databaseSecret.key }}
             - name: DATABASES_CONNECTION_CHECKER_K8S_YAML
               value: file:///opt/datalore/configs/databases/connection_checker.yaml
             - name: DATABASES_INTROSPECTION_K8S_YAML
