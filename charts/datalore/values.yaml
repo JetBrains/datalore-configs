@@ -86,7 +86,7 @@ affinity: {}
 
 databaseSecret:
   # Specifies whether a secret should be created
-  create: false
+  create: true
   # Annotations to add to the secret
   annotations: {}
   # The name of the secret to use.

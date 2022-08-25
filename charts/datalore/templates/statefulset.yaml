@@ -111,8 +111,8 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "datalore.fullname" . }}-db
-                  key: ROOT_PASSWORD
+                  name: {{ include "datalore.databaseSecretName" . }}
+                  key: {{ quote .Values.databaseSecret.key }}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresql-data

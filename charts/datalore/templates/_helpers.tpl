@@ -62,5 +62,5 @@ Create the name of the service account to use
 Create the name of the database secret to use
 */}}
 {{- define "datalore.databaseSecretName" -}}
-{{- default (include "datalore.fullname" .) .Values.databaseSecret.name }}
+{{- default (printf "%s-db" (include "datalore.fullname" .)) .Values.databaseSecret.name }}
 {{- end }}
