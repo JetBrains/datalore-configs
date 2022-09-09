@@ -10,6 +10,7 @@ data:
 {{- tpl (toYaml .Values.agentsConfig) . | nindent 4 }}
 {{- else }}
     k8s:
+      namespace: {{ .Release.Namespace }}
       instances:
         - id: k8s-datalore-agent
           label: "K8s Local"
