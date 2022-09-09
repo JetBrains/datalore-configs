@@ -1,6 +1,7 @@
 services:
   datalore:
     ports:
+      - "8081:8081"
       - "5050:5050"
       - "4060:4060"
     environment:
@@ -9,6 +10,7 @@ services:
       TEAMCITY_SERVER_URL: "http://teamcity:8111"
       COMPUTATION_HOST: "changeme"
       AGENT_MANAGER_HOST: "changeme"
+      AGENT_DISK_HOST: "changeme"
   teamcity:
     image: jetbrains/datalore-teamcity:2022.2.2
     ports:
