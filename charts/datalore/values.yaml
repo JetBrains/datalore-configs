@@ -1,5 +1,3 @@
-replicaCount: 1
-
 dataloreVersion: ""
 
 serverImage:
