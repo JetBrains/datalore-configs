@@ -72,16 +72,16 @@ spec:
               value: {{ .Values.sqlCellsApiHost | default "datalore" | quote }}
             - name: SQL_CELLS_API_PORT
               value: {{ .Values.sqlCellsApiPort | default "8081" | quote }}
-            {{- if .Values.teamcity.enabled }}
-            - name: TEAMCITY_SERVER_URL
-              value: {{ .Values.teamcity.serverUrl | default "http://127.0.0.1:8111" }}
-            - name: TEAMCITY_USER
-              value: {{ .Values.teamcity.user | default "" }}
-            - name: TEAMCITY_PASSWORD
+            {{- if .Values.external.enabled }}
+            - name: EXTERNAL_SERVER_URL
+              value: {{ .Values.external.serverUrl | default "http://127.0.0.1:8111" }}
+            - name: EXTERNAL_USER
+              value: {{ .Values.external.user | default "" }}
+            - name: EXTERNAL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "datalore.fullname" . }}-teamcity
-                  key: TEAMCITY_TOKEN
+                  name: {{ include "datalore.fullname" . }}-external
+                  key: EXTERNAL_PASSWORD
             {{- end }}
           volumeMounts:
             - mountPath: /opt/datalore/configs/agents-config.yaml
@@ -130,12 +130,12 @@ spec:
           resources:
             {{- toYaml .Values.postgresResources | nindent 12 }}
         {{- end }}
-        {{- if .Values.teamcity.enabled }}
-        - name: teamcity
+        {{- if .Values.external.enabled }}
+        - name: external-server
           securityContext:
-            {{- toYaml .Values.teamcitySecurityContext | nindent 12 }}
-          image: "{{ .Values.teamcityImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.teamcityImage.pullPolicy }}
+            {{- toYaml .Values.externalSecurityContext | nindent 12 }}
+          image: "{{ .Values.externalImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.externalImage.pullPolicy }}
           readinessProbe:
             httpGet:
               path: /login.html
@@ -146,18 +146,18 @@ spec:
               containerPort: 8111
           volumeMounts:
             - mountPath: /data/volume
-              name: teamcity
+              name: external
           env:
             - name: DEFAULT_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ include "datalore.fullname" . }}-db
                   key: ROOT_PASSWORD
-            - name: TEAMCITY_TOKEN
+            - name: EXTERNAL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "datalore.fullname" . }}-teamcity
-                  key: TEAMCITY_TOKEN
+                  name: {{ include "datalore.fullname" . }}-external
+                  key: EXTERNAL_PASSWORD
         {{- end }}
       volumes:
         - name: agents-config

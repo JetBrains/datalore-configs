@@ -12,7 +12,7 @@ databaseCommandImage:
 sqlSessionImage:
   repository: jetbrains/datalore-sql-session
   pullPolicy: IfNotPresent
-teamcityImage:
+externalImage:
   repository: jetbrains/datalore-teamcity
   pullPolicy: IfNotPresent
 
@@ -35,7 +35,7 @@ dataloreSecurityContext:
   runAsUser: 5000
 postgresSecurityContext:
   runAsUser: 999
-teamcitySecurityContext:
+externalSecurityContext:
   runAsUser: 1000
 
 securityContext:
@@ -105,7 +105,7 @@ internalDatabase: true
 sqlCellsApiHost: ""
 sqlCellsApiPort: ""
 
-teamcity:
+external:
   enabled: false
   token: ""
 

@@ -5,13 +5,12 @@ services:
       - "5050:5050"
       - "4060:4060"
     environment:
-      TEAMCITY_PASSWORD: "changemeTeamcity"
-      TEAMCITY_USER: ""
-      TEAMCITY_SERVER_URL: "http://teamcity:8111"
+      EXTERNAL_PASSWORD: "changemeExternal"
+      EXTERNAL_SERVER_URL: "http://external-server:8111"
       COMPUTATION_HOST: "changeme"
       AGENT_MANAGER_HOST: "changeme"
       AGENT_DISK_HOST: "changeme"
-  teamcity:
+  external-server:
     image: jetbrains/datalore-teamcity:2022.2.2
     ports:
       - "8111:8111"
@@ -19,9 +18,9 @@ services:
     networks:
       - datalore-backend-network
     volumes:
-      - "teamcity-storage:/data/volume"
+      - "external-storage:/data/volume"
     environment:
       DB_PASSWORD: "changeme"
-      TEAMCITY_PASSWORD: "changemeTeamcity"
+      EXTERNAL_PASSWORD: "changemeExternal"
 volumes:
-  teamcity-storage: { }
+  external-storage: { }
