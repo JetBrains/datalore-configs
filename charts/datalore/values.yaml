@@ -53,6 +53,7 @@ nodePorts:
   agentsManagerPort: 30091
   computationPort: 30092
   httpInternalPort: 30093
+  externalServerPort: 30094
 
 ingress:
   enabled: false

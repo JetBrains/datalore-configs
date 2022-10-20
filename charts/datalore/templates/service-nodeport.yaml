@@ -28,6 +28,11 @@ spec:
       protocol: TCP
       name: http-internal
       nodePort: {{ .Values.nodePorts.httpInternalPort }}
+    - port: 8111
+      targetPort: external-server
+      protocol: TCP
+      name: external-server
+      nodePort: {{ .Values.nodePorts.externalServerPort }}
   selector:
     {{- include "datalore.selectorLabels" . | nindent 4 }}
 {{ end }}

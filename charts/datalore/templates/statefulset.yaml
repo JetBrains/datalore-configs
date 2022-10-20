@@ -139,10 +139,10 @@ spec:
           readinessProbe:
             httpGet:
               path: /login.html
-              port: server-port
+              port: external-server
             initialDelaySeconds: 20
           ports:
-            - name: server-port
+            - name: external-server
               containerPort: 8111
           volumeMounts:
             - mountPath: /data/volume
