@@ -13,7 +13,7 @@ sqlSessionImage:
   repository: jetbrains/datalore-sql-session
   pullPolicy: IfNotPresent
 externalImage:
-  repository: jetbrains/datalore-teamcity
+  repository: jetbrains/datalore-external
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
