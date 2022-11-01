@@ -109,6 +109,7 @@ sqlCellsApiPort: ""
 external:
   enabled: false
   token: ""
+  license: ""
 
 agentsConfig: {}
 connectionChecker: {}
