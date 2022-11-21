@@ -12,6 +12,7 @@ services:
       - "datalore-storage:/opt/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
+      #DATALORE_PUBLIC_URL: "https://datalore.example.com"
       DB_PASSWORD: "changeme"
       DATABASES_DOCKER_NETWORK: "datalore-agents-network"
       SQL_SESSION_DOCKER_NETWORK: "datalore-agents-network"
