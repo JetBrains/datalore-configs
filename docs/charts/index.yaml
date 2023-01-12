@@ -3,6 +3,15 @@ entries:
   datalore:
   - apiVersion: v2
     appVersion: 2022.3.1
+    created: "2023-01-12T13:52:30.301515696+01:00"
+    digest: 970e9fc1d1366363e4757869dae6e6d5dfb21e0100815f2c3a2b88e3c7d4a2b9
+    name: datalore
+    type: application
+    urls:
+    - https://jetbrains.github.io/datalore-configs/charts/datalore-0.2.7-rc.1.tgz
+    version: 0.2.7-rc.1
+  - apiVersion: v2
+    appVersion: 2022.3.1
     created: "2022-12-16T17:13:50.231214794+01:00"
     digest: 80479b8e11b3a1028c58a6894a981cac0714a28a2aea76d8629e461aad1a4b4b
     name: datalore
@@ -164,4 +173,4 @@ entries:
     urls:
     - https://jetbrains.github.io/datalore-configs/charts/hub-0.1.0.tgz
     version: 0.1.0
-generated: "2022-12-16T17:13:50.222553682+01:00"
+generated: "2023-01-12T13:52:30.295655183+01:00"

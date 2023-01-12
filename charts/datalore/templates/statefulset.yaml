@@ -83,6 +83,13 @@ spec:
                   name: {{ include "datalore.fullname" . }}-external
                   key: EXTERNAL_PASSWORD
             {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ include "datalore.fullname" . }}-user-env
+            {{- if .Values.dataloreEnvExternalSecret }}
+            - secretRef:
+                name: {{ .Values.dataloreEnvExternalSecret }}
+            {{- end }}
           volumeMounts:
             - mountPath: /opt/datalore/configs/agents-config.yaml
               name: agents-config
@@ -92,9 +99,6 @@ spec:
             - mountPath: /opt/datalore/jetty/resources/logback.xml
               name: logback-config
               subPath: logback.xml
-            - mountPath: /opt/datalore/configs/env.sh
-              name: secret-env
-              subPath: user_secret_env.sh
             - mountPath: /opt/data
               name: storage
             {{- if .Values.customEnvs }}
@@ -182,9 +186,6 @@ spec:
         - name: databases-configs
           configMap:
             name: {{ include "datalore.fullname" . }}-databases-config
-        - name: secret-env
-          secret:
-            secretName: {{ include "datalore.fullname" . }}-user-env
         {{- if .Values.external.enabled }}
         - name: external-license
           secret:
