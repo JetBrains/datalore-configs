@@ -260,13 +260,13 @@ aws:
       default: true
 
     - id: large
-      awsTag: r5.large
+      awsTag: r6a.large
       label: \"Large machine\"
       description: \"Enjoy a more powerful machine designed for tasks with huge datasets.\"
       features:
         - \"2 vCPU cores\"
         - \"16 GB RAM\"
-        - \"AWS name: r5.large\"
+        - \"AWS name: r6a.large\"
       ram: 16
       isGpu: false
       spot: true
