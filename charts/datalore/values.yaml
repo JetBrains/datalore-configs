@@ -49,6 +49,7 @@ computationPort: 4060
 
 nodePorts:
   enabled: false
+  externalTrafficPolicy: Local
   httpPort: 30090
   agentsManagerPort: 30091
   computationPort: 30092
