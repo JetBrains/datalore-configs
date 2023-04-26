@@ -3,7 +3,7 @@ boto3==1.17.7
 descartes==1.1.0
 fastai==1.0.61
 gensim==3.8.3
-lxml==4.6.3
+lxml==4.9.1
 matplotlib==3.3.4
 nbformat==5.1.2
 numpy==1.19.5
