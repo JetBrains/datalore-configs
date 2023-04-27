@@ -1,1 +1,0 @@
-ssh_keypair = "keypair_name"
