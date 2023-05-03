@@ -11,5 +11,5 @@ roleRef:
   apiGroup: ""
 subjects:
   - kind: ServiceAccount
-    name: {{ include "datalore.fullname" . }}
+    name: {{ include "datalore.serviceAccountName" . }}
 {{- end }}
