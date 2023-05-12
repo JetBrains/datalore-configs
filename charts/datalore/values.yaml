@@ -46,6 +46,7 @@ service:
   port: 8080
 
 computationPort: 4060
+agentsManagerPort: 5050
 
 nodePorts:
   enabled: false

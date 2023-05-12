@@ -42,7 +42,7 @@ spec:
             - name: http-internal
               containerPort: 8081
             - name: agents-manager
-              containerPort: 5050
+              containerPort: {{ .Values.agentsManagerPort }}
             - name: computation
               containerPort: {{ .Values.computationPort }}
           livenessProbe:

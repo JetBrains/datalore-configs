@@ -13,7 +13,7 @@ spec:
       protocol: TCP
       name: http
       nodePort: {{ .Values.nodePorts.httpPort }}
-    - port: 5050
+    - port: {{ .Values.agentsManagerPort }}
       targetPort: agents-manager
       protocol: TCP
       name: agents-manager
