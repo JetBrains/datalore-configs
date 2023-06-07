@@ -96,7 +96,7 @@ spec:
               subPath: agents-config.yaml
             - mountPath: /opt/datalore/configs/databases
               name: databases-configs
-            - mountPath: /opt/datalore/jetty/resources/logback.xml
+            - mountPath: /opt/datalore/tomcat/conf/logback.xml,
               name: logback-config
               subPath: logback.xml
             - mountPath: /opt/data
