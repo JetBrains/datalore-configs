@@ -120,6 +120,6 @@ data:
           restartPolicy: Never
           containers:
             - name: sql-session
-              image: {{ .Values.sqlSessionImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
-              imagePullPolicy: {{ .Values.sqlSessionImage.pullPolicy }}
+              image: {{ .Values.databaseCommandImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
+              imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
 {{- end }}

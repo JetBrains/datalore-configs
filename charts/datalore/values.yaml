@@ -9,9 +9,6 @@ postgresImage:
 databaseCommandImage:
   repository: jetbrains/datalore-database-command
   pullPolicy: IfNotPresent
-sqlSessionImage:
-  repository: jetbrains/datalore-sql-session
-  pullPolicy: IfNotPresent
 externalImage:
   repository: jetbrains/datalore-external
   pullPolicy: IfNotPresent
