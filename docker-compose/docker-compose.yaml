@@ -14,8 +14,6 @@ services:
     environment:
       #DATALORE_PUBLIC_URL: "https://datalore.example.com"
       DB_PASSWORD: "changeme"
-      DATABASES_DOCKER_NETWORK: "datalore-agents-network"
-      SQL_SESSION_DOCKER_NETWORK: "datalore-agents-network"
   postgresql:
     image: jetbrains/datalore-postgres:2023.3
     expose: [ "5432" ]
