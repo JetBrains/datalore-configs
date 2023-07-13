@@ -6,10 +6,10 @@ metadata:
   labels:
     {{- include "datalore.labels" . | nindent 4 }}
 rules:
-  - apiGroups: [""]
-    resources: ["services", "pods"]
-    verbs: ["create", "delete", "get", "list"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [ "" ]
+    resources: [ "services", "pods" ]
+    verbs: [ "create", "delete", "get", "list", "patch" ]
+  - apiGroups: [ "batch" ]
+    resources: [ "jobs" ]
+    verbs: [ "create", "delete", "get", "list", "deletecollection" ]
 {{- end }}
