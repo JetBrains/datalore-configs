@@ -42,9 +42,11 @@ data:
                   env:
                     - name: MAX_HEAP_SIZE
                       value: 512m
+                  {{- if .Values.logbackConfig }}
                   volumeMounts:
                     - mountPath: /etc/datalore/logback-config
                       name: logback-config
+                  {{- end }}
                   resources:
                     limits:
                       cpu: "1"
@@ -52,8 +54,10 @@ data:
                     requests:
                       cpu: "200m"
                       memory: "2048Mi"
+              {{- if .Values.logbackConfig }}
               volumes:
                 - name: logback-config
                   configMap:
                     name: {{ include "datalore.fullname" . }}-logback-config
+              {{- end }}
 {{- end }}
