@@ -96,9 +96,11 @@ spec:
               subPath: agents-config.yaml
             - mountPath: /opt/datalore/configs/databases
               name: databases-configs
+            {{- if .Values.logbackConfig }}
             - mountPath: /opt/datalore/tomcat/conf/logback.xml
               name: logback-config
               subPath: logback.xml
+            {{- end }}
             - mountPath: /opt/data
               name: storage
             {{- if .Values.customEnvs }}
@@ -170,9 +172,11 @@ spec:
         - name: agents-config
           configMap:
             name: {{ include "datalore.fullname" . }}-agents-config
+        {{- if .Values.logbackConfig }}
         - name: logback-config
           configMap:
             name: {{ include "datalore.fullname" . }}-logback-config
+        {{- end }}
         {{- if .Values.customEnvs }}
         - name: envs
           configMap:
