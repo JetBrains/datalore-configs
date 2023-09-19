@@ -87,6 +87,9 @@ spec:
                   name: {{ include "datalore.fullname" . }}-external
                   key: EXTERNAL_PASSWORD
             {{- end }}
+            {{- if .Values.dataloreEnvRaw }}
+            {{- toYaml .Values.dataloreEnvRaw | nindent 12 }}
+            {{- end }}
           envFrom:
             - secretRef:
                 name: {{ include "datalore.fullname" . }}-user-env
