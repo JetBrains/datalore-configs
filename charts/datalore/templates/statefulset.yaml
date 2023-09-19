@@ -68,10 +68,14 @@ spec:
             - name: DATALORE_PLANS_CONFIGURATION
               value: file:///opt/datalore/configs/plans_config.yaml
             {{- end }}
+            {{- if .Values.sqlCellsApiHost }}
             - name: SQL_CELLS_API_HOST
-              value: {{ .Values.sqlCellsApiHost | default "datalore" | quote }}
+              value: {{ .Values.sqlCellsApiHost }}
+            {{- end }}
+            {{- if .Values.sqlCellsApiPort }}
             - name: SQL_CELLS_API_PORT
-              value: {{ .Values.sqlCellsApiPort | default "8081" | quote }}
+              value: {{ .Values.sqlCellsApiPort }}
+            {{- end }}
             {{- if .Values.external.enabled }}
             - name: EXTERNAL_SERVER_URL
               value: {{ .Values.external.serverUrl | default "http://127.0.0.1:8111" }}
