@@ -118,4 +118,5 @@ plansConfig: []
 logbackConfig: ""
 customEnvs: {}
 dataloreEnv: {}
+dataloreEnvRaw: []
 dataloreEnvExternalSecret: ""
