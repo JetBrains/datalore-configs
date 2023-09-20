@@ -74,7 +74,7 @@ spec:
             {{- end }}
             {{- if .Values.sqlCellsApiPort }}
             - name: SQL_CELLS_API_PORT
-              value: {{ .Values.sqlCellsApiPort }}
+              value: {{ quote .Values.sqlCellsApiPort }}
             {{- end }}
             {{- if .Values.external.enabled }}
             - name: EXTERNAL_SERVER_URL
