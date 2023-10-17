@@ -18,7 +18,6 @@ metadata:
   name: {{ $fullName }}
   labels:
     {{- include "datalore.labels" . | nindent 4 }}
-    ver: {{ .Capabilities.KubeVersion.GitVersion }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
