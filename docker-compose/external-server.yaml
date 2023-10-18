@@ -11,7 +11,7 @@ services:
       AGENT_MANAGER_HOST: "changeme"
       AGENT_DISK_HOST: "changeme"
   external-server:
-    image: jetbrains/datalore-external:2023.5
+    image: jetbrains/datalore-external:2023.5.1
     ports:
       - "8111:8111"
     expose: [ "8111" ]
