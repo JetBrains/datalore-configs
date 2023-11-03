@@ -18,8 +18,7 @@ data:
           features:
             - "1 CPU cores"
             - "2 GB RAM"
-          minAllowed: 1
-          maxAllowed: 1
+          initialPoolSize: 1
           numCPUs: 1
           cpuMemoryText: "2 GB"
           numGPUs: 0
