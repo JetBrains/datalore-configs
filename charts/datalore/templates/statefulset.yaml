@@ -64,6 +64,12 @@ spec:
               value: file:///opt/datalore/configs/databases/namespaces_loader.yaml
             - name: SQL_SESSION_K8S_YAML
               value: file:///opt/datalore/configs/databases/sql_session.yaml
+            - name: DATALORE_NAMESPACE
+              value: {{ .Release.Namespace }}
+            - name: DATALORE_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             {{- if .Values.plansConfig }}
             - name: DATALORE_PLANS_CONFIGURATION
               value: file:///opt/datalore/configs/plans_config.yaml
