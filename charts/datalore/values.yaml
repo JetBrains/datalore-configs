@@ -3,15 +3,23 @@ dataloreVersion: ""
 serverImage:
   repository: jetbrains/datalore-server
   pullPolicy: IfNotPresent
+  versionOverride: ""
 postgresImage:
   repository: jetbrains/datalore-postgres
   pullPolicy: IfNotPresent
+  versionOverride: ""
 databaseCommandImage:
   repository: jetbrains/datalore-database-command
   pullPolicy: IfNotPresent
+  versionOverride: ""
 externalImage:
   repository: jetbrains/datalore-external
   pullPolicy: IfNotPresent
+  versionOverride: ""
+agentImage:
+  repository: jetbrains/datalore-agent
+  pullPolicy: IfNotPresent
+  versionOverride: ""
 
 imagePullSecrets: []
 nameOverride: ""

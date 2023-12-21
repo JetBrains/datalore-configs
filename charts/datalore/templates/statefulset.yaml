@@ -34,7 +34,7 @@ spec:
         - name: datalore
           securityContext:
             {{- toYaml .Values.dataloreSecurityContext | nindent 12 }}
-          image: "{{ .Values.serverImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}"
+          image: "{{ .Values.serverImage.repository }}:{{ include "datalore.serverImage.version" . }}"
           imagePullPolicy: {{ .Values.serverImage.pullPolicy }}
           ports:
             - name: http
@@ -125,7 +125,7 @@ spec:
         - name: postgres
           securityContext:
             {{- toYaml .Values.postgresSecurityContext | nindent 12 }}
-          image: "{{ .Values.postgresImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}"
+          image: "{{ .Values.postgresImage.repository }}:{{ include "datalore.postgresImage.version" . }}"
           imagePullPolicy: {{ .Values.postgresImage.pullPolicy }}
           ports:
             - containerPort: 5432
@@ -147,7 +147,7 @@ spec:
         - name: external-server
           securityContext:
             {{- toYaml .Values.externalSecurityContext | nindent 12 }}
-          image: "{{ .Values.externalImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}"
+          image: "{{ .Values.externalImage.repository }}:{{ include "datalore.externalImage.version" . }}"
           imagePullPolicy: {{ .Values.externalImage.pullPolicy }}
           readinessProbe:
             httpGet:

@@ -27,7 +27,7 @@ data:
           restartPolicy: Never
           containers:
             - name: connection-check
-              image: {{ .Values.databaseCommandImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
+              image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
@@ -54,7 +54,7 @@ data:
           restartPolicy: Never
           containers:
             - name: introspection
-              image: {{ .Values.databaseCommandImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
+              image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
@@ -81,7 +81,7 @@ data:
           restartPolicy: Never
           containers:
             - name: connection-check
-              image: {{ .Values.databaseCommandImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
+              image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
@@ -120,6 +120,6 @@ data:
           restartPolicy: Never
           containers:
             - name: sql-session
-              image: {{ .Values.databaseCommandImage.repository }}:{{ .Values.dataloreVersion | default .Chart.AppVersion }}
+              image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
 {{- end }}

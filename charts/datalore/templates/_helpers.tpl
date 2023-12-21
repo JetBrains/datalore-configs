@@ -64,3 +64,39 @@ Create the name of the database secret to use
 {{- define "datalore.databaseSecretName" -}}
 {{- default (printf "%s-db" (include "datalore.fullname" .)) .Values.databaseSecret.name }}
 {{- end }}
+
+{{- define "datalore.serverImage.version" -}}
+{{- if .Values.serverImage.versionOverride }}
+{{- .Values.serverImage.versionOverride }}
+{{- else }}
+{{- .Values.dataloreVersion | default .Chart.AppVersion }}
+{{- end }}
+{{- end }}
+{{- define "datalore.postgresImage.version" -}}
+{{- if .Values.postgresImage.versionOverride }}
+{{- .Values.postgresImage.versionOverride }}
+{{- else }}
+{{- .Values.dataloreVersion | default .Chart.AppVersion }}
+{{- end }}
+{{- end }}
+{{- define "datalore.databaseCommandImage.version" -}}
+{{- if .Values.databaseCommandImage.versionOverride }}
+{{- .Values.databaseCommandImage.versionOverride }}
+{{- else }}
+{{- .Values.dataloreVersion | default .Chart.AppVersion }}
+{{- end }}
+{{- end }}
+{{- define "datalore.externalImage.version" -}}
+{{- if .Values.externalImage.versionOverride }}
+{{- .Values.externalImage.versionOverride }}
+{{- else }}
+{{- .Values.dataloreVersion | default .Chart.AppVersion }}
+{{- end }}
+{{- end }}
+{{- define "datalore.agentImage.version" -}}
+{{- if .Values.agentImage.versionOverride }}
+{{- .Values.agentImage.versionOverride }}
+{{- else }}
+{{- .Values.dataloreVersion | default .Chart.AppVersion }}
+{{- end }}
+{{- end }}
