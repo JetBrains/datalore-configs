@@ -60,4 +60,16 @@ data:
                   configMap:
                     name: {{ include "datalore.fullname" . }}-logback-config
               {{- end }}
+              {{- with .Values.agentsNodeSelector }}
+              nodeSelector:
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with .Values.agentsAffinity }}
+              affinity:
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with .Values.agentsTolerations }}
+              tolerations:
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
 {{- end }}

@@ -89,10 +89,11 @@ volumes: []
 volumeClaimTemplates: []
 
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
+agentsNodeSelector: {}
+agentsTolerations: []
+agentsAffinity: {}
 
 databaseSecret:
   # Specifies whether a secret should be created

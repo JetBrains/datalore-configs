@@ -31,6 +31,18 @@ data:
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
+          {{- with .Values.agentsNodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsAffinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsTolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
 {{- end }}
   introspection.yaml: |-
 {{- if .Values.introspection }}
@@ -58,6 +70,18 @@ data:
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
+          {{- with .Values.agentsNodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsAffinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsTolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
 {{- end }}
   namespaces_loader.yaml: |-
 {{- if .Values.namespacesLoader }}
@@ -85,6 +109,18 @@ data:
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
+          {{- with .Values.agentsNodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsAffinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsTolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
 {{- end }}
   sql_session.yaml: |+
 {{- if .Values.sqlSession }}
@@ -122,4 +158,16 @@ data:
             - name: sql-session
               image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
+          {{- with .Values.agentsNodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsAffinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsTolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
 {{- end }}
