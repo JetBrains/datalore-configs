@@ -1,38 +1,42 @@
-{{ if .Values.nodePorts.enabled }}
+{{ if .Values.externalService.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "datalore.fullname" . }}-nodeport
+  name: {{ include "datalore.fullname" . }}-external
   labels:
     {{- include "datalore.labels" . | nindent 4 }}
+  {{- with .Values.externalService.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
-  type: NodePort
+  type: {{ .Values.externalService.type }}
   ports:
     - port: 8080
       targetPort: http
       protocol: TCP
       name: http
-      nodePort: {{ .Values.nodePorts.httpPort }}
+      nodePort: {{ .Values.externalService.httpPort }}
     - port: {{ .Values.agentsManagerPort }}
       targetPort: agents-manager
       protocol: TCP
       name: agents-manager
-      nodePort: {{ .Values.nodePorts.agentsManagerPort }}
+      nodePort: {{ .Values.externalService.agentsManagerPort }}
     - port: {{ .Values.computationPort }}
       targetPort: computation
       protocol: TCP
       name: computation
-      nodePort: {{ .Values.nodePorts.computationPort }}
-    - port: 8081
+      nodePort: {{ .Values.externalService.computationPort }}
+    - port: {{ .Values.httpInternalPort }}
       targetPort: http-internal
       protocol: TCP
       name: http-internal
-      nodePort: {{ .Values.nodePorts.httpInternalPort }}
-    - port: 8111
+      nodePort: {{ .Values.externalService.httpInternalPort }}
+    - port: {{ .Values.externalServerPort }}
       targetPort: external-server
       protocol: TCP
       name: external-server
-      nodePort: {{ .Values.nodePorts.externalServerPort }}
+      nodePort: {{ .Values.externalService.externalServerPort }}
   selector:
     {{- include "datalore.selectorLabels" . | nindent 4 }}
 {{ end }}

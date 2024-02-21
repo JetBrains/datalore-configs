@@ -48,9 +48,14 @@ service:
 
 computationPort: 4060
 agentsManagerPort: 5050
+httpInternalPort: 8081
+externalServerPort: 5123
 
-nodePorts:
+externalService:
   enabled: false
+  annotations: {}
+  type: NodePort
+
   httpPort: 30090
   agentsManagerPort: 30091
   computationPort: 30092

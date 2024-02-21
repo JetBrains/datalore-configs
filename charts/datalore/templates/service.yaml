@@ -11,15 +11,15 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-    - port: 8081
+    - port: {{ .Values.httpInternalPort }}
       targetPort: http-internal
       protocol: TCP
       name:  http-internal
-    - port: 5050
+    - port: {{ .Values.agentsManagerPort }}
       targetPort: agents-manager
       protocol: TCP
       name: agents-manager
-    - port: 4060
+    - port: {{ .Values.computationPort }}
       targetPort: computation
       protocol: TCP
       name: computation
