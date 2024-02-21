@@ -12,10 +12,6 @@ databaseCommandImage:
   repository: jetbrains/datalore-database-command
   pullPolicy: IfNotPresent
   versionOverride: ""
-externalImage:
-  repository: jetbrains/datalore-external
-  pullPolicy: IfNotPresent
-  versionOverride: ""
 agentImage:
   repository: jetbrains/datalore-agent
   pullPolicy: IfNotPresent
@@ -112,11 +108,6 @@ internalDatabase: true
 
 sqlCellsApiHost: "datalore"
 sqlCellsApiPort: "8081"
-
-external:
-  enabled: false
-  token: ""
-  license: ""
 
 agentsConfig: {}
 connectionChecker: {}

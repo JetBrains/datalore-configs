@@ -86,13 +86,6 @@ Create the name of the database secret to use
 {{- .Values.dataloreVersion | default .Chart.AppVersion }}
 {{- end }}
 {{- end }}
-{{- define "datalore.externalImage.version" -}}
-{{- if .Values.externalImage.versionOverride }}
-{{- .Values.externalImage.versionOverride }}
-{{- else }}
-{{- .Values.dataloreVersion | default .Chart.AppVersion }}
-{{- end }}
-{{- end }}
 {{- define "datalore.agentImage.version" -}}
 {{- if .Values.agentImage.versionOverride }}
 {{- .Values.agentImage.versionOverride }}
