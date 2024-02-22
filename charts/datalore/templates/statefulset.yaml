@@ -45,6 +45,8 @@ spec:
               containerPort: {{ .Values.agentsManagerPort }}
             - name: computation
               containerPort: {{ .Values.computationPort }}
+            - name: external-server
+              containerPort: {{ .Values.externalServerPort }}
           livenessProbe:
             initialDelaySeconds: 120
             httpGet:
