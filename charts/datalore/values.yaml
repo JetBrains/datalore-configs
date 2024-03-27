@@ -119,6 +119,7 @@ connectionChecker: {}
 introspection: {}
 namespacesLoader: {}
 sqlSession: {}
+sqlSessionService: {}
 plansConfig: []
 logbackConfig: ""
 customEnvs: {}

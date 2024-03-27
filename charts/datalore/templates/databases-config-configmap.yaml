@@ -122,9 +122,9 @@ data:
             {{- toYaml . | nindent 12 }}
           {{- end }}
 {{- end }}
-  sql_session.yaml: |+
-{{- if .Values.sqlSession }}
-{{- tpl (toYaml .Values.sqlSession) . | nindent 4 }}
+  sql_session.yaml: |-
+{{- if .Values.sqlSessionService }}
+{{- tpl (toYaml .Values.sqlSessionService) . | nindent 4 }}
 {{- else }}
     apiVersion: v1
     kind: Service
@@ -137,7 +137,11 @@ data:
           targetPort: 8087
       selector:
         app: sql-session
+{{- end }}
     ---
+{{- if .Values.sqlSession }}
+{{- tpl (toYaml .Values.sqlSession) . | nindent 4 }}
+{{- else }}
     apiVersion: batch/v1
     kind: Job
     metadata:
