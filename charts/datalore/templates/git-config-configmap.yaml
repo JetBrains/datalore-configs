@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "datalore.fullname" . }}-git-config
+  labels:
+    {{- include "datalore.labels" . | nindent 4 }}
+data:
+  fetch_job.yaml: |-
+{{- if .Values.gitFetch }}
+{{- tpl (toYaml .Values.gitFetch) . | nindent 4 }}
+{{- else }}
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: fetch
+      labels:
+        datalore-git-task: fetch
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 120
+      ttlSecondsAfterFinished: 600
+      template:
+        metadata:
+          labels:
+            datalore-git-task: fetch
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: fetch
+              image: {{ .Values.gitTaskImage.repository }}:{{ include "datalore.gitTaskImage.version" . }}
+              imagePullPolicy: {{ .Values.gitTaskImage.pullPolicy }}
+          {{- with .Values.agentsNodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsAffinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsTolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+{{- end }}
+  clone_job.yaml: |-
+{{- if .Values.gitClone }}
+{{- tpl (toYaml .Values.gitClone) . | nindent 4 }}
+{{- else }}
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: clone
+      labels:
+        datalore-git-task: clone
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 300
+      ttlSecondsAfterFinished: 600
+      template:
+        metadata:
+          labels:
+            datalore-git-task: clone
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: clone
+              image: {{ .Values.gitTaskImage.repository }}:{{ include "datalore.gitTaskImage.version" . }}
+              imagePullPolicy: {{ .Values.gitTaskImage.pullPolicy }}
+          {{- with .Values.agentsNodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsAffinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsTolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+{{- end }}
