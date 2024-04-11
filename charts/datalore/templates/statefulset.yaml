@@ -66,6 +66,10 @@ spec:
               value: file:///opt/datalore/configs/databases/namespaces_loader.yaml
             - name: SQL_SESSION_K8S_YAML
               value: file:///opt/datalore/configs/databases/sql_session.yaml
+            - name: GIT_FETCH_TASK_K8S_YAML
+              value: file:///opt/datalore/configs/git/fetch_job.yaml
+            - name: GIT_CLONE_TASK_K8S_YAML
+              value: file:///opt/datalore/configs/git/clone_job.yaml
             - name: DATALORE_NAMESPACE
               value: {{ .Release.Namespace }}
             - name: DATALORE_POD_NAME
@@ -100,6 +104,8 @@ spec:
               subPath: agents-config.yaml
             - mountPath: /opt/datalore/configs/databases
               name: databases-configs
+            - mountPath: /opt/datalore/configs/git
+              name: git-configs
             {{- if .Values.logbackConfig }}
             - mountPath: /opt/datalore/tomcat/conf/logback.xml
               name: logback-config
@@ -162,6 +168,9 @@ spec:
         - name: databases-configs
           configMap:
             name: {{ include "datalore.fullname" . }}-databases-config
+        - name: git-configs
+          configMap:
+            name: {{ include "datalore.fullname" . }}-git-config
         {{- if .Values.volumes }}
         {{- toYaml .Values.volumes | nindent 8 }}
         {{- end }}

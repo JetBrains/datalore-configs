@@ -86,6 +86,13 @@ Create the name of the database secret to use
 {{- .Values.dataloreVersion | default .Chart.AppVersion }}
 {{- end }}
 {{- end }}
+{{- define "datalore.gitTaskImage.version" -}}
+{{- if .Values.gitTaskImage.versionOverride }}
+{{- .Values.gitTaskImage.versionOverride }}
+{{- else }}
+{{- .Values.dataloreVersion | default .Chart.AppVersion }}
+{{- end }}
+{{- end }}
 {{- define "datalore.agentImage.version" -}}
 {{- if .Values.agentImage.versionOverride }}
 {{- .Values.agentImage.versionOverride }}

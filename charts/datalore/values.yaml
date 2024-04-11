@@ -12,6 +12,10 @@ databaseCommandImage:
   repository: jetbrains/datalore-database-command
   pullPolicy: IfNotPresent
   versionOverride: ""
+gitTaskImage:
+  repository: jetbrains/datalore-git-task
+  pullPolicy: IfNotPresent
+  versionOverride: ""
 agentImage:
   repository: jetbrains/datalore-agent
   pullPolicy: IfNotPresent
@@ -120,6 +124,9 @@ introspection: {}
 namespacesLoader: {}
 sqlSession: {}
 sqlSessionService: {}
+gitFetch: {}
+gitClone: {}
+
 plansConfig: []
 logbackConfig: ""
 customEnvs: {}
