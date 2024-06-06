@@ -3,7 +3,7 @@
 
 locals {
   aws_region = "eu-central-1"
-  cluster_version = "1.28"
+  cluster_version = "1.30"
   cluster_name = "datalore-eks-${random_string.suffix.result}"
   instance_type = "t3.large"
   min_size = 1
@@ -45,7 +45,7 @@ resource "random_string" "suffix" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.0.0"
+  version = "5.8.1"
 
   name = "datalore-vpc"
 
@@ -73,7 +73,7 @@ module "vpc" {
 module "eks" {
 
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.15.3"
+  version = "20.13.1"
 
   cluster_name    = local.cluster_name
   cluster_version = local.cluster_version
