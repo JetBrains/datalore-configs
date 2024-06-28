@@ -30,6 +30,10 @@ data "aws_ami" "eks_ubuntu_ami" {
   }
 }
 
+output "ami" {
+  value = data.aws_ami.eks_ubuntu_ami.arn
+}
+
 # Filter out local zones, which are not currently supported with managed node groups
 data "aws_availability_zones" "available" {
   filter {
@@ -78,23 +82,41 @@ module "eks" {
   cluster_name    = local.cluster_name
   cluster_version = local.cluster_version
 
-  vpc_id                         = module.vpc.vpc_id
-  subnet_ids                     = module.vpc.private_subnets
+  vpc_id = module.vpc.vpc_id
+  subnet_ids = module.vpc.private_subnets
   cluster_endpoint_public_access = true
+  cluster_endpoint_private_access = true
 
-  eks_managed_node_groups = {
-    one = {
-      name = "datalore-ubuntu-nodes"
-      ami_type = "CUSTOM"
-      ami_id = "${data.aws_ami.eks_ubuntu_ami.image_id}"
-      instance_types = [local.instance_type]
-      use_custom_launch_template = true
-      enable_bootstrap_user_data = true
-      min_size     = local.min_size
-      desired_size = local.desired_size
-      max_size     = local.max_size
-    }
-  }
+  enable_irsa = true
+}
+
+module "eks_managed_node_group" {
+  source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
+
+  name = "datalore-ubuntu-nodes"
+
+  cluster_name = local.cluster_name
+  cluster_version = local.cluster_version
+  cluster_service_cidr = module.eks.cluster_service_cidr
+  subnet_ids = module.vpc.private_subnets
+
+  cluster_primary_security_group_id = module.eks.cluster_primary_security_group_id
+  vpc_security_group_ids = [
+    module.eks.cluster_primary_security_group_id,
+    module.eks.cluster_security_group_id,
+  ]
+  use_custom_launch_template = true
+  enable_bootstrap_user_data = true
+
+  min_size     = local.min_size
+  desired_size = local.desired_size
+  max_size     = local.max_size
+
+  instance_types = [local.instance_type]
+
+  ami_type = "CUSTOM"
+  ami_id = "${data.aws_ami.eks_ubuntu_ami.image_id}"
+
 }
 
 # https://aws.amazon.com/blogs/containers/amazon-ebs-csi-driver-is-now-generally-available-in-amazon-eks-add-ons/ 
@@ -105,7 +127,6 @@ data "aws_iam_policy" "ebs_csi_policy" {
 module "irsa-ebs-csi" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
   version = "4.7.0"
-
   create_role                   = true
   role_name                     = "AmazonEKSTFEBSCSIRole-${module.eks.cluster_name}"
   provider_url                  = module.eks.oidc_provider
@@ -116,10 +137,11 @@ module "irsa-ebs-csi" {
 resource "aws_eks_addon" "ebs-csi" {
   cluster_name             = module.eks.cluster_name
   addon_name               = "aws-ebs-csi-driver"
-  addon_version            = "v1.20.0-eksbuild.1"
+  addon_version            = "v1.31.0-eksbuild.1"
   service_account_role_arn = module.irsa-ebs-csi.iam_role_arn
   tags = {
     "eks_addon" = "ebs-csi"
     "terraform" = "true"
   }
+  depends_on = [ module.eks_managed_node_group ]
 }
