@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   datalore:
     image: jetbrains/datalore-server:2024.3
