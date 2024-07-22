@@ -14,7 +14,7 @@ services:
       #DATALORE_PUBLIC_URL: "https://datalore.example.com"
       DB_PASSWORD: "changeme"
   postgresql:
-    image: jetbrains/datalore-postgres:2024.3
+    image: jetbrains/datalore-postgres:2024.4
     expose: [ "5432" ]
     networks:
       - datalore-backend-network
