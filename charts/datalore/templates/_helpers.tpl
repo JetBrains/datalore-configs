@@ -72,13 +72,6 @@ Create the name of the database secret to use
 {{- .Values.dataloreVersion | default .Chart.AppVersion }}
 {{- end }}
 {{- end }}
-{{- define "datalore.postgresImage.version" -}}
-{{- if .Values.postgresImage.versionOverride }}
-{{- .Values.postgresImage.versionOverride }}
-{{- else }}
-{{- .Values.dataloreVersion | default .Chart.AppVersion }}
-{{- end }}
-{{- end }}
 {{- define "datalore.databaseCommandImage.version" -}}
 {{- if .Values.databaseCommandImage.versionOverride }}
 {{- .Values.databaseCommandImage.versionOverride }}

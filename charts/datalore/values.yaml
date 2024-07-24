@@ -7,7 +7,7 @@ serverImage:
 postgresImage:
   repository: jetbrains/datalore-postgres
   pullPolicy: IfNotPresent
-  versionOverride: ""
+  version: "2024.4"
 databaseCommandImage:
   repository: jetbrains/datalore-database-command
   pullPolicy: IfNotPresent
