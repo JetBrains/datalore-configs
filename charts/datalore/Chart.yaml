@@ -2,5 +2,5 @@ apiVersion: v2
 name: datalore
 
 type: application
-version: 0.2.24-SNAPSHOT
+version: 0.2.24
 appVersion: "2024.5"
