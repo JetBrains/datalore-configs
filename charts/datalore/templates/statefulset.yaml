@@ -122,7 +122,6 @@ spec:
               name: plans-config
               subPath: plans_config.yaml
             {{- end }}
-            {{- end }}
             {{- if .Values.volumeMounts }}
             {{- toYaml .Values.volumeMounts | nindent 12 }}
             {{- end }}
