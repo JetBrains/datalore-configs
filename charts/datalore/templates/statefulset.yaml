@@ -122,6 +122,9 @@ spec:
               name: plans-config
               subPath: plans_config.yaml
             {{- end }}
+            {{- if .Values.volumeMounts }}
+            {{- toYaml .Values.volumeMounts | nindent 12 }}
+            {{- end }}
           resources:
             {{- toYaml .Values.dataloreResources | nindent 12 }}
         {{- if .Values.internalDatabase }}
