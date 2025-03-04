@@ -22,7 +22,7 @@ services:
       - "postgresql-data:/var/lib/postgresql/data"
     environment:
       POSTGRES_PASSWORD: "changeme"
-      ON_PREMISES_VERSION: "2024.3"
+      ON_PREMISES_VERSION: "2025.2"
 volumes:
   postgresql-data: { }
   datalore-storage: { }
