@@ -143,6 +143,8 @@ spec:
                 secretKeyRef:
                   name: {{ include "datalore.databaseSecretName" . }}
                   key: {{ quote .Values.databaseSecret.key }}
+            - name: ON_PREMISES_VERSION
+              value: {{ include "datalore.serverImage.version" . }}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresql-data
