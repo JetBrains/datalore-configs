@@ -126,6 +126,8 @@ sqlSession: {}
 sqlSessionService: {}
 gitFetch: {}
 gitClone: {}
+gitBackup: {}
+gitDiff: {}
 
 plansConfig: []
 logbackConfig: ""

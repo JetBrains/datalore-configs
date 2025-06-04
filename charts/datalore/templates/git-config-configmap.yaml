@@ -79,3 +79,77 @@ data:
             {{- toYaml . | nindent 12 }}
           {{- end }}
 {{- end }}
+  backup_job.yaml: |-
+{{- if .Values.gitBackup }}
+{{- tpl (toYaml .Values.gitBackup) . | nindent 4 }}
+{{- else }}
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: backup
+      labels:
+        datalore-git-task: backup
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 300
+      ttlSecondsAfterFinished: 600
+      template:
+        metadata:
+          labels:
+            datalore-git-task: backup
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: backup
+              image: {{ .Values.gitTaskImage.repository }}:{{ include "datalore.gitTaskImage.version" . }}
+              imagePullPolicy: {{ .Values.gitTaskImage.pullPolicy }}
+          {{- with .Values.agentsNodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsAffinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsTolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+{{- end }}
+  diff_job.yaml: |-
+{{- if .Values.gitDiff }}
+{{- tpl (toYaml .Values.gitDiff) . | nindent 4 }}
+{{- else }}
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: diff
+      labels:
+        datalore-git-task: diff
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 300
+      ttlSecondsAfterFinished: 600
+      template:
+        metadata:
+          labels:
+            datalore-git-task: diff
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: diff
+              image: {{ .Values.gitTaskImage.repository }}:{{ include "datalore.gitTaskImage.version" . }}
+              imagePullPolicy: {{ .Values.gitTaskImage.pullPolicy }}
+          {{- with .Values.agentsNodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsAffinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.agentsTolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+{{- end }}

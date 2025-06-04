@@ -70,6 +70,10 @@ spec:
               value: file:///opt/datalore/configs/git/fetch_job.yaml
             - name: GIT_CLONE_TASK_K8S_YAML
               value: file:///opt/datalore/configs/git/clone_job.yaml
+            - name: GIT_BACKUP_TASK_K8S_YAML
+              value: file:///opt/datalore/configs/git/backup_job.yaml
+            - name: GIT_DIFF_TASK_K8S_YAML
+              value: file:///opt/datalore/configs/git/diff_job.yaml
             - name: DATALORE_NAMESPACE
               value: {{ .Release.Namespace }}
             - name: DATALORE_POD_NAME
