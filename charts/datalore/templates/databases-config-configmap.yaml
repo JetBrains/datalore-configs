@@ -31,6 +31,11 @@ data:
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
+              env:
+                {{- range $k, $v := .Values.databasesPodEnv }}
+                - name: {{ $k }}
+                  value: {{ $v | quote }}
+                {{- end }}
           {{- with .Values.agentsNodeSelector }}
           nodeSelector:
             {{- toYaml . | nindent 12 }}
@@ -70,6 +75,11 @@ data:
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
+              env:
+                {{- range $k, $v := .Values.databasesPodEnv }}
+                - name: {{ $k }}
+                  value: {{ $v | quote }}
+                {{- end }}
           {{- with .Values.agentsNodeSelector }}
           nodeSelector:
             {{- toYaml . | nindent 12 }}
@@ -109,6 +119,11 @@ data:
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
+              env:
+                {{- range $k, $v := .Values.databasesPodEnv }}
+                - name: {{ $k }}
+                  value: {{ $v | quote }}
+                {{- end }}
           {{- with .Values.agentsNodeSelector }}
           nodeSelector:
             {{- toYaml . | nindent 12 }}
@@ -162,6 +177,11 @@ data:
             - name: sql-session
               image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
+              env:
+                {{- range $k, $v := .Values.databasesPodEnv }}
+                - name: {{ $k }}
+                  value: {{ $v | quote }}
+                {{- end }}
           {{- with .Values.agentsNodeSelector }}
           nodeSelector:
             {{- toYaml . | nindent 12 }}

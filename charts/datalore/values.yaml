@@ -134,4 +134,5 @@ logbackConfig: ""
 customEnvs: {}
 dataloreEnv: {}
 dataloreEnvRaw: []
+databasesPodEnv: {}
 dataloreEnvExternalSecret: ""
