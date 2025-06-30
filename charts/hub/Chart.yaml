@@ -2,5 +2,5 @@ apiVersion: v2
 name: hub
 
 type: application
-version: 0.2.31-SNAPSHOT
-appVersion: "2025.1.74704"
+version: 0.2.32-SNAPSHOT
+appVersion: "2025.1.82518"
