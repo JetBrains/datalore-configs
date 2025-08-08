@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>JetBrains Datalore</title>
+  <script>
+    (() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const frameId = urlParams.get('frameId');
+
+      let currentIframe = null;
+      let nextIframe = null;
+
+      function initialize() {
+        window.parent.postMessage({
+          type: "iframeReady",
+          sender: frameId,
+        }, '*');
+      }
+
+      function onIframeContent(iframeContent) {
+        const iframe = document.createElement("iframe");
+
+        iframe.onload = () => {
+          showIframe(iframe)
+        };
+        iframe.setAttribute("srcdoc", iframeContent);
+
+        if (nextIframe && currentIframe) {
+          removeIframe(nextIframe);
+          nextIframe = iframe;
+        } else if (!currentIframe) {
+          currentIframe = iframe;
+        } else {
+          nextIframe = iframe;
+        }
+
+        appendIframe(iframe);
+      }
+
+      function appendIframe(iframe) {
+        iframe.classList.add("iframe-hidden")
+        document.body.append(iframe);
+      }
+
+      function showIframe(iframe) {
+        iframe.classList.remove("iframe-hidden")
+
+        if (currentIframe && currentIframe != iframe) {
+          removeIframe(currentIframe);
+        }
+
+        currentIframe = iframe;
+        nextIframe = null;
+      }
+
+      function removeIframe(iframe) {
+        iframe.onload = "";
+        iframe.remove();
+      }
+
+      window.addEventListener("message", event => {
+        const data = event.data;
+
+        if (typeof data == "object" && data["type"] == "iframeContent") {
+          onIframeContent(data["message"]);
+        } else if (currentIframe && event.source != currentIframe.contentWindow) {
+          currentIframe.contentWindow.postMessage(event.data, "*");
+        }
+      })
+
+      window.addEventListener("DOMContentLoaded", () => initialize());
+    })()
+  </script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .iframe-hidden {
+      position: absolute;
+      left: -999999px;
+      right: -999999px;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+</body>
+</html>
