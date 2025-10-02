@@ -1,6 +1,6 @@
 services:
   datalore:
-    image: jetbrains/datalore-server:2025.4.1
+    image: jetbrains/datalore-server:2025.5.1
     ports:
       - "8080:8080"
     expose: [ "8081", "5050", "4060" ]
