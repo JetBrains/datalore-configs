@@ -24,6 +24,7 @@ data:
           labels:
             datalore-databases: connection-check
         spec:
+          serviceAccountName: {{ .Values.databasesServiceAccountName }}
           restartPolicy: Never
           containers:
             - name: connection-check
@@ -68,6 +69,7 @@ data:
           labels:
             datalore-databases: introspection
         spec:
+          serviceAccountName: {{ .Values.databasesServiceAccountName }}
           restartPolicy: Never
           containers:
             - name: introspection
@@ -112,6 +114,7 @@ data:
           labels:
             datalore-databases: namespaces-loader
         spec:
+          serviceAccountName: {{ .Values.databasesServiceAccountName }}
           restartPolicy: Never
           containers:
             - name: connection-check
@@ -172,6 +175,7 @@ data:
           labels:
             datalore-databases: sql-session
         spec:
+          serviceAccountName: {{ .Values.databasesServiceAccountName }}
           restartPolicy: Never
           containers:
             - name: sql-session

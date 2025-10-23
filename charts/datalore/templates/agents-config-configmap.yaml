@@ -33,6 +33,7 @@ data:
                 podType: dataloreKubernetesAgent
             spec:
               enableServiceLinks: false
+              serviceAccountName: {{ .Values.agentsServiceAccountName }}
               containers:
                 - name: agent
                   image: {{ .Values.agentImage.repository }}:{{ include "datalore.agentImage.version" . }}
