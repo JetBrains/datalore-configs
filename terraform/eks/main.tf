@@ -2,8 +2,8 @@
 # Adjust accordingly, as required.
 
 locals {
-  aws_region = "eu-central-1"
-  cluster_version = "1.30"
+  aws_region = "eu-west-1"
+  cluster_version = "1.33"
   cluster_name = "datalore-eks-${random_string.suffix.result}"
   instance_type = "t3.large"
   min_size = 1
@@ -21,7 +21,7 @@ data "aws_ami" "eks_ubuntu_ami" {
 
   filter {
     name   = "name"
-    values = ["ubuntu-eks/k8s_${local.cluster_version}/images/hvm-ssd/*"]
+    values = ["ubuntu-eks/k8s_${local.cluster_version}/images/hvm-ssd*"]
   }
 
   filter {
@@ -49,7 +49,7 @@ resource "random_string" "suffix" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.8.1"
+  version = "~> 5.0"
 
   name = "datalore-vpc"
 
@@ -75,9 +75,8 @@ module "vpc" {
 }
 
 module "eks" {
-
   source  = "terraform-aws-modules/eks/aws"
-  version = "20.13.1"
+  version = "~> 20.0"
 
   cluster_name    = local.cluster_name
   cluster_version = local.cluster_version
@@ -92,7 +91,7 @@ module "eks" {
 
 module "eks_managed_node_group" {
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-
+  version = "~> 20.0"
   name = "datalore-ubuntu-nodes"
 
   cluster_name = local.cluster_name
@@ -119,6 +118,11 @@ module "eks_managed_node_group" {
 
 }
 
+output "cluster_name" {
+  value       = module.eks.cluster_name
+  description = "EKS cluster name from module"
+}
+
 # https://aws.amazon.com/blogs/containers/amazon-ebs-csi-driver-is-now-generally-available-in-amazon-eks-add-ons/ 
 data "aws_iam_policy" "ebs_csi_policy" {
   arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
@@ -126,7 +130,7 @@ data "aws_iam_policy" "ebs_csi_policy" {
 
 module "irsa-ebs-csi" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version = "4.7.0"
+  version = "~> 5.0"
   create_role                   = true
   role_name                     = "AmazonEKSTFEBSCSIRole-${module.eks.cluster_name}"
   provider_url                  = module.eks.oidc_provider
@@ -137,7 +141,6 @@ module "irsa-ebs-csi" {
 resource "aws_eks_addon" "ebs-csi" {
   cluster_name             = module.eks.cluster_name
   addon_name               = "aws-ebs-csi-driver"
-  addon_version            = "v1.31.0-eksbuild.1"
   service_account_role_arn = module.irsa-ebs-csi.iam_role_arn
   tags = {
     "eks_addon" = "ebs-csi"
