@@ -20,6 +20,10 @@ agentImage:
   repository: jetbrains/datalore-agent
   pullPolicy: IfNotPresent
   versionOverride: ""
+sidecarImage:
+  repository: jetbrains/datalore-sidecar-mounter
+  pullPolicy: IfNotPresent
+  versionOverride: ""
 
 imagePullSecrets: []
 nameOverride: ""

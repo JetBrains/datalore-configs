@@ -93,3 +93,10 @@ Create the name of the database secret to use
 {{- .Values.dataloreVersion | default .Chart.AppVersion }}
 {{- end }}
 {{- end }}
+{{- define "datalore.sidecarImage.version" -}}
+{{- if .Values.agentImage.versionOverride }}
+{{- .Values.sidecarImage.versionOverride }}
+{{- else }}
+{{- .Values.dataloreVersion | default .Chart.AppVersion }}
+{{- end }}
+{{- end }}
