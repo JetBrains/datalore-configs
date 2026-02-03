@@ -2,8 +2,17 @@ apiVersion: v1
 entries:
   datalore:
   - apiVersion: v2
+    appVersion: 2025.6.2
+    created: "2026-02-03T17:03:07.664596+01:00"
+    digest: f9d5171f428eb70893f3ad492ecd5300eb3811f64db8334a60b0afc59058d48a
+    name: datalore
+    type: application
+    urls:
+    - https://jetbrains.github.io/datalore-configs/charts/datalore-0.2.37.tgz
+    version: 0.2.37
+  - apiVersion: v2
     appVersion: 2025.6.1
-    created: "2025-11-25T14:06:01.537616+01:00"
+    created: "2026-02-03T17:03:07.664223+01:00"
     digest: 071e29f366d717a08c0405200cf33525445bb120b512485a96bb12c9444645ff
     name: datalore
     type: application
@@ -12,7 +21,7 @@ entries:
     version: 0.2.36
   - apiVersion: v2
     appVersion: "2025.6"
-    created: "2025-11-18T11:37:06.108542+01:00"
+    created: "2026-02-03T17:03:07.66386+01:00"
     digest: 7fdb5ace084a8a20f6fb2c34c4fc3cd615a282885a2b181b86b9618ca9d9bddd
     name: datalore
     type: application
@@ -21,7 +30,7 @@ entries:
     version: 0.2.35
   - apiVersion: v2
     appVersion: 2025.5.1
-    created: "2025-10-06T16:28:44.124553+02:00"
+    created: "2026-02-03T17:03:07.663497+01:00"
     digest: 34ef3e64ebade6d84b95ab873c5f3c02fbd07b9a0715a0ed5b49240c870a89b6
     name: datalore
     type: application
@@ -30,7 +39,7 @@ entries:
     version: 0.2.34
   - apiVersion: v2
     appVersion: "2025.5"
-    created: "2025-09-26T16:20:21.00494+02:00"
+    created: "2026-02-03T17:03:07.662942+01:00"
     digest: b35e009fc527c65bd1224e61c3de1ed24859c74a5161b19f7f62382806100b85
     name: datalore
     type: application
@@ -39,7 +48,7 @@ entries:
     version: 0.2.33
   - apiVersion: v2
     appVersion: 2025.4.1
-    created: "2025-08-14T16:46:11.807253+02:00"
+    created: "2026-02-03T17:03:07.66239+01:00"
     digest: 5029f53e876ff9d5c24a765da9bfe82f76088caf4333c8e5086e511d8fbefa0d
     name: datalore
     type: application
@@ -48,7 +57,7 @@ entries:
     version: 0.2.32
   - apiVersion: v2
     appVersion: "2025.4"
-    created: "2025-07-08T17:37:37.389069+02:00"
+    created: "2026-02-03T17:03:07.661821+01:00"
     digest: a6dd6852b9cd495354ef94f70dede5c05aaffc7e7051b92b54810428c83e6aff
     name: datalore
     type: application
@@ -57,7 +66,7 @@ entries:
     version: 0.2.31
   - apiVersion: v2
     appVersion: 2025.3.1
-    created: "2025-05-28T21:09:51.365747+02:00"
+    created: "2026-02-03T17:03:07.661068+01:00"
     digest: 60701588f2f6019f9c80263ff9ffce92529888b78ce86105bdfd0346ae61bbd4
     name: datalore
     type: application
@@ -66,7 +75,7 @@ entries:
     version: 0.2.30
   - apiVersion: v2
     appVersion: "2025.3"
-    created: "2025-05-27T15:27:37.221429+02:00"
+    created: "2026-02-03T17:03:07.659963+01:00"
     digest: e614579970b9ce43f91e290e60e938dba77bc753ef51512eebabb88e2952dd12
     name: datalore
     type: application
@@ -75,7 +84,7 @@ entries:
     version: 0.2.29
   - apiVersion: v2
     appVersion: "2025.2"
-    created: "2025-03-12T13:18:19.333772+01:00"
+    created: "2026-02-03T17:03:07.659415+01:00"
     digest: 59864c7edeeedcf1d2d3324bdbde86ec4f5bff573990e765b1c5331f1e784a36
     name: datalore
     type: application
@@ -84,7 +93,7 @@ entries:
     version: 0.2.28
   - apiVersion: v2
     appVersion: "2025.1"
-    created: "2025-01-29T10:51:55.373753+01:00"
+    created: "2026-02-03T17:03:07.659011+01:00"
     digest: 86d5ff48addea7a2538e6b71930390cf64748b089f006814f7f239cf4e510917
     name: datalore
     type: application
@@ -93,7 +102,7 @@ entries:
     version: 0.2.26
   - apiVersion: v2
     appVersion: 2024.5.1
-    created: "2025-01-20T15:58:04.896868+01:00"
+    created: "2026-02-03T17:03:07.658585+01:00"
     digest: eefb46342413bfe7efef46f0eb3438ffecd09899d07868e5e25779251e027a57
     name: datalore
     type: application
@@ -102,7 +111,7 @@ entries:
     version: 0.2.25
   - apiVersion: v2
     appVersion: "2024.5"
-    created: "2024-11-27T19:27:06.254592+01:00"
+    created: "2026-02-03T17:03:07.658165+01:00"
     digest: e4c53edf19911d25263951cf639681494e48927616e3986f25e9c62817654e11
     name: datalore
     type: application
@@ -111,7 +120,7 @@ entries:
     version: 0.2.24
   - apiVersion: v2
     appVersion: 2024.4.1
-    created: "2024-09-27T16:58:19.063347+02:00"
+    created: "2026-02-03T17:03:07.657755+01:00"
     digest: ca195dc69feb453003a919fd2f0894063d48de4229475b38730e40d18bfbb630
     name: datalore
     type: application
@@ -120,7 +129,7 @@ entries:
     version: 0.2.23
   - apiVersion: v2
     appVersion: "2024.4"
-    created: "2024-08-20T13:12:22.235503+02:00"
+    created: "2026-02-03T17:03:07.657233+01:00"
     digest: 695414daf1c8cc58b85f3d8705c51451c7cf88e7cb663e872922efd896b2acd9
     name: datalore
     type: application
@@ -129,7 +138,7 @@ entries:
     version: 0.2.22
   - apiVersion: v2
     appVersion: "2024.3"
-    created: "2024-06-21T12:59:12.374307+02:00"
+    created: "2026-02-03T17:03:07.656661+01:00"
     digest: 85959eda82010932470aa72eb1936ad4ee58728f586a7437923224f58f1071ee
     name: datalore
     type: application
@@ -138,7 +147,7 @@ entries:
     version: 0.2.21
   - apiVersion: v2
     appVersion: 2024.2.3
-    created: "2024-05-13T17:54:56.76767+02:00"
+    created: "2026-02-03T17:03:07.656109+01:00"
     digest: 9877d97f84a066ffac977b929986c471fcb93e267e61b565b3e9aab8c9a8528e
     name: datalore
     type: application
@@ -147,7 +156,7 @@ entries:
     version: 0.2.20
   - apiVersion: v2
     appVersion: 2024.2.2
-    created: "2024-04-30T15:12:46.645601+02:00"
+    created: "2026-02-03T17:03:07.655095+01:00"
     digest: b9a6718c5dc1d19efdca3d7bea5423bd09dfd07f60e676d6fc0193664c5c889c
     name: datalore
     type: application
@@ -156,7 +165,7 @@ entries:
     version: 0.2.19
   - apiVersion: v2
     appVersion: 2024.2.1
-    created: "2024-04-23T12:59:32.677246549+02:00"
+    created: "2026-02-03T17:03:07.654265+01:00"
     digest: f36a13e629a1c1e7a780f92c853f450bf6895f12fc2354dd82795991101224af
     name: datalore
     type: application
@@ -165,7 +174,7 @@ entries:
     version: 0.2.18
   - apiVersion: v2
     appVersion: "2024.2"
-    created: "2024-04-16T15:02:02.240506+02:00"
+    created: "2026-02-03T17:03:07.653676+01:00"
     digest: e8dd329e6b94d790a42039fde20227b6d3d1adaee8e112384a8ef560dd369e36
     name: datalore
     type: application
@@ -174,7 +183,7 @@ entries:
     version: 0.2.17
   - apiVersion: v2
     appVersion: "2024.1"
-    created: "2024-03-28T14:07:56.886763466+01:00"
+    created: "2026-02-03T17:03:07.653172+01:00"
     digest: e239f75aad9e8e6bd997a6af48cac99cd3ec81f50316ccc074c93906adfbe4e9
     name: datalore
     type: application
@@ -183,7 +192,7 @@ entries:
     version: 0.2.16
   - apiVersion: v2
     appVersion: "2024.1"
-    created: "2024-02-01T13:20:05.237927046+01:00"
+    created: "2026-02-03T17:03:07.65257+01:00"
     digest: 4f4277a5731c750c83c4e677d427dedd345411ab4de960120b721e1dc2018989
     name: datalore
     type: application
@@ -192,7 +201,7 @@ entries:
     version: 0.2.15
   - apiVersion: v2
     appVersion: "2023.6"
-    created: "2023-11-28T07:33:59.74972-08:00"
+    created: "2026-02-03T17:03:07.652037+01:00"
     digest: c0e6fb35888852d1ff3d7d841b5c1299e467df5e06a0fab8c3873344e4d11882
     name: datalore
     type: application
@@ -201,7 +210,7 @@ entries:
     version: 0.2.14
   - apiVersion: v2
     appVersion: 2023.5.1
-    created: "2023-10-20T16:36:42.150008+02:00"
+    created: "2026-02-03T17:03:07.651489+01:00"
     digest: f07cd491db0f7967a3c10e13e945fa93ccec544e700c34e738b7008253f076f8
     name: datalore
     type: application
@@ -210,7 +219,7 @@ entries:
     version: 0.2.13
   - apiVersion: v2
     appVersion: "2023.5"
-    created: "2023-09-27T10:18:20.67299+02:00"
+    created: "2026-02-03T17:03:07.650921+01:00"
     digest: b2525ba780d9860d77bd667f4a5f24cff092770cf0f9bd8eb35167c0e2fd14f5
     name: datalore
     type: application
@@ -219,7 +228,7 @@ entries:
     version: 0.2.12
   - apiVersion: v2
     appVersion: "2023.4"
-    created: "2023-08-25T19:38:27.18277474+02:00"
+    created: "2026-02-03T17:03:07.650374+01:00"
     digest: ba26aa3f09443fdd29eb4cd7463cd8afc179b383e827841bcbd66635dd552add
     name: datalore
     type: application
@@ -228,7 +237,7 @@ entries:
     version: 0.2.11
   - apiVersion: v2
     appVersion: 2023.3.1
-    created: "2023-07-17T18:39:09.283893672+02:00"
+    created: "2026-02-03T17:03:07.649837+01:00"
     digest: f7b2fd8e73c32374fb53af41a09e9f0cb3f41cd8ede57605ed4df3c15956f56b
     name: datalore
     type: application
@@ -237,7 +246,7 @@ entries:
     version: 0.2.10
   - apiVersion: v2
     appVersion: "2023.3"
-    created: "2023-06-09T18:34:05.363775745+02:00"
+    created: "2026-02-03T17:03:07.668613+01:00"
     digest: b1674e828ea221ddeb45e3302f352f6dfbb2fe4b9a0bde1f35354110c9c72d02
     name: datalore
     type: application
@@ -246,7 +255,7 @@ entries:
     version: 0.2.9
   - apiVersion: v2
     appVersion: "2023.2"
-    created: "2023-04-26T16:16:40.565680524+02:00"
+    created: "2026-02-03T17:03:07.668076+01:00"
     digest: 4faf4d4bc6d5028a1772f44d5127e9ad432d4f284c3e2dba1d2ee431ce229367
     name: datalore
     type: application
@@ -255,7 +264,7 @@ entries:
     version: 0.2.8
   - apiVersion: v2
     appVersion: "2023.1"
-    created: "2023-02-13T15:16:08.369984933+01:00"
+    created: "2026-02-03T17:03:07.667516+01:00"
     digest: 18b4b470055509601912158c64a43237515fd488f2a3a346e3b61f28957f8a6a
     name: datalore
     type: application
@@ -264,7 +273,7 @@ entries:
     version: 0.2.7
   - apiVersion: v2
     appVersion: 2022.3.1
-    created: "2023-01-12T13:52:30.301515696+01:00"
+    created: "2026-02-03T17:03:07.666817+01:00"
     digest: 970e9fc1d1366363e4757869dae6e6d5dfb21e0100815f2c3a2b88e3c7d4a2b9
     name: datalore
     type: application
@@ -273,7 +282,7 @@ entries:
     version: 0.2.7-rc.1
   - apiVersion: v2
     appVersion: 2022.3.1
-    created: "2022-12-16T17:13:50.231214794+01:00"
+    created: "2026-02-03T17:03:07.66645+01:00"
     digest: 80479b8e11b3a1028c58a6894a981cac0714a28a2aea76d8629e461aad1a4b4b
     name: datalore
     type: application
@@ -282,7 +291,7 @@ entries:
     version: 0.2.6
   - apiVersion: v2
     appVersion: "2022.3"
-    created: "2022-11-11T18:52:15.646089068+01:00"
+    created: "2026-02-03T17:03:07.665873+01:00"
     digest: c39abbef4bec56a707746d106e11a589564827561298971d90bd370d02f9608f
     name: datalore
     type: application
@@ -291,7 +300,7 @@ entries:
     version: 0.2.5
   - apiVersion: v2
     appVersion: 2022.3.RC1
-    created: "2022-10-21T12:11:51.588275131+02:00"
+    created: "2026-02-03T17:03:07.665505+01:00"
     digest: b2a893efd2897a60a3ce052cb135206cb1167ae4a5dad21a898ab7dadc58166e
     name: datalore
     type: application
@@ -300,7 +309,7 @@ entries:
     version: 0.2.5-rc.1
   - apiVersion: v2
     appVersion: 2022.2.3
-    created: "2022-09-16T12:01:09.533698287+02:00"
+    created: "2026-02-03T17:03:07.665072+01:00"
     digest: ac965137ebd55da4ba136c30b0cb7d5b0cc2719f8e99011f4c35d9eab68595c0
     name: datalore
     type: application
@@ -309,7 +318,7 @@ entries:
     version: 0.2.4
   - apiVersion: v2
     appVersion: 2022.2.2
-    created: "2022-07-15T15:50:11.79011+03:00"
+    created: "2026-02-03T17:03:07.660484+01:00"
     digest: 0c7f4cd3d3d402333b638d88108c185cc643b5d619618428f0264ee217406d2c
     name: datalore
     type: application
@@ -318,7 +327,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: 2022.2.1
-    created: "2022-07-06T22:35:48.147793568+03:00"
+    created: "2026-02-03T17:03:07.655514+01:00"
     digest: c29a4275499370eb76b3e6997af4f6fd1d03cd11bf6c9c3f2cf9b3c859723a41
     name: datalore
     type: application
@@ -327,7 +336,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: "2022.2"
-    created: "2022-06-22T12:32:51.705550476+03:00"
+    created: "2026-02-03T17:03:07.649244+01:00"
     digest: 5bf7e4cf6ae92c98b3d99b22a711cdeacfbb52551c9dd6df48e7301d15e8a45c
     name: datalore
     type: application
@@ -336,7 +345,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 2022.1.1
-    created: "2022-04-06T13:58:27.351835241+03:00"
+    created: "2026-02-03T17:03:07.648847+01:00"
     digest: 519b6465e4ff8eb5b135df43c5647fe3d10fbfb5e16d0b518306640db1d1315d
     name: datalore
     type: application
@@ -345,7 +354,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: "2021.3"
-    created: "2021-12-02T18:50:59.735160463+03:00"
+    created: "2026-02-03T17:03:07.647168+01:00"
     digest: 44af62bbb263bb3fd30a7de967698ab9ab6b58d16897a435c334a64ae0c2348a
     name: datalore
     type: application
@@ -354,8 +363,17 @@ entries:
     version: 0.1.0
   hub:
   - apiVersion: v2
+    appVersion: 2025.3.119807
+    created: "2026-02-03T17:03:07.678054+01:00"
+    digest: 2b54526dfaa082994e98f61bdf5125b8a678fd290a8afd5a1ba1f99b46c0c224
+    name: hub
+    type: application
+    urls:
+    - https://jetbrains.github.io/datalore-configs/charts/hub-0.2.37.tgz
+    version: 0.2.37
+  - apiVersion: v2
     appVersion: 2025.3.104432
-    created: "2025-11-25T14:06:01.555585+01:00"
+    created: "2026-02-03T17:03:07.677876+01:00"
     digest: 6ae02e0dae861dce1bc522f67c91a5f4cf8c521e4ec9c08114a5230e97c32baf
     name: hub
     type: application
@@ -364,7 +382,7 @@ entries:
     version: 0.2.36
   - apiVersion: v2
     appVersion: 2025.3.104432
-    created: "2025-11-18T11:37:06.121644+01:00"
+    created: "2026-02-03T17:03:07.677701+01:00"
     digest: c9b31ad17980f19135f2ecbc198de41038200a7265995a10dce6e3fc7c1fb4cc
     name: hub
     type: application
@@ -373,7 +391,7 @@ entries:
     version: 0.2.35
   - apiVersion: v2
     appVersion: 2025.2.97298
-    created: "2025-10-06T16:28:44.137601+02:00"
+    created: "2026-02-03T17:03:07.677526+01:00"
     digest: 20f410e9c0b4b16ccc285961e514a021708177f2a414544726b960fcc6dd204d
     name: hub
     type: application
@@ -382,7 +400,7 @@ entries:
     version: 0.2.34
   - apiVersion: v2
     appVersion: 2025.2.97298
-    created: "2025-09-26T16:20:21.015778+02:00"
+    created: "2026-02-03T17:03:07.677175+01:00"
     digest: bb0ed64c3f375d05f2096269a72775612143d2845547527231e432acce8fb802
     name: hub
     type: application
@@ -391,7 +409,7 @@ entries:
     version: 0.2.33
   - apiVersion: v2
     appVersion: 2025.1.82518
-    created: "2025-08-14T16:46:11.820499+02:00"
+    created: "2026-02-03T17:03:07.676898+01:00"
     digest: 99d3faeadbf823da2c105d16d1100892b2905327c3f3e3abb980ca355e12016d
     name: hub
     type: application
@@ -400,7 +418,7 @@ entries:
     version: 0.2.32
   - apiVersion: v2
     appVersion: 2025.1.82518
-    created: "2025-07-08T17:37:37.400786+02:00"
+    created: "2026-02-03T17:03:07.676591+01:00"
     digest: 44f93779f8e92b552499e64becc76b7cc81a0e1bb00436f832fa3368f2e1314b
     name: hub
     type: application
@@ -409,7 +427,7 @@ entries:
     version: 0.2.31
   - apiVersion: v2
     appVersion: 2025.1.74704
-    created: "2025-05-28T21:09:51.376918+02:00"
+    created: "2026-02-03T17:03:07.676291+01:00"
     digest: cacb1a886ac8f3c1b5b916c46b56be4f2e672b722b641606f98112a12aad4fd0
     name: hub
     type: application
@@ -418,7 +436,7 @@ entries:
     version: 0.2.30
   - apiVersion: v2
     appVersion: 2025.1.74704
-    created: "2025-05-27T15:27:37.231402+02:00"
+    created: "2026-02-03T17:03:07.675675+01:00"
     digest: d18988004093c11d331aa4d3c8d121f6d574bba8c61c07bb371890ef14e9a1ca
     name: hub
     type: application
@@ -427,7 +445,7 @@ entries:
     version: 0.2.29
   - apiVersion: v2
     appVersion: 2025.1.62967
-    created: "2025-03-12T13:18:19.344562+01:00"
+    created: "2026-02-03T17:03:07.675375+01:00"
     digest: 4b573fcbb02f20ff833982e1ff180eab8f97749bf8b9dc799d5d1dfcfc069dc6
     name: hub
     type: application
@@ -436,7 +454,7 @@ entries:
     version: 0.2.28
   - apiVersion: v2
     appVersion: 2024.3.56671
-    created: "2025-01-29T10:51:55.383347+01:00"
+    created: "2026-02-03T17:03:07.675062+01:00"
     digest: 2f9bc698a92c1e65ccc57a3b83df4ac6bb25552383b54d9fccc41f24aa31ca9f
     name: hub
     type: application
@@ -445,7 +463,7 @@ entries:
     version: 0.2.26
   - apiVersion: v2
     appVersion: 2024.3.47197
-    created: "2025-01-20T15:58:04.907236+01:00"
+    created: "2026-02-03T17:03:07.674809+01:00"
     digest: a302cd50242c982aaa45d5c92e1ce36a1e592fe55f17f7ee8d4a8668c37e2d02
     name: hub
     type: application
@@ -454,7 +472,7 @@ entries:
     version: 0.2.25
   - apiVersion: v2
     appVersion: 2024.3.47197
-    created: "2024-11-27T19:27:06.26469+01:00"
+    created: "2026-02-03T17:03:07.674464+01:00"
     digest: fcdd5d8b83a216f383b179acc2438d81cb8a6ddad7a5a5802abf013f0eae39ac
     name: hub
     type: application
@@ -463,7 +481,7 @@ entries:
     version: 0.2.24
   - apiVersion: v2
     appVersion: 2024.2.37269
-    created: "2024-09-27T16:58:19.072887+02:00"
+    created: "2026-02-03T17:03:07.674111+01:00"
     digest: e970d2b868701a71fb9932547dd1f9a21a963176e1094240942d3a99f552eb4e
     name: hub
     type: application
@@ -472,7 +490,7 @@ entries:
     version: 0.2.23
   - apiVersion: v2
     appVersion: 2024.2.37269
-    created: "2024-08-20T13:12:22.245252+02:00"
+    created: "2026-02-03T17:03:07.673835+01:00"
     digest: 928dbd90156b9d25f696a1a1fd4695c991570eb4685e28472ee85cb0fcad3b07
     name: hub
     type: application
@@ -481,7 +499,7 @@ entries:
     version: 0.2.22
   - apiVersion: v2
     appVersion: 2023.3.22912
-    created: "2024-06-21T12:59:12.38358+02:00"
+    created: "2026-02-03T17:03:07.673467+01:00"
     digest: 323bbb5d4466ce3da5688c2ebd4a206e531bef5cead409b613249ea33841511a
     name: hub
     type: application
@@ -490,7 +508,7 @@ entries:
     version: 0.2.21
   - apiVersion: v2
     appVersion: 2023.3.22912
-    created: "2024-05-13T17:54:56.775139+02:00"
+    created: "2026-02-03T17:03:07.67269+01:00"
     digest: 47c7b55391d1de0f8b19edaf093c055967508cb7ecaf61ff3ae9519545f05a3c
     name: hub
     type: application
@@ -499,7 +517,7 @@ entries:
     version: 0.2.20
   - apiVersion: v2
     appVersion: 2023.3.22912
-    created: "2024-04-30T15:12:46.654831+02:00"
+    created: "2026-02-03T17:03:07.672187+01:00"
     digest: b16a5524d74884892e3c46c7a0bae6b70c5fb3a73994bcabcbdb10ed71c4bfc9
     name: hub
     type: application
@@ -508,7 +526,7 @@ entries:
     version: 0.2.19
   - apiVersion: v2
     appVersion: 2023.3.22912
-    created: "2024-04-23T12:59:32.686500377+02:00"
+    created: "2026-02-03T17:03:07.671984+01:00"
     digest: 52980b47256f413b76cfac40d55680491c31b030f3b71e582e70eda95eeb9087
     name: hub
     type: application
@@ -517,7 +535,7 @@ entries:
     version: 0.2.18
   - apiVersion: v2
     appVersion: 2023.3.22912
-    created: "2024-04-16T15:02:02.249392+02:00"
+    created: "2026-02-03T17:03:07.671779+01:00"
     digest: b07311e559e4b695c7b9b3a77a4e717449936f27bda24dd94231ae94bbe696d1
     name: hub
     type: application
@@ -526,7 +544,7 @@ entries:
     version: 0.2.17
   - apiVersion: v2
     appVersion: 2023.3.22912
-    created: "2024-03-28T14:07:56.897980941+01:00"
+    created: "2026-02-03T17:03:07.671481+01:00"
     digest: 340a6cafb321b24abff27657f4b48f70046f79007cd6f4a89e0ef5214b240fd7
     name: hub
     type: application
@@ -535,7 +553,7 @@ entries:
     version: 0.2.16
   - apiVersion: v2
     appVersion: 2023.3.22912
-    created: "2024-02-01T13:20:05.248372834+01:00"
+    created: "2026-02-03T17:03:07.67116+01:00"
     digest: ab2ed63ecff0a5648e343034575815158e425d87f65f9b6926bd247f4936c67e
     name: hub
     type: application
@@ -544,7 +562,7 @@ entries:
     version: 0.2.15
   - apiVersion: v2
     appVersion: 2023.2.18873
-    created: "2023-11-28T07:33:59.75728-08:00"
+    created: "2026-02-03T17:03:07.670844+01:00"
     digest: 79061457a09a4a8fabe429388abd9a91696c21ffe017c4ec0212fc1a4eaddeb5
     name: hub
     type: application
@@ -553,7 +571,7 @@ entries:
     version: 0.2.14
   - apiVersion: v2
     appVersion: 2023.2.18873
-    created: "2023-10-20T16:36:42.156528+02:00"
+    created: "2026-02-03T17:03:07.670558+01:00"
     digest: 24042f6a6f33d10a16868582c771b69d70a89b2f463285759a479c4dc9cf1f88
     name: hub
     type: application
@@ -562,7 +580,7 @@ entries:
     version: 0.2.13
   - apiVersion: v2
     appVersion: 2023.2.18873
-    created: "2023-09-27T10:18:20.679943+02:00"
+    created: "2026-02-03T17:03:07.670245+01:00"
     digest: cb3d5742ebd9d4ab1e71c088569fa65972e083bf1567983718e000e63ddc51dd
     name: hub
     type: application
@@ -571,7 +589,7 @@ entries:
     version: 0.2.12
   - apiVersion: v2
     appVersion: 2022.3.15573
-    created: "2023-08-25T19:38:27.195816291+02:00"
+    created: "2026-02-03T17:03:07.66994+01:00"
     digest: a05106d1234bf77678fa9650f4699559bceb3613fa9451e80c1ae45ef5cacc88
     name: hub
     type: application
@@ -580,7 +598,7 @@ entries:
     version: 0.2.11
   - apiVersion: v2
     appVersion: 2022.3.15573
-    created: "2023-07-17T18:39:09.292758588+02:00"
+    created: "2026-02-03T17:03:07.669632+01:00"
     digest: 8537d781ffed36f1cbaa678935c38ea06e41051c4c0653b8bef602f2306ca1c0
     name: hub
     type: application
@@ -589,7 +607,7 @@ entries:
     version: 0.2.10
   - apiVersion: v2
     appVersion: 2022.3.15573
-    created: "2023-06-09T18:34:05.369799155+02:00"
+    created: "2026-02-03T17:03:07.680398+01:00"
     digest: ba1b44308e00628d6452f7c65a1633bfdb7bae6cc7e302b4c989633b40c05d02
     name: hub
     type: application
@@ -598,7 +616,7 @@ entries:
     version: 0.2.9
   - apiVersion: v2
     appVersion: 2022.2.15039
-    created: "2023-04-26T16:16:40.56871709+02:00"
+    created: "2026-02-03T17:03:07.680046+01:00"
     digest: abd10a646016d419de9bbdb2c9086c9e28f828d1c76e0532cbba97afe2168cf6
     name: hub
     type: application
@@ -607,7 +625,7 @@ entries:
     version: 0.2.8
   - apiVersion: v2
     appVersion: 2022.2.15039
-    created: "2023-02-13T15:16:08.373115922+01:00"
+    created: "2026-02-03T17:03:07.679725+01:00"
     digest: 1ed246e7eff387e11cc4415f6b3b9984f011422692b3d5ff9e377821433f375a
     name: hub
     type: application
@@ -616,7 +634,7 @@ entries:
     version: 0.2.7
   - apiVersion: v2
     appVersion: 2022.2.15039
-    created: "2022-12-16T17:13:50.2347238+01:00"
+    created: "2026-02-03T17:03:07.679487+01:00"
     digest: d596794f86371a6af5629477e644b960030c7c5a16b81eb5df68c31540a21bd3
     name: hub
     type: application
@@ -625,7 +643,7 @@ entries:
     version: 0.2.6
   - apiVersion: v2
     appVersion: 2022.2.15039
-    created: "2022-11-11T18:52:15.647914446+01:00"
+    created: "2026-02-03T17:03:07.678912+01:00"
     digest: 89839a8fc1554be270b3699308f4e4ee2f53599c749134ace23fe91491231238
     name: hub
     type: application
@@ -634,7 +652,7 @@ entries:
     version: 0.2.5
   - apiVersion: v2
     appVersion: 2022.2.15039
-    created: "2022-10-21T12:11:51.590646828+02:00"
+    created: "2026-02-03T17:03:07.678693+01:00"
     digest: fe56e82a7549ffb448a1daf253fd2874c4ffe7b9b3fd5885ed04f8cb22c54b22
     name: hub
     type: application
@@ -643,7 +661,7 @@ entries:
     version: 0.2.5-rc.1
   - apiVersion: v2
     appVersion: 2022.2.15039
-    created: "2022-09-16T12:01:09.535197401+02:00"
+    created: "2026-02-03T17:03:07.678377+01:00"
     digest: 8276de46a97bc9ca994c3de6e88ebd65fa705c34f9ddadcc248a12677479f846
     name: hub
     type: application
@@ -652,7 +670,7 @@ entries:
     version: 0.2.4
   - apiVersion: v2
     appVersion: 2021.1.14194
-    created: "2022-07-15T15:50:11.795958+03:00"
+    created: "2026-02-03T17:03:07.676006+01:00"
     digest: f68ebbf8a624661579a8c65dac6ffb04149fcbe6090649cab3cdf05fa1cc15fa
     name: hub
     type: application
@@ -661,7 +679,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: 2021.1.14194
-    created: "2022-07-06T22:35:48.149034803+03:00"
+    created: "2026-02-03T17:03:07.672395+01:00"
     digest: 80bc2f47c5ab00bbdc206df0aea9eb1ea47a6afda29843652b293399e58215ee
     name: hub
     type: application
@@ -670,7 +688,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 2021.1.14194
-    created: "2022-06-22T12:32:51.706534212+03:00"
+    created: "2026-02-03T17:03:07.669301+01:00"
     digest: ba66ee7323b26c9c65256218c98297a23a18d64ffd5ded59bdfccc044624a529
     name: hub
     type: application
@@ -679,7 +697,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 2021.1.14194
-    created: "2022-06-22T12:32:51.706295978+03:00"
+    created: "2026-02-03T17:03:07.669079+01:00"
     digest: 150918b23a5842000cb5b333b5828721dddd4a461db9ffacecd230067130157e
     name: hub
     type: application
@@ -688,11 +706,11 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 2021.1.13553
-    created: "2021-12-02T18:50:59.736009936+03:00"
+    created: "2026-02-03T17:03:07.668843+01:00"
     digest: 6b44057e8d9619303f5fcc762d6a3931869d3b2f8e8ffc0e8da74d55cbe64cd2
     name: hub
     type: application
     urls:
     - https://jetbrains.github.io/datalore-configs/charts/hub-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-25T14:06:01.518556+01:00"
+generated: "2026-02-03T17:03:07.646403+01:00"
