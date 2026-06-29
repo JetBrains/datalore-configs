@@ -25,6 +25,10 @@ data:
             datalore-git-task: fetch
         spec:
           serviceAccountName: {{ .Values.gitTasksServiceAccountName }}
+          securityContext:
+            runAsUser: 5000
+            runAsGroup: 5000
+            runAsNonRoot: true
           restartPolicy: Never
           containers:
             - name: fetch
@@ -63,6 +67,10 @@ data:
             datalore-git-task: clone
         spec:
           serviceAccountName: {{ .Values.gitTasksServiceAccountName }}
+          securityContext:
+            runAsUser: 5000
+            runAsGroup: 5000
+            runAsNonRoot: true
           restartPolicy: Never
           containers:
             - name: clone
@@ -101,6 +109,10 @@ data:
             datalore-git-task: backup
         spec:
           serviceAccountName: {{ .Values.gitTasksServiceAccountName }}
+          securityContext:
+            runAsUser: 5000
+            runAsGroup: 5000
+            runAsNonRoot: true
           restartPolicy: Never
           containers:
             - name: backup
@@ -139,6 +151,10 @@ data:
             datalore-git-task: diff
         spec:
           serviceAccountName: {{ .Values.gitTasksServiceAccountName }}
+          securityContext:
+            runAsUser: 5000
+            runAsGroup: 5000
+            runAsNonRoot: true
           restartPolicy: Never
           containers:
             - name: diff
