@@ -94,7 +94,7 @@ Create the name of the database secret to use
 {{- end }}
 {{- end }}
 {{- define "datalore.sidecarImage.version" -}}
-{{- if .Values.agentImage.versionOverride }}
+{{- if .Values.sidecarImage.versionOverride }}
 {{- .Values.sidecarImage.versionOverride }}
 {{- else }}
 {{- .Values.dataloreVersion | default .Chart.AppVersion }}
