@@ -47,11 +47,33 @@ spec:
               containerPort: {{ .Values.computationPort }}
             - name: external-server
               containerPort: {{ .Values.externalServerPort }}
-          livenessProbe:
-            initialDelaySeconds: 120
+
+          {{- if .Values.startupProbe }}
+          startupProbe:
+            {{- toYaml .Values.startupProbe | nindent 12 }}
+          {{- else }}
+          startupProbe:
+            periodSeconds: 10
+            failureThreshold: 60
+            timeoutSeconds: 5
             httpGet:
               path: /health
               port: http
+          {{- end }}
+          {{- if .Values.livenessProbe }}
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          {{- else }}
+          livenessProbe:
+            periodSeconds: 10
+            failureThreshold: 3
+            timeoutSeconds: 5
+            httpGet:
+              path: /health
+              port: http
+          {{- end }}
+
+
           env:
             - name: DB_PASSWORD
               valueFrom:
