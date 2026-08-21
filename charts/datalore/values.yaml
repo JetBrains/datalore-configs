@@ -1,27 +1,31 @@
 dataloreVersion: ""
 
+# Registry prefix for the images below.
+# Not used for an image that sets its own repository.
+imageRegistry: jetbrains
+
 serverImage:
-  repository: jetbrains/datalore-server
+  repository: ""
   pullPolicy: IfNotPresent
   versionOverride: ""
 postgresImage:
-  repository: jetbrains/datalore-postgres
+  repository: ""
   pullPolicy: IfNotPresent
   version: "2024.4"
 databaseCommandImage:
-  repository: jetbrains/datalore-database-command
+  repository: ""
   pullPolicy: IfNotPresent
   versionOverride: ""
 gitTaskImage:
-  repository: jetbrains/datalore-git-task
+  repository: ""
   pullPolicy: IfNotPresent
   versionOverride: ""
 agentImage:
-  repository: jetbrains/datalore-agent
+  repository: ""
   pullPolicy: IfNotPresent
   versionOverride: ""
 sidecarImage:
-  repository: jetbrains/datalore-sidecar-mounter
+  repository: ""
   pullPolicy: IfNotPresent
   versionOverride: ""
 

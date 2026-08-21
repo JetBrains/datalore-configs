@@ -36,7 +36,7 @@ data:
               serviceAccountName: {{ .Values.agentsServiceAccountName }}
               containers:
                 - name: agent
-                  image: {{ .Values.agentImage.repository }}:{{ include "datalore.agentImage.version" . }}
+                  image: {{ include "datalore.agentImage.repository" $ }}:{{ include "datalore.agentImage.version" . }}
                   imagePullPolicy: {{ .Values.agentImage.pullPolicy }}
                   securityContext:
                     privileged: true

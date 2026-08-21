@@ -94,9 +94,33 @@ Create the name of the database secret to use
 {{- end }}
 {{- end }}
 {{- define "datalore.sidecarImage.version" -}}
-{{- if .Values.sidecarImage.versionOverride }}
+{{- if .Values.agentImage.versionOverride }}
 {{- .Values.sidecarImage.versionOverride }}
 {{- else }}
 {{- .Values.dataloreVersion | default .Chart.AppVersion }}
 {{- end }}
+{{- end }}
+
+{{/*
+Create the image repository to use for each component.
+The per-component repository wins when set; otherwise it is imageRegistry with the
+component name appended.
+*/}}
+{{- define "datalore.serverImage.repository" -}}
+{{- .Values.serverImage.repository | default (printf "%s/datalore-server" .Values.imageRegistry) }}
+{{- end }}
+{{- define "datalore.postgresImage.repository" -}}
+{{- .Values.postgresImage.repository | default (printf "%s/datalore-postgres" .Values.imageRegistry) }}
+{{- end }}
+{{- define "datalore.databaseCommandImage.repository" -}}
+{{- .Values.databaseCommandImage.repository | default (printf "%s/datalore-database-command" .Values.imageRegistry) }}
+{{- end }}
+{{- define "datalore.gitTaskImage.repository" -}}
+{{- .Values.gitTaskImage.repository | default (printf "%s/datalore-git-task" .Values.imageRegistry) }}
+{{- end }}
+{{- define "datalore.agentImage.repository" -}}
+{{- .Values.agentImage.repository | default (printf "%s/datalore-agent" .Values.imageRegistry) }}
+{{- end }}
+{{- define "datalore.sidecarImage.repository" -}}
+{{- .Values.sidecarImage.repository | default (printf "%s/datalore-sidecar-mounter" .Values.imageRegistry) }}
 {{- end }}
