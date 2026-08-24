@@ -32,7 +32,7 @@ data:
           restartPolicy: Never
           containers:
             - name: connection-check
-              image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
+              image: {{ include "datalore.databaseCommandImage.repository" $ }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
@@ -81,7 +81,7 @@ data:
           restartPolicy: Never
           containers:
             - name: introspection
-              image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
+              image: {{ include "datalore.databaseCommandImage.repository" $ }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
@@ -130,7 +130,7 @@ data:
           restartPolicy: Never
           containers:
             - name: connection-check
-              image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
+              image: {{ include "datalore.databaseCommandImage.repository" $ }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               securityContext:
                 runAsUser: 5000
@@ -195,7 +195,7 @@ data:
           restartPolicy: Never
           containers:
             - name: sql-session
-              image: {{ .Values.databaseCommandImage.repository }}:{{ include "datalore.databaseCommandImage.version" . }}
+              image: {{ include "datalore.databaseCommandImage.repository" $ }}:{{ include "datalore.databaseCommandImage.version" . }}
               imagePullPolicy: {{ .Values.databaseCommandImage.pullPolicy }}
               env:
                 {{- range $k, $v := .Values.databasesPodEnv }}

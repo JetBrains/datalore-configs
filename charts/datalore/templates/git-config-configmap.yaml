@@ -32,7 +32,7 @@ data:
           restartPolicy: Never
           containers:
             - name: fetch
-              image: {{ .Values.gitTaskImage.repository }}:{{ include "datalore.gitTaskImage.version" . }}
+              image: {{ include "datalore.gitTaskImage.repository" $ }}:{{ include "datalore.gitTaskImage.version" . }}
               imagePullPolicy: {{ .Values.gitTaskImage.pullPolicy }}
           {{- with .Values.agentsNodeSelector }}
           nodeSelector:
@@ -74,7 +74,7 @@ data:
           restartPolicy: Never
           containers:
             - name: clone
-              image: {{ .Values.gitTaskImage.repository }}:{{ include "datalore.gitTaskImage.version" . }}
+              image: {{ include "datalore.gitTaskImage.repository" $ }}:{{ include "datalore.gitTaskImage.version" . }}
               imagePullPolicy: {{ .Values.gitTaskImage.pullPolicy }}
           {{- with .Values.agentsNodeSelector }}
           nodeSelector:
@@ -116,7 +116,7 @@ data:
           restartPolicy: Never
           containers:
             - name: backup
-              image: {{ .Values.gitTaskImage.repository }}:{{ include "datalore.gitTaskImage.version" . }}
+              image: {{ include "datalore.gitTaskImage.repository" $ }}:{{ include "datalore.gitTaskImage.version" . }}
               imagePullPolicy: {{ .Values.gitTaskImage.pullPolicy }}
           {{- with .Values.agentsNodeSelector }}
           nodeSelector:
@@ -158,7 +158,7 @@ data:
           restartPolicy: Never
           containers:
             - name: diff
-              image: {{ .Values.gitTaskImage.repository }}:{{ include "datalore.gitTaskImage.version" . }}
+              image: {{ include "datalore.gitTaskImage.repository" $ }}:{{ include "datalore.gitTaskImage.version" . }}
               imagePullPolicy: {{ .Values.gitTaskImage.pullPolicy }}
           {{- with .Values.agentsNodeSelector }}
           nodeSelector:

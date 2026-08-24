@@ -34,7 +34,7 @@ spec:
         - name: datalore
           securityContext:
             {{- toYaml .Values.dataloreSecurityContext | nindent 12 }}
-          image: "{{ .Values.serverImage.repository }}:{{ include "datalore.serverImage.version" . }}"
+          image: "{{ include "datalore.serverImage.repository" $ }}:{{ include "datalore.serverImage.version" . }}"
           imagePullPolicy: {{ .Values.serverImage.pullPolicy }}
           ports:
             - name: http
@@ -157,7 +157,7 @@ spec:
         - name: postgres
           securityContext:
             {{- toYaml .Values.postgresSecurityContext | nindent 12 }}
-          image: "{{ .Values.postgresImage.repository }}:{{ .Values.postgresImage.version }}"
+          image: "{{ include "datalore.postgresImage.repository" $ }}:{{ .Values.postgresImage.version }}"
           imagePullPolicy: {{ .Values.postgresImage.pullPolicy }}
           ports:
             - containerPort: 5432
