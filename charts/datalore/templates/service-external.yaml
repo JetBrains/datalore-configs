@@ -22,6 +22,11 @@ spec:
       protocol: TCP
       name: agents-manager
       nodePort: {{ .Values.externalService.agentsManagerPort }}
+    - port: {{ .Values.authProxyPort }}
+      targetPort: auth-proxy
+      protocol: TCP
+      name: auth-proxy
+      nodePort: {{ .Values.externalService.authProxyPort }}
     - port: {{ .Values.computationPort }}
       targetPort: computation
       protocol: TCP

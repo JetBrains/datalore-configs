@@ -45,6 +45,8 @@ spec:
               containerPort: {{ .Values.agentsManagerPort }}
             - name: computation
               containerPort: {{ .Values.computationPort }}
+            - name: auth-proxy
+              containerPort: {{ .Values.authProxyPort }}
             - name: external-server
               containerPort: {{ .Values.externalServerPort }}
 
@@ -96,6 +98,16 @@ spec:
               value: file:///opt/datalore/configs/git/backup_job.yaml
             - name: GIT_DIFF_TASK_K8S_YAML
               value: file:///opt/datalore/configs/git/diff_job.yaml
+            - name: SIDECAR_IMAGE
+              value: "{{ include "datalore.sidecarImage.repository" $ }}:{{ include "datalore.sidecarImage.version" . }}"
+            - name: AUTH_PROXY_IMAGE
+              value: "{{ include "datalore.authProxyImage.repository" $ }}:{{ include "datalore.authProxyImage.version" . }}"
+            - name: AGENT_NETWORK_NAMESPACE_IMAGE
+              value: "{{ include "datalore.agentNetworkNamespaceImage.repository" $ }}:{{ include "datalore.agentNetworkNamespaceImage.version" . }}"
+            - name: AUTH_PROXY_PORT
+              value: {{ .Values.authProxyPort | quote }}
+            - name: AUTH_PROXY_LISTEN_PORT
+              value: {{ .Values.authProxyPort | quote }}
             - name: DATALORE_NAMESPACE
               value: {{ .Release.Namespace }}
             - name: DATALORE_POD_NAME

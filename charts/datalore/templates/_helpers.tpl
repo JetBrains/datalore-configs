@@ -100,6 +100,20 @@ Create the name of the database secret to use
 {{- .Values.dataloreVersion | default .Chart.AppVersion }}
 {{- end }}
 {{- end }}
+{{- define "datalore.authProxyImage.version" -}}
+{{- if .Values.authProxyImage.versionOverride }}
+{{- .Values.authProxyImage.versionOverride }}
+{{- else }}
+{{- .Values.dataloreVersion | default .Chart.AppVersion }}
+{{- end }}
+{{- end }}
+{{- define "datalore.agentNetworkNamespaceImage.version" -}}
+{{- if .Values.agentNetworkNamespaceImage.versionOverride }}
+{{- .Values.agentNetworkNamespaceImage.versionOverride }}
+{{- else }}
+{{- .Values.dataloreVersion | default .Chart.AppVersion }}
+{{- end }}
+{{- end }}
 
 {{/*
 Create the image repository to use for each component.
@@ -123,4 +137,10 @@ component name appended.
 {{- end }}
 {{- define "datalore.sidecarImage.repository" -}}
 {{- .Values.sidecarImage.repository | default (printf "%s/datalore-sidecar-mounter" .Values.imageRegistry) }}
+{{- end }}
+{{- define "datalore.authProxyImage.repository" -}}
+{{- .Values.authProxyImage.repository | default (printf "%s/datalore-auth-proxy" .Values.imageRegistry) }}
+{{- end }}
+{{- define "datalore.agentNetworkNamespaceImage.repository" -}}
+{{- .Values.agentNetworkNamespaceImage.repository | default (printf "%s/datalore-agent-network-namespace" .Values.imageRegistry) }}
 {{- end }}

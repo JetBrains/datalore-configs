@@ -23,5 +23,9 @@ spec:
       targetPort: computation
       protocol: TCP
       name: computation
+    - port: {{ .Values.authProxyPort }}
+      targetPort: auth-proxy
+      protocol: TCP
+      name: auth-proxy
   selector:
     {{- include "datalore.selectorLabels" . | nindent 4 }}

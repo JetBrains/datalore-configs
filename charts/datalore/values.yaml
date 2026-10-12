@@ -28,6 +28,12 @@ sidecarImage:
   repository: ""
   pullPolicy: IfNotPresent
   versionOverride: ""
+authProxyImage:
+  repository: ""
+  versionOverride: ""
+agentNetworkNamespaceImage:
+  repository: ""
+  versionOverride: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -64,6 +70,7 @@ service:
 
 computationPort: 4060
 agentsManagerPort: 5050
+authProxyPort: 5052
 httpInternalPort: 8081
 externalServerPort: 5123
 
@@ -74,6 +81,7 @@ externalService:
 
   httpPort: 30090
   agentsManagerPort: 30091
+  authProxyPort: 30095
   computationPort: 30092
   httpInternalPort: 30093
   externalServerPort: 30094

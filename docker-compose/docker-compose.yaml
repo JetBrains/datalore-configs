@@ -3,7 +3,7 @@ services:
     image: jetbrains/datalore-server:2026.3
     ports:
       - "8080:8080"
-    expose: [ "8081", "5050", "4060" ]
+    expose: [ "8081", "5050", "5052", "4060" ]
     networks:
       - datalore-agents-network
       - datalore-backend-network
