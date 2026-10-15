@@ -11,7 +11,7 @@ serverImage:
 postgresImage:
   repository: ""
   pullPolicy: IfNotPresent
-  version: "2026.4"
+  version: "2026.4.1"
 databaseCommandImage:
   repository: ""
   pullPolicy: IfNotPresent
