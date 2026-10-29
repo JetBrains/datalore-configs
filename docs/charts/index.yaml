@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   datalore:
   - apiVersion: v2
+    appVersion: 2026.4.1
+    created: "2026-10-29T16:59:56.582423+01:00"
+    digest: a02c311239721b13ae3845db2a355702f7c0fe40d1e4762d07fceea8aa974a82
+    name: datalore
+    type: application
+    urls:
+    - https://jetbrains.github.io/datalore-configs/charts/datalore-0.2.47.tgz
+    version: 0.2.47
+  - apiVersion: v2
     appVersion: "2026.4"
     created: "2026-10-23T13:43:05.906624+02:00"
     digest: 8fa2e0f6429ca79af2e1aba0c77246c577d3a265af9cd2caa7897e6fbeffc72a
@@ -436,6 +445,15 @@ entries:
   hub:
   - apiVersion: v2
     appVersion: 2026.2.52519
+    created: "2026-10-29T16:59:56.59537+01:00"
+    digest: 5cfb4f797c57320b3329091d86945d65c3a9239a4c86aa431525a46eaad16c50
+    name: hub
+    type: application
+    urls:
+    - https://jetbrains.github.io/datalore-configs/charts/hub-0.2.47.tgz
+    version: 0.2.47
+  - apiVersion: v2
+    appVersion: 2026.2.52519
     created: "2026-10-23T13:43:05.918523+02:00"
     digest: 3b4f2747783ffec6739373631f126987685590ae96f0199a9a056a3fed0f1370
     name: hub
@@ -857,4 +875,4 @@ entries:
     urls:
     - https://jetbrains.github.io/datalore-configs/charts/hub-0.1.0.tgz
     version: 0.1.0
-generated: "2026-10-23T13:43:05.888635+02:00"
+generated: "2026-10-29T16:59:56.559395+01:00"
