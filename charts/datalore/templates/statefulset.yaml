@@ -47,6 +47,8 @@ spec:
               containerPort: {{ .Values.computationPort }}
             - name: auth-proxy
               containerPort: {{ .Values.authProxyPort }}
+            - name: mount-sidecar
+              containerPort: {{ .Values.mountSidecarPort }}
             - name: external-server
               containerPort: {{ .Values.externalServerPort }}
 
@@ -108,6 +110,10 @@ spec:
               value: {{ .Values.authProxyPort | quote }}
             - name: AUTH_PROXY_LISTEN_PORT
               value: {{ .Values.authProxyPort | quote }}
+            - name: MOUNT_SIDECAR_PORT
+              value: {{ .Values.mountSidecarPort | quote }}
+            - name: MOUNT_SIDECAR_LISTEN_PORT
+              value: {{ .Values.mountSidecarPort | quote }}
             - name: DATALORE_NAMESPACE
               value: {{ .Release.Namespace }}
             - name: DATALORE_POD_NAME

@@ -27,6 +27,11 @@ spec:
       protocol: TCP
       name: auth-proxy
       nodePort: {{ .Values.externalService.authProxyPort }}
+    - port: {{ .Values.mountSidecarPort }}
+      targetPort: mount-sidecar
+      protocol: TCP
+      name: mount-sidecar
+      nodePort: {{ .Values.externalService.mountSidecarPort }}
     - port: {{ .Values.computationPort }}
       targetPort: computation
       protocol: TCP

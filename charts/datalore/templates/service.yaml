@@ -27,5 +27,9 @@ spec:
       targetPort: auth-proxy
       protocol: TCP
       name: auth-proxy
+    - port: {{ .Values.mountSidecarPort }}
+      targetPort: mount-sidecar
+      protocol: TCP
+      name: mount-sidecar
   selector:
     {{- include "datalore.selectorLabels" . | nindent 4 }}
