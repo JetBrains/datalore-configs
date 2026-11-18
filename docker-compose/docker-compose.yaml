@@ -10,6 +10,7 @@ services:
     volumes:
       - "datalore-storage:/opt/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/opt/datalore-agent-mount-base:/opt/agent-mount-base:rshared"
     environment:
       #DATALORE_PUBLIC_URL: "https://datalore.example.com"
       DB_PASSWORD: "changeme"
