@@ -30,16 +30,6 @@ spec:
       serviceAccountName: {{ include "hub.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      initContainers:
-        # CVE-2026-114938 workaround: persists the option in hub.jvmoptions. Remove once the Hub image ships a fixed JDK.
-        - name: configure-jvm-options
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args: ["configure", "-J-XX:-UseBASE64Intrinsics"]
-          volumeMounts:
-            {{- toYaml .Values.volumeMounts | nindent 12 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
